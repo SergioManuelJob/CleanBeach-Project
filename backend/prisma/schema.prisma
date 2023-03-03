@@ -9,3 +9,47 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  uid       String   @id @unique @default(cuid())
+  name String @unique @db.VarChar(40)
+  email String @unique @db.VarChar(300)
+  password     String   @db.VarChar(50)
+  pastEvents Event[]
+}
+
+model Beach {
+  bid String @id @unique @default(cuid())
+  name String @unique @db.VarChar(100)
+  status Status
+  image Blob
+  description String @db.VarChar(500)
+  Location String @db.VarChar(200)
+}
+
+enum Status {
+  Poor,
+  Sufficient,
+  Good,
+  Excellent
+}
+
+model Review {
+  rid String @id @unique @default(cuid())
+  user User @relation(fields: [userId], references: [uid], onDelete: Cascade)
+  userId String @unique
+  beach Beach @relation(fields: [beachId], references: [bid], onDelete: Cascade)
+  beachId String @unique
+  rating int
+  comment String @db.VarChar(250)
+}
+
+model Event {
+  eid String @id @unique @default(cuid())
+  beach Beach @relation(fields: [beachId], references: [bid], onDelete: Cascade)
+  beachId String @unique
+  organizer User @relation(fields: [organizerId], references: [uid], onDelete: Cascade)
+  organizerId String @unique
+  description String @db.VarChar(500)
+  date  DateTime   @default(now())
+}
