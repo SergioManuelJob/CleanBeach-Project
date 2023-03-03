@@ -15,8 +15,10 @@ model User {
   name String @unique @db.VarChar(40)
   email String @unique @db.VarChar(300)
   password     String   @db.VarChar(50)
+  isAdmin Boolean @default(false)
   pastEvents Event[]
   reviews Review[]
+  participant ParticipantsList[]
 }
 
 model Beach {
@@ -55,4 +57,13 @@ model Event {
   organizerId String @unique
   description String @db.VarChar(500)
   date  DateTime   @default(now())
+  participants ParticipantsList[]
+}
+
+model ParticipantsList {
+  pid String @id @unique @default(cuid())
+  user User @relation(fields: [userId], references: [uid], onDelete: Cascade)
+  userId String @unique
+  event Event @relation(fields: [eventId], references: [eid], onDelete: Cascade)
+  eventId String @unique
 }
