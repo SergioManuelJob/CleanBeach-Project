@@ -16,21 +16,24 @@ model User {
   email String @unique @db.VarChar(300)
   password     String   @db.VarChar(50)
   pastEvents Event[]
+  reviews Review[]
 }
 
 model Beach {
   bid String @id @unique @default(cuid())
   name String @unique @db.VarChar(100)
   status Status
-  image Blob
+  image Bytes @db.LongBlob
   description String @db.VarChar(500)
   Location String @db.VarChar(200)
+  reviews Review[]
+  events Event[]
 }
 
 enum Status {
-  Poor,
-  Sufficient,
-  Good,
+  Poor
+  Sufficient
+  Good
   Excellent
 }
 
@@ -40,7 +43,7 @@ model Review {
   userId String @unique
   beach Beach @relation(fields: [beachId], references: [bid], onDelete: Cascade)
   beachId String @unique
-  rating int
+  rating Int
   comment String @db.VarChar(250)
 }
 
