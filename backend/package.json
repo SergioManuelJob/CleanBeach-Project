@@ -6,8 +6,8 @@
   "scripts": {
     "start": "ts-node index.ts",
     "dev": "nodemon index.ts",
-    "postinstall": "prisma generate",
-    "dbpush": "prisma db push"
+    "postinstall": "prisma generate --schema=./src/prisma/schema.prisma",
+    "dbpush": "prisma db push --schema=./src/prisma/schema.prisma"
   },
   "keywords": [],
   "author": "",
