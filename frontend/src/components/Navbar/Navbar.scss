@@ -15,14 +15,14 @@ header {
     padding: 0 2rem;
     background-color: black;
     color: white;
-}
-
-nav a {
-    margin: 0 2rem;
-    color: white;
-    text-decoration: none;
-}
-
-nav a:hover {
-    color: gray;
+    nav{
+        a{
+            margin: 0 2rem;
+            color: white;
+            text-decoration: none;
+            &:hover{
+                color: gray;
+            }
+        }
+    }
 }
