@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  uid Int @id @unique @default(autoincrement())
+  name String @unique @db.VarChar(40)
+  email String @unique @db.VarChar(300)
+  password     String   @db.VarChar(50)
+  isAdmin Boolean @default(false)
+  pastEvents Event[]
+  reviews Review[]
+  participant ParticipantsList[]
+}
+
+model Beach {
+  bid Int @id @unique @default(autoincrement())
+  name String @unique @db.VarChar(100)
+  status Status
+  image Bytes? @db.LongBlob
+  description String @db.VarChar(500)
+  location String @db.VarChar(200)
+  reviews Review[]
+  events Event[]
+}
+
+enum Status {
+  Poor
+  Sufficient
+  Good
+  Excellent
+}
+
+model Review {
+  rid Int @id @unique @default(autoincrement())
+  user User @relation(fields: [userId], references: [uid], onDelete: Cascade)
+  userId Int 
+  beach Beach @relation(fields: [beachId], references: [bid], onDelete: Cascade)
+  beachId Int 
+  rating Int
+  comment String @db.VarChar(250)
+}
+
+model Event {
+  eid Int @id @unique @default(autoincrement())
+  name String @db.VarChar(50)
+  beach Beach @relation(fields: [beachId], references: [bid], onDelete: Cascade)
+  beachId Int 
+  organizer User @relation(fields: [organizerId], references: [uid], onDelete: Cascade)
+  organizerId Int 
+  description String @db.VarChar(500)
+  date  DateTime   @default(now())
+  participants ParticipantsList[]
+}
+
+model ParticipantsList {
+  pid Int @id @unique @default(autoincrement())
+  user User @relation(fields: [userId], references: [uid], onDelete: Cascade)
+  userId Int 
+  event Event @relation(fields: [eventId], references: [eid], onDelete: Cascade)
+  eventId Int 
+}
