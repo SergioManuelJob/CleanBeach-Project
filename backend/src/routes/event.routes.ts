@@ -7,6 +7,10 @@ const eventRouter = (app: Express) => {
     // Create a new User
     router.post("/create", eventController.create);
 
+    router.get("/getAll", eventController.findAll)
+
+    router.get(":eid", eventController.findByPk)
+
     app.use("/api/events", router);
 }
 

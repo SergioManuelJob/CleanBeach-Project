@@ -26,5 +26,36 @@ export const participantsListController = {
 
             res.status(code).send(msg);
         }
-    }
+    },
+
+    findAll: async (req: Request, res: Response) => {
+        try{
+            const data = await prisma.participantsList.findMany()
+            res.send(data)
+        }
+        catch (err: any) {
+            res.status(500).send("An error ocurred while retrieving the participants lists!")
+        }
+    },
+
+    findByPk: async (req: Request<{ pid: number }>, res: Response) => {
+        if (!req.params) {
+            res.status(400).send("Empty request!");
+            return;
+        }
+        const pid = req.params.pid
+
+        if (!pid || pid === undefined) {
+            res.status(400).send("PID cannot be empty!");
+            return;
+        }
+
+        prisma.participantsList
+            .findUnique({ where: { pid } })
+            .then((data) => res.send(data))
+            .catch((err) => res.status(500)
+                               .send(err.message ?? "Some error occurred while retrieving Player by PID")
+            );
+
+    },
 }

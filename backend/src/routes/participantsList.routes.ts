@@ -7,6 +7,10 @@ const participantsListRouter = (app: Express) => {
     // Create a new User
     router.post("/create", participantsListController.create);
 
+    router.get("/getAll", participantsListController.findAll)
+
+    router.get(":pid", participantsListController.findByPk)
+
     app.use("/api/participantsLists", router);
 }
 

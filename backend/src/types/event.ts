@@ -1,8 +1,8 @@
 export type EventData = {
-    eid?: string
+    eid?: number
     name: string
-    beachId: string 
-    organizerId: string
+    beachId: number 
+    organizerId: number
     description: string 
     date: Date
 }

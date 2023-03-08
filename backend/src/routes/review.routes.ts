@@ -7,6 +7,10 @@ const reviewRouter = (app: Express) => {
     // Create a new User
     router.post("/create", reviewController.create);
 
+    router.get("/getAll", reviewController.findAll)
+
+    router.get(":rid", reviewController.findByPk)
+
     app.use("/api/reviews", router);
 }
 

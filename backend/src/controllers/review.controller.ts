@@ -26,5 +26,36 @@ export const reviewController = {
 
             res.status(code).send(msg);
         }
-    }
+    },
+
+    findAll: async (req: Request, res: Response) => {
+        try{
+            const data = await prisma.review.findMany()
+            res.send(data)
+        }
+        catch (err: any) {
+            res.status(500).send("An error ocurred while retrieving the reviews!")
+        }
+    },
+
+    findByPk: async (req: Request<{ rid: number }>, res: Response) => {
+        if (!req.params) {
+            res.status(400).send("Empty request!");
+            return;
+        }
+        const rid = req.params.rid
+
+        if (!rid || rid === undefined) {
+            res.status(400).send("RID cannot be empty!");
+            return;
+        }
+
+        prisma.review
+            .findUnique({ where: { rid } })
+            .then((data) => res.send(data))
+            .catch((err) => res.status(500)
+                               .send(err.message ?? "Some error occurred while retrieving Player by PID")
+            );
+
+    },
 }
