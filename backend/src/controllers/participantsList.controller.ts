@@ -43,7 +43,7 @@ export const participantsListController = {
             res.status(400).send("Empty request!");
             return;
         }
-        const pid = req.params.pid
+        const pid: number = req.params.pid as number
 
         if (!pid || pid === undefined) {
             res.status(400).send("PID cannot be empty!");
@@ -51,10 +51,10 @@ export const participantsListController = {
         }
 
         prisma.participantsList
-            .findUnique({ where: { pid } })
+            .findUniqueOrThrow({ where: { pid: +pid } })
             .then((data) => res.send(data))
             .catch((err) => res.status(500)
-                               .send(err.message ?? "Some error occurred while retrieving Player by PID")
+                               .send(err.message ?? "Some error occurred while retrieving Participats list by PID")
             );
 
     },
@@ -74,7 +74,7 @@ export const participantsListController = {
         try {
             res.send(
                 await prisma.participantsList.delete({
-                    where: { pid },
+                    where: { pid: +pid },
                 })
             );
         } catch (err: any) {

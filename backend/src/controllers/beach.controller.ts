@@ -44,7 +44,7 @@ export const beachController = {
             res.status(400).send("Empty request!");
             return;
         }
-        const bid = req.params.bid
+        const bid: number = req.params.bid as number
 
         if (!bid || bid === undefined) {
             res.status(400).send("BID cannot be empty!");
@@ -52,10 +52,10 @@ export const beachController = {
         }
 
         prisma.beach
-            .findUnique({ where: { bid } })
+            .findUniqueOrThrow({ where: { bid: +bid } })
             .then((data) => res.send(data))
             .catch((err) => res.status(500)
-                               .send(err.message ?? "Some error occurred while retrieving Player by PID")
+                               .send(err.message ?? "Some error occurred while retrieving Beach by BID")
             );
 
     },
@@ -75,7 +75,7 @@ export const beachController = {
         try {
             res.send(
                 await prisma.beach.delete({
-                    where: { bid },
+                    where: { bid: +bid },
                 })
             );
         } catch (err: any) {
