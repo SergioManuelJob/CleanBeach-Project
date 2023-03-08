@@ -58,4 +58,29 @@ export const reviewController = {
             );
 
     },
+
+    delete: async (req: Request<{ rid: number }>, res: Response) => {
+        if (!req.body) {
+            res.status(400).send("Empty request!");
+            return;
+        }
+        const { rid } = req.params as { rid: number };
+
+        if (!rid) {
+            res.status(400).send("Content cannot be empty!");
+            return;
+        }
+
+        try {
+            res.send(
+                await prisma.review.delete({
+                    where: { rid },
+                })
+            );
+        } catch (err: any) {
+            res.status(500).send(
+                "Some error occurred while deleting review by RID"
+            );
+        }
+    },
 }

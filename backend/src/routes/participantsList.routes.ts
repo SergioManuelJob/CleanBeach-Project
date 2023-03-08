@@ -11,6 +11,8 @@ const participantsListRouter = (app: Express) => {
 
     router.get(":pid", participantsListController.findByPk)
 
+    router.delete(":pid", participantsListController.delete)
+
     app.use("/api/participantsLists", router);
 }
 

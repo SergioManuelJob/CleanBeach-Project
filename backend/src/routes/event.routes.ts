@@ -11,6 +11,8 @@ const eventRouter = (app: Express) => {
 
     router.get(":eid", eventController.findByPk)
 
+    router.delete(":eid", eventController.delete)
+
     app.use("/api/events", router);
 }
 

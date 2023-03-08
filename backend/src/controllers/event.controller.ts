@@ -58,4 +58,29 @@ export const eventController = {
             );
 
     },
+
+    delete: async (req: Request<{ eid: number }>, res: Response) => {
+        if (!req.body) {
+            res.status(400).send("Empty request!");
+            return;
+        }
+        const { eid } = req.params as { eid: number };
+
+        if (!eid) {
+            res.status(400).send("Content cannot be empty!");
+            return;
+        }
+
+        try {
+            res.send(
+                await prisma.event.delete({
+                    where: { eid },
+                })
+            );
+        } catch (err: any) {
+            res.status(500).send(
+                "Some error occurred while deleting Event by EID"
+            );
+        }
+    },
 }

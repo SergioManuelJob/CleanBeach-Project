@@ -11,6 +11,8 @@ const beachRouter = (app: Express) => {
 
     router.get(":bid", beachController.findByPk)
 
+    router.delete(":bid", beachController.delete)
+
     app.use("/api/beaches", router);
 }
 

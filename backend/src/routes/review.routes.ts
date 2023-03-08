@@ -11,6 +11,8 @@ const reviewRouter = (app: Express) => {
 
     router.get(":rid", reviewController.findByPk)
 
+    router.delete(":rid", reviewController.delete)
+
     app.use("/api/reviews", router);
 }
 

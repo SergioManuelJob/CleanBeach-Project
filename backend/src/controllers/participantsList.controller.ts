@@ -58,4 +58,29 @@ export const participantsListController = {
             );
 
     },
+
+    delete: async (req: Request<{ pid: number }>, res: Response) => {
+        if (!req.body) {
+            res.status(400).send("Empty request!");
+            return;
+        }
+        const { pid } = req.params as { pid: number };
+
+        if (!pid) {
+            res.status(400).send("Content cannot be empty!");
+            return;
+        }
+
+        try {
+            res.send(
+                await prisma.participantsList.delete({
+                    where: { pid },
+                })
+            );
+        } catch (err: any) {
+            res.status(500).send(
+                "Some error occurred while deleting Participant List by PID"
+            );
+        }
+    },
 }

@@ -9,6 +9,15 @@ export type UserData = {
     isAdmin: boolean
 }
 
+const email = (email: string): Result<string, ResponseData> => {
+    return email && email.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/)
+         ? Ok(email)
+         : Err({
+            code: 400,
+            msg: "[VALIDATION ERROR] Email not valid!"
+         })
+};
+
 export const userValidation = {
     notNull_create: (user: UserData): Result<UserData, ResponseData> => {
         const valid  = user.name     !== undefined
@@ -29,12 +38,18 @@ export const userValidation = {
                     && user.email    !== undefined
                     && user.password !== undefined;
 
-        return
-    }
+        return valid
+             ? Ok(user)
+             : Err({
+                code: 400,
+                msg: "[VALIDATION ERROR] Must provide the following fields: { uid, name, email, password }"
+             } as ResponseData);
+    },
 
-    email: ()
+    email,
 
     userEmail: (user: UserData): Result<UserData, ResponseData> => {
-
+        const result = email(user.email);
+        return result.ok ? Ok(user) : Err(result.error);
     }
 }

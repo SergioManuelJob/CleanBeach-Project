@@ -59,4 +59,29 @@ export const beachController = {
             );
 
     },
+
+    delete: async (req: Request<{ bid: number }>, res: Response) => {
+        if (!req.body) {
+            res.status(400).send("Empty request!");
+            return;
+        }
+        const { bid } = req.params as { bid: number };
+
+        if (!bid) {
+            res.status(400).send("Content cannot be empty!");
+            return;
+        }
+
+        try {
+            res.send(
+                await prisma.beach.delete({
+                    where: { bid },
+                })
+            );
+        } catch (err: any) {
+            res.status(500).send(
+                "Some error occurred while deleting Beach by BID"
+            );
+        }
+    },
 }
