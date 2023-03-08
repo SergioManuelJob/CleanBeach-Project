@@ -1,7 +1,7 @@
 export type participantsListData = {
-    pid?: string
-    userId: string
-    eventId: string
+    pid?: number
+    userId: number
+    eventId: number
 }
 
 

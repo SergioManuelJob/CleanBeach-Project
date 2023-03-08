@@ -7,6 +7,12 @@ const beachRouter = (app: Express) => {
     // Create a new User
     router.post("/create", beachController.create);
 
+    router.get("/getAll", beachController.findAll);
+
+    router.get(":bid", beachController.findByPk)
+
+    router.delete(":bid", beachController.delete)
+
     app.use("/api/beaches", router);
 }
 

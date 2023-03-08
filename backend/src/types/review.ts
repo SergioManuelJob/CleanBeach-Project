@@ -1,7 +1,7 @@
 export type ReviewData = {
-    rid?: string
-    userId: string 
-    beachId: string
+    rid?: number
+    userId: number 
+    beachId: number
     rating: number 
     comment: string
 }

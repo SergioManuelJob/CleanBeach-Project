@@ -26,5 +26,61 @@ export const eventController = {
 
             res.status(code).send(msg);
         }
-    }
+    },
+
+    findAll: async (req: Request, res: Response) => {
+        try{
+            const data = await prisma.event.findMany()
+            res.send(data)
+        }
+        catch (err: any) {
+            res.status(500).send("An error ocurred while retrieving the events!")
+        }
+    },
+
+    findByPk: async (req: Request<{ eid: number }>, res: Response) => {
+        if (!req.params) {
+            res.status(400).send("Empty request!");
+            return;
+        }
+        const eid = req.params.eid
+
+        if (!eid || eid === undefined) {
+            res.status(400).send("EID cannot be empty!");
+            return;
+        }
+
+        await prisma.event
+            .findUnique({ where: { eid } })
+            .then((data) => res.send(data))
+            .catch((err) => res.status(500)
+                               .send(err.message ?? "Some error occurred while retrieving Player by PID")
+            );
+
+    },
+
+    delete: async (req: Request<{ eid: number }>, res: Response) => {
+        if (!req.body) {
+            res.status(400).send("Empty request!");
+            return;
+        }
+        const { eid } = req.params as { eid: number };
+
+        if (!eid) {
+            res.status(400).send("Content cannot be empty!");
+            return;
+        }
+
+        try {
+            res.send(
+                await prisma.event.delete({
+                    where: { eid },
+                })
+            );
+        } catch (err: any) {
+            res.status(500).send(
+                "Some error occurred while deleting Event by EID"
+            );
+        }
+    },
 }

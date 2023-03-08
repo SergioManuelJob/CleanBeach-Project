@@ -6,7 +6,7 @@ enum Status {
 }
 
 export type BeachData = {
-    bid?: string,
+    bid?: number,
     name: string 
     status: Status
     image: Blob 

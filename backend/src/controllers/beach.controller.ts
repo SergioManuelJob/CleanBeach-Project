@@ -27,5 +27,61 @@ export const beachController = {
 
             res.status(code).send(msg);
         }
-    }
+    },
+
+    findAll: async (req: Request, res: Response) => {
+        try{
+            const data = await prisma.beach.findMany()
+            res.send(data)
+        }
+        catch (err: any) {
+            res.status(500).send("An error ocurred while retrieving the beaches!")
+        }
+    },
+
+    findByPk: async (req: Request<{ bid: number }>, res: Response) => {
+        if (!req.params) {
+            res.status(400).send("Empty request!");
+            return;
+        }
+        const bid = req.params.bid
+
+        if (!bid || bid === undefined) {
+            res.status(400).send("BID cannot be empty!");
+            return;
+        }
+
+        prisma.beach
+            .findUnique({ where: { bid } })
+            .then((data) => res.send(data))
+            .catch((err) => res.status(500)
+                               .send(err.message ?? "Some error occurred while retrieving Player by PID")
+            );
+
+    },
+
+    delete: async (req: Request<{ bid: number }>, res: Response) => {
+        if (!req.body) {
+            res.status(400).send("Empty request!");
+            return;
+        }
+        const { bid } = req.params as { bid: number };
+
+        if (!bid) {
+            res.status(400).send("Content cannot be empty!");
+            return;
+        }
+
+        try {
+            res.send(
+                await prisma.beach.delete({
+                    where: { bid },
+                })
+            );
+        } catch (err: any) {
+            res.status(500).send(
+                "Some error occurred while deleting Beach by BID"
+            );
+        }
+    },
 }
