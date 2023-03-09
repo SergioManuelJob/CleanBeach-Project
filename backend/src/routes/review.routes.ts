@@ -9,9 +9,9 @@ const reviewRouter = (app: Express) => {
 
     router.get("/getAll", reviewController.findAll)
 
-    router.get(":rid", reviewController.findByPk)
+    router.get("/:rid", reviewController.findByPk)
 
-    router.delete(":rid", reviewController.delete)
+    router.delete("/:rid", reviewController.delete)
 
     app.use("/api/reviews", router);
 }

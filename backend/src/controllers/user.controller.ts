@@ -60,10 +60,10 @@ export const userController = {
             return;
         }
 
-        const uid = result.value.uid;
+        const uid: number = result.value.uid as number;
 
         try {
-            const data = await prisma.user.findUnique({ where: { uid } });
+            const data = await prisma.user.findUniqueOrThrow({ where: { uid: +uid } });
             res.send(data);
         } catch (err: any) {
             res.status(500).send(err.message ?? "Some error corrued while retrieveing User by UID");
@@ -85,7 +85,7 @@ export const userController = {
         try {
             res.send(
                 await prisma.user.delete({
-                    where: { uid },
+                    where: {uid: +uid },
                 })
             );
         } catch (err: any) {

@@ -43,7 +43,7 @@ export const reviewController = {
             res.status(400).send("Empty request!");
             return;
         }
-        const rid = req.params.rid
+        const rid: number = req.params.rid as number
 
         if (!rid || rid === undefined) {
             res.status(400).send("RID cannot be empty!");
@@ -51,10 +51,10 @@ export const reviewController = {
         }
 
         prisma.review
-            .findUnique({ where: { rid } })
+            .findUniqueOrThrow({ where: { rid: +rid } })
             .then((data) => res.send(data))
             .catch((err) => res.status(500)
-                               .send(err.message ?? "Some error occurred while retrieving Player by PID")
+                               .send(err.message ?? "Some error occurred while retrieving review by RID")
             );
 
     },
@@ -74,7 +74,7 @@ export const reviewController = {
         try {
             res.send(
                 await prisma.review.delete({
-                    where: { rid },
+                    where: { rid: +rid },
                 })
             );
         } catch (err: any) {

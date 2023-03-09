@@ -43,7 +43,7 @@ export const eventController = {
             res.status(400).send("Empty request!");
             return;
         }
-        const eid = req.params.eid
+        const eid: number = req.params.eid as number
 
         if (!eid || eid === undefined) {
             res.status(400).send("EID cannot be empty!");
@@ -51,10 +51,10 @@ export const eventController = {
         }
 
         await prisma.event
-            .findUnique({ where: { eid } })
+            .findUniqueOrThrow({ where: { eid: +eid } })
             .then((data) => res.send(data))
             .catch((err) => res.status(500)
-                               .send(err.message ?? "Some error occurred while retrieving Player by PID")
+                               .send(err.message ?? "Some error occurred while retrieving Event by EID")
             );
 
     },
@@ -74,7 +74,7 @@ export const eventController = {
         try {
             res.send(
                 await prisma.event.delete({
-                    where: { eid },
+                    where: { eid: +eid },
                 })
             );
         } catch (err: any) {
