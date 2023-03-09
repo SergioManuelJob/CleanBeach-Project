@@ -2,19 +2,33 @@ import prisma from "../config/prisma";
 import express, { Request, Response } from "express";
 
 import { ReviewData, reviewValidation }  from "../types/review";
+import { validate } from "../utils/validation";
+import { Result, Ok, Err } from "../types/meta/result"
+
+type RID = { rid: number };
+const validateRID = (rid: RID) => rid ? Ok(rid) : Err({ code: 400, msg: "Must provide review ID!" })
 
 export const reviewController = {
     create: async (req: Request, res: Response) => {
-        if (!req.body) {
-            res.status(400).send("Body cannot be empty!");
+        const result = validate<ReviewData>(
+            req.body,
+            [reviewValidation.validCreate]
+        );
+
+        if (!result.ok) {
+            res.status(result.error.code).send(result.error.msg);
             return;
         }
 
-        const review = req.body as ReviewData;
-        if (!reviewValidation.notNull_create(review)) {
-            res.status(400).send("Must provide all the obligatory review fields!");
-            return;
-        }
+        const review = result.value as ReviewData;
+
+        // Check if the beach & the user exist:
+        if (!(await prisma.beach.findUnique({where: { bid: req.body.beachId }})))
+            return res.json({ code: 404, msg: "Beach not found" });
+
+        if (!(await prisma.user.findUnique({where: { uid: req.body.userId }})))
+                return res.json({ code: 404, msg: "User not found" });
+
         try{
             const data: ReviewData = await prisma.review.create({ data: review});
             res.send(data)
@@ -29,47 +43,47 @@ export const reviewController = {
     },
 
     findAll: async (req: Request, res: Response) => {
-        try{
+        try {
             const data = await prisma.review.findMany()
             res.send(data)
-        }
-        catch (err: any) {
+        } catch (err: any) {
             res.status(500).send("An error ocurred while retrieving the reviews!")
         }
     },
 
-    findByPk: async (req: Request<{ rid: number }>, res: Response) => {
-        if (!req.params) {
-            res.status(400).send("Empty request!");
+    findByPk: async (req: Request<RID>, res: Response) => {
+        const result = validate<RID>(
+            req.params, 
+            [validateRID]
+        );
+
+        if (!result.ok) {
+            res.status(result.error.code).send(result.error.msg);
             return;
         }
-        const rid: number = req.params.rid as number
 
-        if (!rid || rid === undefined) {
-            res.status(400).send("RID cannot be empty!");
-            return;
+        const rid: number = result.value.rid as number;
+
+        try {
+            const data = await prisma.review.findUniqueOrThrow({ where: { rid: +rid } });
+            res.send(data);
+        } catch (err: any) {
+            res.status(500).send(err.message ?? "Some error corrued while retrieving Review by RID");
         }
-
-        prisma.review
-            .findUniqueOrThrow({ where: { rid: +rid } })
-            .then((data) => res.send(data))
-            .catch((err) => res.status(500)
-                               .send(err.message ?? "Some error occurred while retrieving review by RID")
-            );
-
     },
 
-    delete: async (req: Request<{ rid: number }>, res: Response) => {
-        if (!req.body) {
-            res.status(400).send("Empty request!");
-            return;
-        }
-        const { rid } = req.params as { rid: number };
+    delete: async (req: Request<RID>, res: Response) => {
+        const result = validate<RID>(
+            req.params,
+            [validateRID]
+        )
 
-        if (!rid) {
-            res.status(400).send("Content cannot be empty!");
+        if (!result.ok) {
+            res.status(result.error.code).send(result.error.msg);
             return;
         }
+
+        const rid: number = result.value.rid as number;
 
         try {
             res.send(
@@ -80,6 +94,41 @@ export const reviewController = {
         } catch (err: any) {
             res.status(500).send(
                 "Some error occurred while deleting review by RID"
+            );
+        }
+    },
+
+    update: async (req: Request<RID>, res: Response) => {
+        if (!req.params.rid) {
+            res.status(400).send("Must provide review ID!")
+            return;
+        }
+
+        const result = validate<ReviewData>(
+            req.body,
+            [reviewValidation.validUpdate]
+        )
+
+        if (!result.ok) {
+            res.status(result.error.code).send(result.error.msg);
+            return;
+        }
+
+        const review = {
+            rating: result.value.rating,
+            comment: result.value.comment
+        } as ReviewData
+
+        try {
+            res.send(
+                await prisma.review.update({
+                    where: { rid: +req.params.rid },
+                    data: review
+                })
+            );
+        } catch (err: any) {
+            res.status(500).send(
+                err.message ?? "Some error ocurred while retrieving the user by UID"
             );
         }
     },

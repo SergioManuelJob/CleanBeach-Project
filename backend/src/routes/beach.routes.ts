@@ -13,6 +13,8 @@ const beachRouter = (app: Express) => {
 
     router.delete("/:bid", beachController.delete)
 
+    router.put("/:bid", beachController.update)
+
     app.use("/api/beaches", router);
 }
 

@@ -10,6 +10,20 @@ export const participantsListController = {
             return;
         }
 
+        if (
+            !(await prisma.event.findUnique({
+                where: { eid: req.body.eventId },
+            }))
+        )
+            return res.json({ code: 404, msg: "Event not found" });
+
+        if (
+            !(await prisma.user.findUnique({
+                  where: { uid: req.body.userId },
+            }))
+        )
+            return res.json({ code: 404, msg: "User not found" });
+
         const participantsList = req.body as participantsListData;
         if (!participantsListValidation.notNull_create(participantsList)) {
             res.status(400).send("Must provide all the obligatory participants list fields!");

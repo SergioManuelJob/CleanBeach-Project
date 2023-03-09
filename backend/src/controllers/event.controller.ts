@@ -2,6 +2,11 @@ import prisma from "../config/prisma";
 import express, { Request, Response } from "express";
 
 import { EventData, eventValidation } from "../types/event";
+import { validate } from "../utils/validation";
+import { Result, Ok, Err } from "../types/meta/result"
+
+type EID = { eid: number };
+const validateEID = (eid: EID) => eid ? Ok(eid) : Err({ code: 400, msg: "Must provide event ID!" })
 
 export const eventController = {
     create: async (req: Request, res: Response) => {
@@ -11,10 +16,25 @@ export const eventController = {
         }
 
         const event = req.body as EventData;
-        if (!eventValidation.notNull_create(event)) {
+        if (!eventValidation.validCreate(event)) {
             res.status(400).send("Must provide all the obligatory event fields!");
             return;
         }
+
+        if (
+            !(await prisma.user.findUnique({
+                where: { uid: req.body.organizerId },
+            }))
+        )
+            return res.json({ code: 404, msg: "User not found" });
+
+        if (
+            !(await prisma.beach.findUnique({
+                where: { bid: req.body.beachId },
+            }))
+        )
+            return res.json({ code: 404, msg: "Beach not found" });
+
         try{
             const data: EventData = await prisma.event.create({ data: event});
             res.send(data)
@@ -80,6 +100,50 @@ export const eventController = {
         } catch (err: any) {
             res.status(500).send(
                 "Some error occurred while deleting Event by EID"
+            );
+        }
+    },
+
+    update: async (req: Request<EID>, res: Response) => {
+        if (!req.params.eid) {
+            res.status(400).send("Must provide event ID!")
+            return;
+        }
+
+        const result = validate<EventData>(
+            req.body,
+            [eventValidation.validUpdate]
+        )
+
+        if (!result.ok) {
+            res.status(result.error.code).send(result.error.msg);
+            return;
+        }
+
+        if (
+            !(await prisma.beach.findUnique({
+                where: { bid: req.body.beachId },
+            }))
+        )
+            return res.json({ code: 404, msg: "Beach not found" });
+
+        const event = {
+            name: result.value.name,
+            beachId: result.value.beachId,
+            description: result.value.description,
+            date: result.value.date
+        } as EventData
+
+        try {
+            res.send(
+                await prisma.event.update({
+                    where: { eid: +req.params.eid },
+                    data: event
+                })
+            );
+        } catch (err: any) {
+            res.status(500).send(
+                err.message ?? "Some error ocurred while retrieving the event by EID"
             );
         }
     },

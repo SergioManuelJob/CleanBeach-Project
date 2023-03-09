@@ -1,3 +1,6 @@
+import { Result, Ok, Err } from "./meta/result";
+import { ResponseData } from "./meta/response-data";
+
 export type ReviewData = {
     rid?: number
     userId: number 
@@ -8,10 +11,29 @@ export type ReviewData = {
 
 
 export const reviewValidation = {
-    notNull_create: (review: ReviewData): boolean => {
-        return review.rating     !== undefined 
-            && review.userId    !== undefined
-            && review.beachId !== undefined
-            && review.comment !== undefined;
-    }
+    validCreate: (review: ReviewData): Result<ReviewData, ResponseData> => {
+        const valid  = review.rating     !== undefined
+                    && review.comment    !== undefined
+                    && review.userId    !== undefined
+                    && review.beachId    !== undefined
+
+        return valid 
+             ? Ok(review) 
+             : Err({
+                code: 400,
+                msg: "[VALIDATION ERROR] Must provide the following fields: { rating, comment }"
+            } as ResponseData);
+    },
+
+    validUpdate: (review: ReviewData): Result<ReviewData, ResponseData> => {
+        const valid  = review.rating     !== undefined
+                    && review.comment    !== undefined
+
+        return valid 
+             ? Ok(review) 
+             : Err({
+                code: 400,
+                msg: "[VALIDATION ERROR] Must provide the following fields: { rating, comment }"
+            } as ResponseData);
+    },
 }

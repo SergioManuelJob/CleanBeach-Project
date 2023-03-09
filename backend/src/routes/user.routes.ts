@@ -13,8 +13,10 @@ const userRouter = (app: Express) => {
 
     router.delete("/:uid", userController.delete)
 
-    router.post("/login", authController.login);
-    router.post("/signin", authController.signin);
+    router.put("/:uid", userController.update)
+
+    // router.post("/login", authController.login);
+    // router.post("/signin", authController.signin);
 
     app.use("/api/users", router);
 }

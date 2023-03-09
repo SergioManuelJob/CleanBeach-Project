@@ -13,6 +13,8 @@ const reviewRouter = (app: Express) => {
 
     router.delete("/:rid", reviewController.delete)
 
+    router.put("/:rid", reviewController.update)
+
     app.use("/api/reviews", router);
 }
 
