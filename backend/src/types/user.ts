@@ -10,7 +10,7 @@ export type UserData = {
 }
 
 const email = (email: string): Result<string, ResponseData> => {
-    return email && email.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/)
+    return email && email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
          ? Ok(email)
          : Err({
             code: 400,

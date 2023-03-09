@@ -5,14 +5,13 @@ import authController from "../controllers/auth.controller"
 const userRouter = (app: Express) => {
     const router = express.Router();
 
-    // Create a new User
     router.post("/create", userController.create);
 
     router.get("/getAll", userController.findAll)
 
-    router.get(":uid", userController.findByPk)
+    router.get("/:uid", userController.findByPk)
 
-    router.delete(":uid", userController.delete)
+    router.delete("/:uid", userController.delete)
 
     router.post("/login", authController.login);
     router.post("/signin", authController.signin);
