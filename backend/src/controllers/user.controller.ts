@@ -30,7 +30,6 @@ export const userController = {
 
         try {
             const data: UserData = await prisma.user.create({ data: user });
-            prisma.user.findUnique
             res.send(data);
         } catch (err: any) {
             const code = err.code == "P2002" ? 400 : 500;

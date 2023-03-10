@@ -2,34 +2,40 @@ import prisma from "../config/prisma";
 import express, { Request, Response } from "express";
 
 import { ParticipantsListData, participantsListValidation } from "../types/participantsList";
+import { validate } from "../utils/validation";
+
+import { Result, Ok, Err } from "../types/meta/result";
+
+type PID = { pid: number };
+const validatePID = (pid: PID) => pid ? Ok(pid) : Err({ code: 400, msg: "Must provide user ID!" })
 
 export const participantsListController = {
     create: async (req: Request, res: Response) => {
-        if (!req.body) {
-            res.status(400).send("Body cannot be empty!");
+        const result = validate<ParticipantsListData>(
+            req.body,
+            [participantsListValidation.validCreate]
+        );
+
+        if (!result.ok) {
+            res.status(result.error.code).send(result.error.msg);
             return;
         }
 
-        if (!)
+        const participant = result.value as ParticipantsListData;
 
-        if (!(await prisma.event.findUnique({where: { eid: req.body.eventId }})))
+        if (!(await prisma.event.findUnique({where: { eid: participant.eventId }})))
             return res.json({ code: 404, msg: "Event not found" });
 
-        if (!(await prisma.user.findUnique({where: { uid: req.body.userId }})))
+        if (!(await prisma.user.findUnique({where: { uid: participant.userId }})))
             return res.json({ code: 404, msg: "User not found" });
 
-        const participantsList = req.body as ParticipantsListData;
-        if (!participantsListValidation.validCreate(participantsList)) {
-            res.status(400).send("Must provide all the obligatory participants list fields!");
-            return;
-        }
         try{
-            const data: ParticipantsListData = await prisma.participantsList.create({ data: participantsList});
+            const data: ParticipantsListData = await prisma.participantsList.create({ data: participant });
             res.send(data)
         } catch (err: any) {
             const code = err.code == "P2002" ? 400 : 500;
             const msg  = err.code == "P2002"
-                       ? `Participants list with ${participantsList.pid} already exists!`
+                       ? `Participants list with ${participant.pid} already exists!`
                        : err.message ?? "Something went wrong while adding the beach!";
 
             res.status(code).send(msg);
@@ -46,48 +52,49 @@ export const participantsListController = {
         }
     },
 
-    findByPk: async (req: Request<{ pid: number }>, res: Response) => {
-        if (!req.params) {
-            res.status(400).send("Empty request!");
+    findByPk: async (req: Request<PID>, res: Response) => {
+        const result = validate<PID>(
+            req.params, 
+            [validatePID]
+        );
+
+        if (!result.ok) {
+            res.status(result.error.code).send(result.error.msg);
             return;
         }
-        const pid: number = req.params.pid as number
 
-        if (!pid || pid === undefined) {
-            res.status(400).send("PID cannot be empty!");
-            return;
+        const pid: number = result.value.pid as number;
+
+        try {
+            const data = await prisma.participantsList.findUniqueOrThrow({ where: { pid: +pid } });
+            res.send(data);
+        } catch (err: any) {
+            res.status(500).send(err.message ?? "Some error corrued while retrieveing Participant by PID");
         }
-
-        prisma.participantsList
-            .findUniqueOrThrow({ where: { pid: +pid } })
-            .then((data) => res.send(data))
-            .catch((err) => res.status(500)
-                               .send(err.message ?? "Some error occurred while retrieving Participats list by PID")
-            );
-
     },
 
-    delete: async (req: Request<{ pid: number }>, res: Response) => {
-        if (!req.body) {
-            res.status(400).send("Empty request!");
-            return;
-        }
-        const { pid } = req.params as { pid: number };
+    delete: async (req: Request<PID>, res: Response) => {
+        const result = validate<PID>(
+            req.params,
+            [validatePID]
+        )
 
-        if (!pid) {
-            res.status(400).send("Content cannot be empty!");
+        if (!result.ok) {
+            res.status(result.error.code).send(result.error.msg);
             return;
         }
+
+        const pid: number = result.value.pid as number;
 
         try {
             res.send(
                 await prisma.participantsList.delete({
-                    where: { pid: +pid },
+                    where: { pid: +pid }, // +uid = uid as number
                 })
             );
         } catch (err: any) {
             res.status(500).send(
-                "Some error occurred while deleting Participant List by PID"
+                "Some error occurred while deleting Participant by PID"
             );
         }
     },

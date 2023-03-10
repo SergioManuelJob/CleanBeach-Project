@@ -15,8 +15,8 @@ const userRouter = (app: Express) => {
 
     router.put("/:uid", userController.update)
 
-    // router.post("/login", authController.login);
-    // router.post("/signin", authController.signin);
+    router.post("/login", authController.login);
+    router.post("/signin", authController.signin);
 
     app.use("/api/users", router);
 }

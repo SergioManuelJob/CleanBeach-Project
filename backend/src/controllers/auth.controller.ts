@@ -7,84 +7,68 @@ import { validate } from "../utils/validation";
 
 import { generateToken, encryptPassword, matchPassword } from "../utils/encrypt";
 
-import { userController } from "./user.controller";
-import bcrypt from "bcrypt";
-
-
-type LoginParams = { email: string, password: string };
+type LoginParams   = { email: string, password: string };
 
 const authController = {
-    // login: async (req: Request, res: Response) => {
+    login: async (req: Request, res: Response) => {
         
-    //     const result = validate<LoginParams>(
-    //         req.body,
-    //         [(params: LoginParams) => {
-    //             return params.password && userValidation.email(params.email)
-    //                  ? Ok(params)
-    //                  : Err({ code: 400, msg: "[VALIDATION ERROR] Must provide a valid email & a password!" })
-    //         }]
-    //     )
+        const result = validate<LoginParams>(
+            req.body,
+            [(params: LoginParams) => {
+                return params.password && userValidation.email(params.email)
+                     ? Ok(params)
+                     : Err({ code: 400, msg: "[VALIDATION ERROR] Must provide a valid email & a password!" })
+            }]
+        )
 
-    //     try{
-    //         prisma.user.findUnique({where: { email: req.body.email}}).
-    //         then(data => {
-    //             if(!data || !matchPassword(req.body.password, data.password))
-    //             return res.json("Email or password invalid!")
+        if (!result.ok) {
+            res.status(result.error.code).send(result.error.msg);
+            return;
+        }
 
-    //             const { uid, email, isAdmin } = data;
-    //             return res.json({ 
-    //                 email, isAdmin,
-    //                 access_token: generateToken({ uid, email
-                        
-    //                     , isAdmin }),
-    //             })
-    //         })
-    //     }
-    // catch (err: any){
-    //     res.status(500).send("Some error ocurred while logging in")
-    // }
-    // },
+        try{
+            const data = await prisma.user.findUnique({ where: { email: result.value.email }});
+            if(!data || !matchPassword(result.value.password, data.password))
+                return res.json("Email or password invalid!");
 
-    // signin: async (req: Request, res: Response) => {
-    //     const result = handleReqBody<UserData>(
-    //         req.body,
-    //         { code: 400, msg: "Must provide username and password!" },
-    //         bodyNotEmpty
-    //     );
+            const { uid, email, isAdmin } = data;
+            return res.json({ 
+                email, isAdmin,
+                access_token: generateToken({ uid, email, isAdmin }),
+            })
+        }
+        catch (err: any){
+            res.status(500).send("Some error ocurred while logging in!")
+        }
+    },
 
-    //     if (!result.ok) return res.json(result.error);
+    signin: async (req: Request, res: Response) => {
 
-    //     const body = {
-    //         name: result.value.name,
-    //         password: await encryptPassword(result.value.password),
-    //         email: result.value.email
-    //     };
+        const result = validate<UserData>(
+            req.body,
+            [userValidation.validCreate, userValidation.userEmail]
+        );
 
-    //     prisma.user
-    //         .create({ data: body })
-    //         .then((data) => {
-    //             const { uid, email, isAdmin } = data;
-    //             return res.json({
-    //                 email, isAdmin,
-    //                 access_token: generateToken(data),
-    //             });
-    //         })
-    //         .catch((err) => {
-    //             switch (err.code) {
-    //                 case "P2002":
-    //                     return res.json({
-    //                         code: 400,
-    //                         msg: `User with name ${body.name} or ${body.email} already exists`,
-    //                     });
+        if (!result.ok) return res.json(result.error);
 
-    //                 default:
-    //                     return res.json({
-    //                         code: 500,
-    //                         msg: "Some error occurred while creating the User",
-    //                     });
-    //             }
-    //         });
-    // },
+        const body = {
+            name: result.value.name,
+            password: await encryptPassword(result.value.password),
+            email: result.value.email
+        };
+
+        try {
+            const data: UserData = await prisma.user.create({ data: body });
+            res.send(data);
+        } catch (err: any) {
+            const code = err.code == "P2002" ? 400 : 500;
+            const msg  = err.code == "P2002"
+                       ? `User with ${body.email} or ${body.name} already exists!`
+                       : err.message ?? "Something went wrong while adding the user!";
+
+            res.status(code).send(msg);
+        }
+    },
 }
 
 export default authController;
