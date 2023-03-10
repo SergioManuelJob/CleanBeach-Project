@@ -1,7 +1,7 @@
 import prisma from "../config/prisma";
 import express, { Request, Response } from "express";
 
-import { participantsListData, participantsListValidation } from "../types/participantsList";
+import { ParticipantsListData, participantsListValidation } from "../types/participantsList";
 
 export const participantsListController = {
     create: async (req: Request, res: Response) => {
@@ -10,27 +10,21 @@ export const participantsListController = {
             return;
         }
 
-        if (
-            !(await prisma.event.findUnique({
-                where: { eid: req.body.eventId },
-            }))
-        )
+        if (!)
+
+        if (!(await prisma.event.findUnique({where: { eid: req.body.eventId }})))
             return res.json({ code: 404, msg: "Event not found" });
 
-        if (
-            !(await prisma.user.findUnique({
-                  where: { uid: req.body.userId },
-            }))
-        )
+        if (!(await prisma.user.findUnique({where: { uid: req.body.userId }})))
             return res.json({ code: 404, msg: "User not found" });
 
-        const participantsList = req.body as participantsListData;
-        if (!participantsListValidation.notNull_create(participantsList)) {
+        const participantsList = req.body as ParticipantsListData;
+        if (!participantsListValidation.validCreate(participantsList)) {
             res.status(400).send("Must provide all the obligatory participants list fields!");
             return;
         }
         try{
-            const data: participantsListData = await prisma.participantsList.create({ data: participantsList});
+            const data: ParticipantsListData = await prisma.participantsList.create({ data: participantsList});
             res.send(data)
         } catch (err: any) {
             const code = err.code == "P2002" ? 400 : 500;
