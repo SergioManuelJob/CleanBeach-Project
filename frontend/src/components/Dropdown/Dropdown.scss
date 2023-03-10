@@ -1,3 +1,6 @@
+@import '../Styled/Theme.scss';
+
+
 .dropdown {
     width: 200px;
     user-select: none;
@@ -7,9 +10,9 @@
 
 .dropdown .dropdown-btn {
     padding: 10px 20px;
-    background: white;
+    background: $DarkBlue;
     box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.06);
-    color: black;
+    color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -32,6 +35,7 @@
     padding: 10px;
     cursor: pointer;
     transition: all 0.2s;
+    margin-bottom: 5px;
 }
 
 .dropdown .dropdown-content .dropdown-item:hover {
