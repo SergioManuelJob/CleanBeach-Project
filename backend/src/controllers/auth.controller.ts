@@ -36,8 +36,7 @@ const authController = {
                 email, isAdmin,
                 access_token: generateToken({ uid, email, isAdmin }),
             })
-        }
-        catch (err: any){
+        } catch (err: any){
             res.status(500).send("Some error ocurred while logging in!")
         }
     },
@@ -59,7 +58,11 @@ const authController = {
 
         try {
             const data: UserData = await prisma.user.create({ data: body });
-            res.send(data);
+            const { uid, email, isAdmin } = data;
+            return res.json({ 
+                email, isAdmin,
+                access_token: generateToken({ uid, email, isAdmin }),
+            });
         } catch (err: any) {
             const code = err.code == "P2002" ? 400 : 500;
             const msg  = err.code == "P2002"
