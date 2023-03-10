@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.scss';
-import Copyright from '../../images/@copyright.png';
+import Copyright from '../../images/@copyrightsvg.svg';
 import Goals from '../../images/the goals.png';
 import Facebook from '../../images/facebook 2.png';
 
