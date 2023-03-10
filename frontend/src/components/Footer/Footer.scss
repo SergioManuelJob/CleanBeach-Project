@@ -1,0 +1,28 @@
+@import '../Styled/Theme.scss';
+
+.footer {
+    height: 100px;
+    background-color: $DarkBlue;
+}
+
+.footercontainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.copyright {
+    width: 120px;
+    height: 25px;
+}
+
+.goals {
+    width: 200px;
+    height: 30px;
+}
+
+.facebook {
+    width: 50px;
+    height: 50px;
+}
