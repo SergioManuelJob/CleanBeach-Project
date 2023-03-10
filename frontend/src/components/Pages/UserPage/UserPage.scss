@@ -1,0 +1,60 @@
+.profile{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        div{
+            position: relative;
+            img{
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                }
+                .iconBs{
+                    color: black;
+                    position: absolute;
+                    top: 11em;
+                    right: 0.5em;
+                }
+        }
+            h2{
+                font-size: 2em;
+            }
+            p{
+                font-size: 1.1em;
+            }
+            button{
+                background-color: #0F686E; 
+                border: none;
+                color: white;
+                padding: 0.5em 1em;
+                text-align: center;
+                text-decoration: none;
+                font-size: 1.4em;
+                margin-top: 2em;
+                box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.25);
+            }
+}
+
+
+
+form{
+    margin: 2em 0 0 2em;
+    label{
+        display: block;
+        margin: 1.7em 0 0 0;
+        font-size: 1.2em;
+    }
+    input, textarea{
+        padding: 6px;
+        box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.25);
+        border: 1.5px solid black;
+        width: 90%;
+    }
+    .formular{
+        margin-top: 5em;
+    }
+    textarea{
+        resize: none;
+    }
+}
