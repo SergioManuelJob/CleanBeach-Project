@@ -3,6 +3,7 @@ import Navbar from './components/Navbar/Navbar';
 import Image from './images/pexels-asad-photo-maldives-1450353.jpg';
 import Dropdown from './components/Dropdown/Dropdown';
 import Footer from './components/Footer/Footer';
+import UserPage from './components/Pages/UserPage/UserPage';
 
 function App() {
 
@@ -14,6 +15,7 @@ const [selected, setSelected] = useState('');
       <img className='beachimg' src={Image} alt="Beach" />
       <Dropdown selected={selected} setSelected={setSelected} />
       <Footer/>
+      <UserPage />
     </React.Fragment>
   );
 
