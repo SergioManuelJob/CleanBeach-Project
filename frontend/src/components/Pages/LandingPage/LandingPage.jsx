@@ -1,12 +1,11 @@
-import React from 'react';
 
-<img src="pexels-asad-photo-maldives-1450353.jpg" alt="React Image" />
+<img src="pexels-asad-photo-maldives-1450353.jpg" alt="ReactImage" />
 
-const Test = () => {
-    return(
-        <h1>Hello World</h1>
+const LandingPage = () => {
+    return (
+        <h1>Landing Page</h1>
         
     )
 }
 
-export default Test
+export default LandingPage
