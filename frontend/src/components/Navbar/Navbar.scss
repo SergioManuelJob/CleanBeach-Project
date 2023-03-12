@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&family=Sriracha&display=swap');
+@use '../Styled/Theme.scss' as c;
 
 * {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: c.$IBM-Font;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -13,18 +13,15 @@ header {
     justify-content: space-between;
     height: 80px;
     padding: 0 2rem;
-    background-color: black;
-    color: white;
-}
-
-nav a {
-    margin: 0 2rem;
-    color: white;
-    text-decoration: none;
-}
-
-nav a:hover {
-    color: gray;
+    background-color: c.$DarkBlue;
+    color: c.$White;
+    nav{
+        a{
+                margin: 0 2rem;
+                color: c.$White;
+                text-decoration: none;
+        }
+    }
 }
 
 .beachimg {
