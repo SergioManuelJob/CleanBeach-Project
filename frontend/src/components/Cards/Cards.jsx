@@ -7,12 +7,12 @@ const Cards = () => {
     <>
       <div className="container">
         <figure className="mainFigure">
-        <NavLink to="/specificbeach">
           <img src={Beachpic} alt="PhotoOfBeach" />
-          </NavLink>
           <figcaption className="mainFigcap">
             <hgroup className="hGroups">
+              <NavLink to="/specificbeach">
                 <h3>Name - Location</h3>
+              </NavLink>
               <h4>Rating</h4>
             </hgroup>
             <p>
