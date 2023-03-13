@@ -15,6 +15,9 @@ header {
     padding: 0 2rem;
     background-color: c.$DarkBlue;
     color: c.$White;
+    img{
+        width: 35%;
+    }
     nav{
         ul{
             display: flex;
