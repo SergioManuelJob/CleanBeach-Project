@@ -1,3 +1,6 @@
+@use '../../Styled/Theme.scss' as c;
+
+
 .profile{
         display: flex;
         justify-content: center;
@@ -11,7 +14,7 @@
                 border-radius: 50%;
                 }
                 .iconBs{
-                    color: black;
+                    color: c.$Black;
                     position: absolute;
                     top: 11em;
                     right: 0.5em;
@@ -24,13 +27,13 @@
                 font-size: 1.1em;
             }
             button{
-                background-color: #0F686E; 
+                background-color: c.$DarkBlue; 
                 border: none;
-                color: white;
+                color: c.$White;
                 padding: 0.5em 1em;
                 text-align: center;
                 text-decoration: none;
-                font-size: 1.4em;
+                font-size: 1.5em;
                 margin-top: 2em;
                 box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.25);
             }
@@ -48,7 +51,7 @@ form{
     input, textarea{
         padding: 6px;
         box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.25);
-        border: 1.5px solid black;
+        border: 1.5px solid c.$Black;
         width: 90%;
     }
     .formular{

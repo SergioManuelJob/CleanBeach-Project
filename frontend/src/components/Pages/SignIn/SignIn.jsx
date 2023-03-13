@@ -2,7 +2,7 @@ import './SignIn.scss'
 
 const SignInPage = () => {
     return(
-<form>
+<form className='form'>
     <div>
         {/* SIGN IN */}
         <div>

@@ -1,11 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&family=Sriracha&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
 
-        $DarkBlue: #0F686E;
-        $LightBlue: #008D94;
-        $Cyan: #7FD4D1;
-        $Yellow: #D9D303;
-		$grey: #5F8463;
+// COLORS
+$DarkBlue: #0F686E;
+$LightBlue: #008D94;
+$Cyan: #7FD4D1;
+$Yellow: #D9D303;
+$Grey: #5F8463;
+$White: #FFF;
+$Black: #000;
 
-    /*fonts: ['IBM Plex Sans',
-    'Sriracha',
-    'Open Sans']
-*/
+// FONTS
+$IBM-Font: 'IBM Plex Sans', 'sans-serif';
+$Sriracha: 'Sriracha', 'sans-serif';

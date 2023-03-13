@@ -1,14 +1,21 @@
+import { NavLink } from 'react-router-dom';
 import './Navbar.scss';
+import Logo from '../../images/Logo.png';
+
 
 function Navbar() {
     return(
         <header>
-            <h3 href="#">Logo</h3>
+            <NavLink to="/" >
+            <img src={Logo} alt='Logo' />
+            </NavLink>
             <nav>
-                <a href="/#">Home</a>
-                <a href="/#">Events</a>
-                <a href="/#">Sign Up</a>
-                <a href="/#">Profile</a>
+                <ul>
+                    <li><NavLink to="/">Home</NavLink></li>
+                    <li><NavLink to="/events">Events</NavLink></li>
+                    <li><NavLink to="/signup">Sign Up</NavLink></li>
+                    <li><NavLink to="/profile">Profile</NavLink></li>
+                </ul>
 
             </nav>
         </header>
