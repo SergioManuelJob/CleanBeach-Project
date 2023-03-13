@@ -1,11 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import './Navbar.scss';
+import Logo from '../../images/Logo.png';
 
 
 function Navbar() {
     return(
         <header>
-            <h3 href="#">Logo</h3>
+            <NavLink to="/" >
+            <img src={Logo} alt='Logo' />
+            </NavLink>
             <nav>
                 <ul>
                     <li><NavLink to="/">Home</NavLink></li>

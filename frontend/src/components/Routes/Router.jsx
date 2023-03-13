@@ -8,6 +8,7 @@ const Router = () => {
     return (
         <Routes>
             <Route index element={<LandingPage />} />
+            <Route index element={<LandingPage />} />
             <Route path="/events" element={<EventsPage />} />
             <Route path="/signup" element={<SignInPage />} />
             <Route path="/profile" element={<UserPage />} />
