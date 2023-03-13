@@ -5,7 +5,7 @@ import './Navbar.scss';
 function Navbar() {
     return(
         <header>
-            <h3 href="#">Logo</h3>
+            <h3><NavLink to="/">Logo</NavLink></h3>
             <nav>
                 <ul>
                     <li><NavLink to="/">Home</NavLink></li>
