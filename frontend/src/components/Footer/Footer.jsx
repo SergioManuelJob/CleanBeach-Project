@@ -1,9 +1,9 @@
 import React from 'react';
 import './Footer.scss';
 import Goals from '../../images/Un-world-goals.png';
-import { BsFacebook } from 'react-icons/bs';
-import { AiFillTwitterCircle } from 'react-icons/ai';
-import { AiFillInstagram } from 'react-icons/ai';
+import { FaFacebookSquare } from 'react-icons/fa';
+import { FaTwitterSquare } from 'react-icons/fa';
+import { RiInstagramFill } from 'react-icons/ri';
 
 
 const Footer = () => {
@@ -13,9 +13,9 @@ const Footer = () => {
                 <p>©Copyright</p>
                 <img className='goals' src={Goals} alt="Goals" />
                 <div className='icons'>
-                <BsFacebook size={50} />
-                <AiFillTwitterCircle size={50}/>
-                <AiFillInstagram size={50} />
+                <a href="https://www.facebook.com/globalgoalsUN/"><FaFacebookSquare size={50} /></a>
+                <a href="https://twitter.com/GlobalGoalsUN"><FaTwitterSquare size={50}/></a>
+                <a href="https://www.instagram.com/theglobalgoals/?hl=da"><RiInstagramFill size={50} /></a>
                 </div>
             </div>
         </div>
