@@ -1,17 +1,22 @@
 import React from 'react';
 import './Footer.scss';
-import Copyright from '../../images/@copyright.png';
-import Goals from '../../images/the goals.png';
-import Facebook from '../../images/facebook 2.png';
+import Goals from '../../images/Un-world-goals.png';
+import { BsFacebook } from 'react-icons/bs';
+import { AiFillTwitterCircle } from 'react-icons/ai';
+import { AiFillInstagram } from 'react-icons/ai';
 
 
 const Footer = () => {
     return (
         <div className='footer'>
             <div className='footercontainer'>
-                <img className='copyright' src={Copyright} alt="Copyright" />
+                <p>©Copyright</p>
                 <img className='goals' src={Goals} alt="Goals" />
-                <img className='facebook' src={Facebook} alt="Facebook-icon" />
+                <div className='icons'>
+                <BsFacebook size={50} />
+                <AiFillTwitterCircle size={50}/>
+                <AiFillInstagram size={50} />
+                </div>
             </div>
         </div>
 

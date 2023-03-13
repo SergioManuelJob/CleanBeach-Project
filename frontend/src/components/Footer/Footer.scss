@@ -1,28 +1,24 @@
-@import '../Styled/Theme.scss';
+@use '../Styled/Theme.scss' as c;
 
 .footer {
     height: 100px;
-    background-color: $DarkBlue;
-}
-
-.footercontainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-}
-
-.copyright {
-    width: 120px;
-    height: 25px;
-}
-
-.goals {
-    width: 200px;
-    height: 30px;
-}
-
-.facebook {
-    width: 50px;
-    height: 50px;
+    background-color: c.$DarkBlue;
+    .footercontainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 3em;
+        p{
+            color: c.$White;
+            font-weight: 500;
+        }
+        .goals {
+           max-width: 20%;
+        }
+        .icons{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0 1em;
+        }
+    }
 }
