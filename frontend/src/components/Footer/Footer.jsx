@@ -10,7 +10,7 @@ const Footer=() => {
     return (
         <div className='footer'>
             <div className='footercontainer'>
-                <img className='copyright' src={Copyright} alt="Copyright" />
+                <p>©Copyright</p>
                 <img className='goals' src={Goals} alt="Goals" />
                 <div className='icons'>
                 <a href="https://www.facebook.com/globalgoalsUN/"><FaFacebookSquare size={50} /></a>
