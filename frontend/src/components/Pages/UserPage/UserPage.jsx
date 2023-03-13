@@ -1,6 +1,7 @@
 import './UserPage.scss'
 import pfp from '../../../images/pexels-asad-photo-maldives-1450353.jpg'
 import { BsPencilSquare } from 'react-icons/bs'
+import { NavLink } from 'react-router-dom'
 
 const UserPage = () => {
     return(
@@ -12,7 +13,7 @@ const UserPage = () => {
             </div>
         <h2>Name goes here</h2>
         <p>Joined: </p>
-        <button>ADMIN</button>
+        <NavLink to="/admin"><button>ADMIN</button></NavLink>
         </div>
 
         <form>
