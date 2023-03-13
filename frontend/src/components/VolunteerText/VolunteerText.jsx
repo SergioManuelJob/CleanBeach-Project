@@ -1,4 +1,5 @@
 import './VolunteerText.scss';
+import { NavLink } from 'react-router-dom';
 
 const AboutUs = () => {
   return (
@@ -28,7 +29,10 @@ const VolunteerText = () => {
           Sign up today and become a volunteer to help clean the beaches and
           help our beautiful planet!
         </p>
-        <button>VOLUNTEER NOW</button>  
+        <NavLink to="signup">
+          <button>VOLUNTEER NOW</button>  
+        </NavLink>
+        
         </article>
         
       </div>

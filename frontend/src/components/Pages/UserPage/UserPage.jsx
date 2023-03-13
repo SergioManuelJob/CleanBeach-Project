@@ -9,7 +9,9 @@ const UserPage = () => {
         <div className="profile">
             <div>
             <img src={pfp} alt="pfpPicture" />
-            <a href='https'><BsPencilSquare className='iconBs' /></a>
+            <NavLink to="/update">
+            <p><BsPencilSquare className='iconBs' /></p>
+            </NavLink>
             </div>
         <h2>Name goes here</h2>
         <p>Joined: </p>
