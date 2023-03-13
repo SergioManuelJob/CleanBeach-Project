@@ -10,21 +10,29 @@ const validateBID = (bid: BID) => bid ? Ok(bid) : Err({ code: 400, msg: "Must pr
 
 export const beachController = {
     create: async (req: Request, res: Response) => {
-        const result = validate<BeachData>(
-            req.body,
-            [beachValidation.valid]
-        );
+        // const result = validate<BeachData>(
+        //     req.body,
+        //     [beachValidation.valid]
+        // );
 
-        if (!result.ok) {
-            res.status(400).send("Body cannot be empty!");
-            return;
+            // if (!result.ok) {
+        //     res.status(400).send("Body cannot be empty!");
+        //     return;
+        // }
+
+        
+        const beach = {
+            name: req.body.name,
+            status: req.body.status,
+            description: req.body.description,
+            location: req.body.location,
+            image: (req as any).file ? (req as any).file.filename : ""
         }
 
-        const beach = result.value as BeachData;
-        console.log(req.body)
-        
+        console.log(beach.image)
+
         try{
-            const data = await prisma.beach.create({ data: req.body });
+            const data = await prisma.beach.create({ data: beach });
             res.send(data)
         } catch (err: any) {
             const code = err.code == "P2002" ? 400 : 500;
@@ -99,23 +107,23 @@ export const beachController = {
             return;
         }
 
-        const result = validate<BeachData>(
-            req.body,
-            [beachValidation.validUpdate]
-        )
+        // const result = validate<BeachData>(
+        //     req.body,
+        //     [beachValidation.validUpdate]
+        // )
 
-        if (!result.ok) {
-            res.status(result.error.code).send(result.error.msg);
-            return;
-        }
+        // if (!result.ok) {
+        //     res.status(result.error.code).send(result.error.msg);
+        //     return;
+        // }
 
         const beach = {
-            name: result.value.name,
-            status: result.value.status,
-            image: result.value.image,
-            description: result.value.description,
-            location: result.value.location
-        } as BeachData
+            name: req.body.name,
+            status: req.body.status,
+            description: req.body.description,
+            location: req.body.location,
+            image: (req as any).file.filename
+        }
 
         try {
             res.send(

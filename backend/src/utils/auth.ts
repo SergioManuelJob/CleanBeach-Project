@@ -43,7 +43,7 @@ const verifyAdminOrSelf: RequestHandler = (
     let check = false;
     if (req.params && req.params.uid) {
         check = authBody.uid !== +req.params.uid
-    } else if (req.body && req.body.userId !== undefined) {
+    } else if (req.body && req.body.userId) {
         check = authBody.uid !== +req.body.userId;
     }
 
