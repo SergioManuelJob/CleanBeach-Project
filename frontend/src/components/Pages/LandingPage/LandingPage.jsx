@@ -1,5 +1,4 @@
 import { useState } from "react";
-import './LandingPage.scss'
 import Dropdown from '../../Dropdown/Dropdown';
 import Cards from "../../Cards/Cards";
 

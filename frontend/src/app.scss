@@ -2,7 +2,7 @@
 
 .beachimg {
   max-width: 100%;
-  opacity: 60%;
+  opacity: 50%;
   z-index: -1;
   position: relative;
 }
@@ -16,16 +16,22 @@
     position: absolute;
     top: 20%;
     h1 {
+      font-size: 2em;
       text-align: center;
       font-family: c.$Sriracha;
     }
     .TextSpan {
       margin-top: 1.5em;
       p {
+        font-size: 1.5em;
         text-align: center;
         font-family: c.$IBM-Font;
         font-weight: bold;
       }
     }
   }
+}
+
+svg{
+  display: block;
 }

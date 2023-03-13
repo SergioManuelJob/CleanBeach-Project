@@ -4,8 +4,8 @@ const WelcomeText = () => {
       <article>
         <h1>Welcome to CleanBeach</h1>
         <div className="TextSpan">
-          <p>We are a group of students from oversea.</p>
-          <p>We want to help our nature on both the earth and in the sea.</p>
+          <p>We are a group of students from oversea. 
+            We want to help our nature on both the earth and in the sea.</p>
         </div>
       </article>
     </div>

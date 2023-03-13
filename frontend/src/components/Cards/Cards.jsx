@@ -4,6 +4,7 @@ import Beachpic from '../../images/pexels-asad-photo-maldives-1450353.jpg'
 const Cards = () => {
     return (
         <>
+        <div className='container'>
             <figure className="mainFigure">
                 <img src={Beachpic} alt="PhotoOfBeach" />
                 <figcaption className="mainFigcap">
@@ -42,6 +43,7 @@ const Cards = () => {
                     </p>
                 </figcaption>
             </figure>
+            </div>
         </>
         
 
