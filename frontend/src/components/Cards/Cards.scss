@@ -2,12 +2,14 @@
 
 .mainFigure {
   margin: 2em 0.7em;
+  a{
+    color: c.$Black;
+  }
   img {
     border-top-style: solid;
     border-right-style: solid;
-    border-bottom-style: none;
     border-left-style: solid;
-    max-width: 100%;
+    max-width: 98.7%;
     display: block;
   }
   .mainFigcap {
@@ -15,13 +17,15 @@
     background-color: c.$Cyan;
     p {
       margin: 0 0.5em;
-      font-family: c.$IBM-Font;
       font-size: 1em;
     }
     .hGroups {
       display: grid;
       grid-template-columns: 1fr 1fr;
       margin: 0 0.5em;
+      a{
+        text-decoration: none;
+      }
       h3 {
         font-size: 1.2em;
         font-family: c.$Sriracha;
@@ -29,7 +33,6 @@
       h4 {
         font-size: 1.3em;
         text-align: right;
-        font-family: c.$IBM-Font;
       }
     }
   }
