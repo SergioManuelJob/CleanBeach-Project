@@ -23,12 +23,16 @@ header {
             align-items: center;
             justify-content: space-between;
             list-style: none;
-            a{
+            li{
+                padding: 0 2em;
+              a{
                 color: c.$White;
                 margin: 0 2rem;
                 text-decoration: none;
                 margin: 0;
+            }  
             }
+            
         }
     }
 }
