@@ -11,7 +11,7 @@ const validate = <T>(
         return Err({ code: 400, msg: "Body cannot be empty!" });
 
     const data = body as Defined<T>;
-
+    
     for (let func of validationFuncs) {
         const result = func(data);
         if (!result.ok) return Err(result.error);

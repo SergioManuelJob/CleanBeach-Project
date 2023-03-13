@@ -13,6 +13,8 @@ const eventRouter = (app: Express) => {
 
     router.delete("/:eid", eventController.delete)
 
+    router.put("/:eid", eventController.update)
+
     app.use("/api/events", router);
 }
 

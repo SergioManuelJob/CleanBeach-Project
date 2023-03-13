@@ -2,14 +2,12 @@ import express, { Request, Response } from "express";
 import prisma from "../config/prisma";
 
 import { UserData, userValidation } from "../types/user";
+import { Result, Ok, Err } from "../types/meta/result";
 import { validate } from "../utils/validation";
 
 import { generateToken, encryptPassword, matchPassword } from "../utils/encrypt";
 
-import { userController } from "./user.controller";
-import bcrypt from "bcrypt";
-
-type LoginParams = { email: string, password: string };
+type LoginParams   = { email: string, password: string };
 
 const authController = {
     login: async (req: Request, res: Response) => {
@@ -23,31 +21,31 @@ const authController = {
             }]
         )
 
-        try{
-            prisma.user.findUnique({where: { email: req.body.email}}).
-            then(data => {
-                if(!data || !matchPassword(req.body.password, data.password))
-                return res.json("Username or password invalid!")
-
-                const { uid, email, isAdmin } = data;
-                return res.json({ 
-                    email, isAdmin,
-                    access_token: generateToken({ uid, email
-                        
-                        , isAdmin }),
-                })
-            })
+        if (!result.ok) {
+            res.status(result.error.code).send(result.error.msg);
+            return;
         }
-    catch (err: any){
-        res.status(500).send("Some error ocurred while logging in")
-    }
+
+        try{
+            const data = await prisma.user.findUnique({ where: { email: result.value.email }});
+            if(!data || !matchPassword(result.value.password, data.password))
+                return res.json("Email or password invalid!");
+
+            const { uid, email, isAdmin } = data;
+            return res.json({ 
+                email, isAdmin,
+                access_token: generateToken({ uid, email, isAdmin }),
+            })
+        } catch (err: any){
+            res.status(500).send("Some error ocurred while logging in!")
+        }
     },
 
     signin: async (req: Request, res: Response) => {
-        const result = handleReqBody<UserData>(
+
+        const result = validate<UserData>(
             req.body,
-            { code: 400, msg: "Must provide username and password!" },
-            bodyNotEmpty
+            [userValidation.validCreate, userValidation.userEmail]
         );
 
         if (!result.ok) return res.json(result.error);
@@ -58,30 +56,21 @@ const authController = {
             email: result.value.email
         };
 
-        prisma.user
-            .create({ data: body })
-            .then((data) => {
-                const { uid, email, isAdmin } = data;
-                return res.json({
-                    email, isAdmin,
-                    access_token: generateToken(data),
-                });
-            })
-            .catch((err) => {
-                switch (err.code) {
-                    case "P2002":
-                        return res.json({
-                            code: 400,
-                            msg: `User with name ${body.name} or ${body.email} already exists`,
-                        });
-
-                    default:
-                        return res.json({
-                            code: 500,
-                            msg: "Some error occurred while creating the User",
-                        });
-                }
+        try {
+            const data: UserData = await prisma.user.create({ data: body });
+            const { uid, email, isAdmin } = data;
+            return res.json({ 
+                email, isAdmin,
+                access_token: generateToken({ uid, email, isAdmin }),
             });
+        } catch (err: any) {
+            const code = err.code == "P2002" ? 400 : 500;
+            const msg  = err.code == "P2002"
+                       ? `User with ${body.email} or ${body.name} already exists!`
+                       : err.message ?? "Something went wrong while adding the user!";
+
+            res.status(code).send(msg);
+        }
     },
 }
 

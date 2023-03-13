@@ -14,7 +14,7 @@ model User {
   uid Int @id @unique @default(autoincrement())
   name String @unique @db.VarChar(40)
   email String @unique @db.VarChar(300)
-  password     String   @db.VarChar(50)
+  password     String   @db.VarChar(200)
   isAdmin Boolean @default(false)
   pastEvents Event[]
   reviews Review[]
@@ -25,7 +25,7 @@ model Beach {
   bid Int @id @unique @default(autoincrement())
   name String @unique @db.VarChar(100)
   status Status
-  image Bytes? @db.LongBlob
+  image String @db.VarChar(200)
   description String @db.VarChar(500)
   location String @db.VarChar(200)
   reviews Review[]
@@ -33,10 +33,10 @@ model Beach {
 }
 
 enum Status {
-  Poor
-  Sufficient
-  Good
-  Excellent
+  POOR
+  SUFFICIENT
+  GOOD
+  EXCELLENT
 }
 
 model Review {
