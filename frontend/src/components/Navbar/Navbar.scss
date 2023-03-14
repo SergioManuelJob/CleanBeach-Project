@@ -15,7 +15,7 @@ header {
     background-color: c.$DarkBlue;
     color: c.$White;
     img{
-        width: 35%;
+        max-width: 100%;
     }
     nav{
         ul{
@@ -23,12 +23,16 @@ header {
             align-items: center;
             justify-content: space-between;
             list-style: none;
-            a{
+            li{
+                padding: 0 0 0 2em;
+              a{
                 color: c.$White;
                 margin: 0 2rem;
                 text-decoration: none;
                 margin: 0;
+            }  
             }
+            
         }
     }
 }

@@ -1,6 +1,7 @@
 import './UserPage.scss'
 import pfp from '../../../images/pexels-asad-photo-maldives-1450353.jpg'
 import { BsPencilSquare } from 'react-icons/bs'
+import { NavLink } from 'react-router-dom'
 
 const UserPage = () => {
     return(
@@ -8,14 +9,16 @@ const UserPage = () => {
         <div className="profile">
             <div>
             <img src={pfp} alt="pfpPicture" />
-            <a href='https'><BsPencilSquare className='iconBs' /></a>
+            <NavLink to="/update">
+            <p><BsPencilSquare className='iconBs' size={22} /></p>
+            </NavLink>
             </div>
         <h2>Name goes here</h2>
         <p>Joined: </p>
-        <button>ADMIN</button>
+        <NavLink to="/admin"><button>ADMIN</button></NavLink>
         </div>
 
-        <form>
+        <form className='form2'>
         <div className="formular">
             <label htmlFor="events">Latest events joined</label>
             <input type="text" name="events" id="events" />

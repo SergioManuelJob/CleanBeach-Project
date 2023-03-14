@@ -13,9 +13,9 @@ const Footer=() => {
                 <p>©Copyright</p>
                 <img className='goals' src={Goals} alt="Goals" />
                 <div className='icons'>
-                <a href="https://www.facebook.com/globalgoalsUN/"><FaFacebookSquare size={50} /></a>
-                <a href="https://twitter.com/GlobalGoalsUN"><FaTwitterSquare size={50}/></a>
-                <a href="https://www.instagram.com/theglobalgoals/?hl=da"><RiInstagramFill size={50} /></a>
+                <a href="https://www.facebook.com/globalgoalsUN/"><FaFacebookSquare size={35} /></a>
+                <a href="https://twitter.com/GlobalGoalsUN"><FaTwitterSquare size={35}/></a>
+                <a href="https://www.instagram.com/theglobalgoals/?hl=da"><RiInstagramFill size={35} /></a>
                 </div>
             </div>
         </div>

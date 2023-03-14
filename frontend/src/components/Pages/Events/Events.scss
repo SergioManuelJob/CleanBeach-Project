@@ -1,0 +1,45 @@
+@use '../../Styled/Theme.scss' as c;
+
+.beachfun{
+    max-width: 100vw;
+    opacity: 80%;
+    z-index: -1;
+}
+
+.articleOne{
+    margin: 2.5em;
+    h2{
+        font-family: c.$Sriracha;
+    }
+}
+.eventBtn{
+    display: flex;
+    justify-content: center;
+    button{
+        background-color: c.$DarkBlue; 
+        border: none;
+        color: white;
+        padding: 0.7em 1em;
+        width: 100%;
+        text-align: center;
+        text-decoration: none;
+        font-size: 1em;
+        margin-top: 1.7em;
+        box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+    }
+}
+
+section{
+    margin: 2.5em;
+    background-color: c.$Cyan;
+    height: 20vh;
+    span{
+        display: flex;
+        justify-content: space-between;
+    }
+    p{
+        margin: 0.5em;
+    }
+    
+}

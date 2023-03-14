@@ -1,27 +1,35 @@
 @use "../Styled/Theme.scss" as c;
 
+a{
+  text-decoration: none;
+  color: c.$Black;
+}
+
 .mainFigure {
-  margin: 2.5em;
+  margin: 2em 0.7em;
   img {
-    border-top-style: solid;
-    border-right-style: solid;
-    border-bottom-style: none;
-    border-left-style: solid;
+    border-top: 2px solid;
+    border-right: 2px solid;
+    border-left: 2px solid;
     max-width: 100%;
     display: block;
+    box-sizing: border-box;
   }
   .mainFigcap {
     border: 2px solid c.$Black;
     background-color: c.$Cyan;
     p {
       margin: 0 0.5em;
-      font-family: c.$IBM-Font;
       font-size: 1em;
     }
     .hGroups {
       display: grid;
       grid-template-columns: 1fr 1fr;
       margin: 0 0.5em;
+      a{
+        text-decoration: none;
+        color: c.$Black;
+      }
       h3 {
         font-size: 1.2em;
         font-family: c.$Sriracha;
@@ -29,7 +37,6 @@
       h4 {
         font-size: 1.3em;
         text-align: right;
-        font-family: c.$IBM-Font;
       }
     }
   }

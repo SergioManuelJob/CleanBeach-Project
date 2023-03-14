@@ -1,63 +1,62 @@
-@use '../../Styled/Theme.scss' as c;
+@use "../../Styled/Theme.scss" as c;
 
-
-.profile{
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        div{
-            position: relative;
-            img{
-                width: 200px;
-                height: 200px;
-                border-radius: 50%;
-                }
-                .iconBs{
-                    color: c.$Black;
-                    position: absolute;
-                    top: 11em;
-                    right: 0.5em;
-                }
-        }
-            h2{
-                font-size: 2em;
-            }
-            p{
-                font-size: 1.1em;
-            }
-            button{
-                background-color: c.$DarkBlue; 
-                border: none;
-                color: c.$White;
-                padding: 0.5em 1em;
-                text-align: center;
-                text-decoration: none;
-                font-size: 1.5em;
-                margin-top: 2em;
-                box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.25);
-            }
+.profile {
+  margin-top: 3em;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  div {
+    position: relative;
+    img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+    }
+    .iconBs {
+      color: c.$Black;
+      position: absolute;
+      top: 10em;
+      right: 0;
+    }
+  }
+  h2 {
+    font-size: 2em;
+  }
+  p {
+    font-size: 1.1em;
+  }
+  button {
+    background-color: c.$DarkBlue;
+    border: none;
+    color: c.$White;
+    padding: 0.5em 1em;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.5em;
+    margin-top: 2em;
+    box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.25);
+  }
 }
 
-
-
-form{
-    margin: 2em 0 0 2em;
-    label{
-        display: block;
-        margin: 1.7em 0 0 0;
-        font-size: 1.2em;
-    }
-    input, textarea{
-        padding: 6px;
-        box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.25);
-        border: 1.5px solid c.$Black;
-        width: 90%;
-    }
-    .formular{
-        margin-top: 5em;
-    }
-    textarea{
-        resize: none;
-    }
+.form2 {
+  label {
+    display: block;
+    margin: 1.7em 0 0 0;
+    font-size: 1.2em;
+  }
+  input,
+  textarea {
+    padding: 6px;
+    box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.25);
+    border: 1.5px solid c.$Black;
+    width: 90%;
+  }
+  .formular {
+    margin-top: 5em;
+  }
+  textarea {
+    resize: none;
+    margin-bottom: 4em;
+  }
 }
