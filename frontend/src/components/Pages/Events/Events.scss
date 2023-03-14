@@ -33,18 +33,13 @@
 section{
     margin: 2.5em;
     background-color: c.$Cyan;
-    height: 28vh;
+    height: 20vh;
     span{
         display: flex;
         justify-content: space-between;
     }
     p{
         margin: 0.5em;
-    }
-    .readmore{
-        text-align: center;
-        margin-top: 2.5em;
-        font-weight: bold;
     }
     
 }
