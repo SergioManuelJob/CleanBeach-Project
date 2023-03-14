@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import Image from '../../../images/pexels-asad-photo-maldives-1450353.jpg'
 import { VolunteerText } from '../../VolunteerText/VolunteerText'
 import './SpecificBeach.scss';
@@ -16,9 +17,10 @@ const SpecificBeach = () => {
         <span className='spanP'>
         <p>Description: Las Canteras is an ideal beach for long barefoot walks as it's golden sand stretches for over two kilometres. During the day you can sunbathe by the sand sculptures, rent parasols and loungers or surf at the southern end. Children love Las Canteras thanks to its clear, calm waters, playgrounds and sports zones. Las Canteras beach in northeast Gran Canaria, right in the capital city Las Palmas. It's appeal is due to its natural beauty, city-centre location and the services and amenities along its promenade.</p>
         </span>
-        <div>
-            map
-            weather
+        <div className='googlemaps'>
+        <NavLink to="/map">
+        <iframe title='map' width="310" height="418" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" id="gmap_canvas" src="https://maps.google.com/maps?width=310&amp;height=418&amp;hl=en&amp;q=Las%20Canteras%20Las%20Palmas%20de%20Gran%20Canaria+(Las%20Canteras%20Beach)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+        </NavLink>
         </div>
         <div className='reviews'>
             <h4>Reviews</h4>

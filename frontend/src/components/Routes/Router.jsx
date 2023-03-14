@@ -18,6 +18,7 @@ const Router = () => {
         <Route path="/events/detailedevent" element={<DetailedEvent />} />
       </Route>
       <Route path="/specificbeach" element={<SpecificBeach />} />
+      <Route path="/map" element={<DetailedEvent />} />
       <Route path="/signup" element={<SignInPage />} />
       <Route path="/profile" element={<UserPage />} />
       <Route path="/update" element={<UpdatePage />} />
