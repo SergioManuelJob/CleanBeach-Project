@@ -1,1 +1,21 @@
-@use '../../Styled/Theme.scss' as c;
+@use "../../Styled/Theme.scss" as c;
+
+.formEvent {
+  h2 {
+    margin-top: 2em;
+    font-size: 2em;
+    font-family: c.$Sriracha;
+  }
+  .inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 3em;
+  }
+}
+
+// .eventimg {
+//   max-width: 100%;
+//   z-index: -1;
+//   opacity: 25%;
+//   filter: blur(3px);
+// }

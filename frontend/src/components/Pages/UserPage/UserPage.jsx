@@ -18,7 +18,7 @@ const UserPage = () => {
         <NavLink to="/admin"><button>ADMIN</button></NavLink>
         </div>
 
-        <form>
+        <form className='form2'>
         <div className="formular">
             <label htmlFor="events">Latest events joined</label>
             <input type="text" name="events" id="events" />
