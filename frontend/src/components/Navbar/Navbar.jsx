@@ -7,7 +7,7 @@ function Navbar() {
     return(
         <header>
             <NavLink to="/" >
-            <img src={Logo} alt='Logo' />
+            <img className='logo' src={Logo} alt='Logo' />
             </NavLink>
             <nav>
                 <ul>

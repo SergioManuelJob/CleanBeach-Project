@@ -6,7 +6,7 @@
 
 
     .h1ss, .h1sss {
-        font-family: Sriracha;
+        font-family: c.$Sriracha;
     }
 
     label{
@@ -31,7 +31,7 @@
         margin-top: 3em;
     }
 
-    span {
+    a {
         color: c.$LightBlue;
         cursor: pointer;
     }
@@ -53,16 +53,17 @@
         margin-top: 1.7em;
         box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.25);
         cursor: pointer;
+        margin-bottom: 0;
     }
 }
 
 @media screen and (min-width: 600px) {
 
-.form {
+.form1 {
 
     .input {
         width: 80%;
-        padding: 5px;
+        font-size: 1.1rem;
     }
     
     .containerss {
@@ -73,7 +74,6 @@
 
     .label {
         font-size: 1.5em;
-        padding: 5px;
     }
 
     .cleaning {
@@ -87,9 +87,4 @@
     }
 }
 
-}
-
-@media screen and (min-width: 1000px) {
-
-    
 }
