@@ -1,5 +1,6 @@
 import './SignIn.scss'
 import { useState, useEffect } from 'react';
+import Cleaning from '../../../images/Rectangle 37.png';
 
 const SignInPage = () => {
     const initialValues = { username: '', password: ''};
@@ -49,9 +50,7 @@ const SignInPage = () => {
 <form className='form1' onSubmit={handleSubmit}>
         {Object.keys(formErrors).length === 0 && isSubmit ? (
             <div style={{color: 'green', fontSize: '40px'}} className='ui message success'>Signed in successfully</div>
-    ) : (
-        <pre>{JSON.stringify(formValues, undefined, 2)}</pre>
-    )}
+    ) : null}
     <div className='containerss'>
         {/* SIGN IN */}
         <div className='signin'>
@@ -61,29 +60,15 @@ const SignInPage = () => {
         onChange={handleChange}/>
         <p style={{color: 'red'}}>{formErrors.username}</p>
 
-        <p>{formErrors.password}</p>
         <label htmlFor="password">Password</label>
         <input name="password" type="password" value={formValues.password}
         onChange={handleChange}/>
         <p style={{color: 'red'}}>{formErrors.password}</p>
-
+        <div className='notAMember'>Don't have an account? <span>Register</span></div>
 
         <button>Log in</button>
         </div>
-
-        {/* REGISTER */}
-        <div className='register'>
-        <h1 className='h1sss'>Sign Up</h1>
-        <label htmlFor="fullname">Full name</label>
-        <input name="fullname" type="text" />
-        
-        <label htmlFor="email">Email</label>
-        <input name="email" type="email" />
-    
-        <label htmlFor="password">Password</label>
-        <input name="password" type="password" />
-        <button>Register</button>
-        </div>
+        <img className='cleaning' src={Cleaning} alt="My Image" />
 
     </div>
 </form>
@@ -100,7 +85,7 @@ import './SignIn.scss'
 const SignInPage = () => {
     return(
 
-<form className='form1'>
+<form className='form'>
     <div className='containerss'>
         {/* SIGN IN *//*}
        /* <div className='signin'>
