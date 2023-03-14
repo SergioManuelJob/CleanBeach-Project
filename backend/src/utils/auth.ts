@@ -11,7 +11,7 @@ const verifyAdmin: RequestHandler = (
     }
 
     const token = req.headers.authorization.split("Bearer ")[1];
-    const body = jwt.verify(token, process.env.JWT_SECRET as jwt.Secret) as UserData;
+    const body  = jwt.verify(token, process.env.JWT_SECRET as jwt.Secret) as UserData;
 
     // console.log(body)
     if (body.isAdmin === false) {
@@ -41,10 +41,14 @@ const verifyAdminOrSelf: RequestHandler = (
     console.log(`{\n\tauthBody.uid: ${authBody.uid},\n\treq.params: ${JSON.stringify(req.params)},\n\treq.body.userId: ${req.body.userId}\n}`)
 
     let check = false;
+    // This kinda sucks and idk if it works
+    // TODO: Try and fix it?
     if (req.params && req.params.uid) {
-        check = authBody.uid !== +req.params.uid
+        check = authBody.uid !== undefined && +req.params.uid !== undefined
+             && authBody.uid !== +req.params.uid;
     } else if (req.body && req.body.userId) {
-        check = authBody.uid !== +req.body.userId;
+        check = authBody.uid !== undefined && +req.body.userId !== undefined
+             && authBody.uid !== +req.body.userId;
     }
 
     if (check || authBody.isAdmin === false) {

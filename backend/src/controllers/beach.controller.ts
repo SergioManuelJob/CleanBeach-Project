@@ -10,22 +10,23 @@ const validateBID = (bid: BID) => bid ? Ok(bid) : Err({ code: 400, msg: "Must pr
 
 export const beachController = {
     create: async (req: Request, res: Response) => {
-        // const result = validate<BeachData>(
-        //     req.body,
-        //     [beachValidation.valid]
-        // );
+        const result = validate<BeachData>(
+            req.body,
+            [beachValidation.validCreate, beachValidation.validLatLong]
+        );
 
-            // if (!result.ok) {
-        //     res.status(400).send("Body cannot be empty!");
-        //     return;
-        // }
+        if (!result.ok) {
+            res.status(result.error.code).send(result.error.msg);
+            return;
+        }
 
-        
         const beach = {
-            name: req.body.name,
-            status: req.body.status,
-            description: req.body.description,
-            location: req.body.location,
+            name:        result.value.name,
+            status:      result.value.status,   // we aren't really checking for status in the validCreate function
+            description: result.value.description,
+            address:     result.value.address,
+            latitude:    result.value.latitude,
+            longitude:   result.value.longitude,
             image: (req as any).file ? (req as any).file.filename : ""
         }
 
@@ -107,34 +108,41 @@ export const beachController = {
             return;
         }
 
-        // const result = validate<BeachData>(
-        //     req.body,
-        //     [beachValidation.validUpdate]
-        // )
+        const result = validate<BeachData>(
+            req.body,
+            [beachValidation.validUpdate, beachValidation.validLatLong]
+        )
 
-        // if (!result.ok) {
-        //     res.status(result.error.code).send(result.error.msg);
-        //     return;
-        // }
+        if (!result.ok) {
+            res.status(result.error.code).send(result.error.msg);
+            return;
+        }
 
         const beach = {
-            name: req.body.name,
-            status: req.body.status,
-            description: req.body.description,
-            location: req.body.location,
-            image: (req as any).file.filename
+            name:        result.value.name,
+            status:      result.value.status,
+            description: result.value.description,
+            address:     result.value.address,
+            latitude:    result.value.latitude,
+            longitude:   result.value.longitude,
         }
+
+        const imageData = (req as any).file 
+                        ? { image: (req as any).file.filename }
+                        : {};
+
+        const data = { ...beach, ...imageData }
 
         try {
             res.send(
                 await prisma.beach.update({
                     where: { bid: +req.params.bid },
-                    data: beach
+                    data
                 })
             );
         } catch (err: any) {
             res.status(500).send(
-                err.message ?? "Some error ocurred while retrieving the event by EID"
+                err.message ?? "Some error ocurred while retrieving the event by BID"
             );
         }
     },

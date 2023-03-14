@@ -1,5 +1,10 @@
 <h1 align="center">Clean Beach</h1>
 
+<div align="center">
+    <img src="assets/Logo.png" alt="logo" width="240" height="240">
+</div>
+
+
 ## About this project
 
 <br/>
@@ -130,7 +135,33 @@ For the design of this app we have followed the prototype we did with Figma:
 
 ## Planification
 
+### Issues:
 
+To see the division of tasks during this project, you can check our distribution of issues via the project page in GitHub: https://github.com/users/SergioManuelJob/projects/2
+
+The division of parts of the project looks like this:
+
+Design: All of the group.
+Backend: Gabriel and Sergio.
+Frontend: Lydia and Emma for the design and architecture/body of the web page, Sergio took care of integrating the services to connect with the backend.
+
+### First week:
+
+On the first week we followed a design sprint plan gave to us by Lydia, the icelandic integrant of the group. We gave birth to the idea, and worked on it from the view of the client, thinking what to do in order to achieve the idea we first thought about, and how we wanted to reach our goals. Also, as we finished the design sprint plan earlier than expected, we started building the backend and also started the prototype. During this week, the design sprint plan was leaded mostly by Lydia, as the other components of the group hadn't worked with this type of plan.
+
+This is the link to the design sprint plan: https://www.figma.com/file/47tfAWHGXe225Xl4PFxPr0/UX-design-plan---Module-6?node-id=0%3A1&t=kZ0cAQPlNBf9g35n-1
+
+### Second week:
+
+The backend programmers continued doing the backend, while the frontend programmers finished the prototype and started programming the pages, but not making them functional just the aesthetic of the pages. The documentation for the backend was done, also most of this readme, and the backend was almost finished, meanwhile in the frontend some pages were done. We divided ourselves in two groups, Gabriel and Sergio for the backend, and Emma and Lydia for the frontend.
+
+### Third week:
+
+For the third wee, the backend came to a conclusion, it was fully done and heavily validated, and all of the endpoints worked as intended. The frontend was finished and all that was left was to connect it to the backend and make it functional, because the services were left. Meanwhile in this time we started the presentation, so we could present it for class on the very same week on friday. In this week as the backend programmers had already finished their part, started helping in the frontend, so we all worked in the frontend in our separate tasks.
+
+### Branches and pushes:
+
+All of the branches and pushes can be seen on this very same repository, the master branch holds the final version, the develop branch was to do most of the pushes when in develop phase, and the other branches was just so frontend could be easier to program, as we did merge most of them with develop later on.
 
 ## Authors:
 

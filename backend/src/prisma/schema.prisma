@@ -27,7 +27,9 @@ model Beach {
   status Status
   image String @db.VarChar(200)
   description String @db.VarChar(500)
-  location String @db.VarChar(200)
+  address String @db.VarChar(200)
+  latitude Decimal @db.Decimal(8, 6) @default(0)
+  longitude Decimal @db.Decimal(9, 6) @default(0)
   reviews Review[]
   events Event[]
 }
