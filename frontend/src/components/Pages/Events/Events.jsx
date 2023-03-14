@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const EventsPage = () => {
   return (
     <>
-      <img src={beachfun} alt="peopleonbeach" />
+      <img className="beachfun" src={beachfun} alt="peopleonbeach" />
 
       <article className="articleOne">
         <h2>Upcoming Events</h2>
@@ -54,7 +54,7 @@ const EventsPage = () => {
         </NavLink>
       </section>
 
-      
+
       <section>
         <span>
           <p>name and location</p>
