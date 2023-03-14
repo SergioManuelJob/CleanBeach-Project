@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-import EventsPage from '../Pages/Events/EventsPage'
+import EventsPage from '../Pages/Events/Events'
 import SpecificBeach from '../Pages/SpecificBeach/SpecificBeach'
 import LandingPage from '../Pages/LandingPage/LandingPage'
 import SignInPage from '../Pages/SignIn/SignIn'

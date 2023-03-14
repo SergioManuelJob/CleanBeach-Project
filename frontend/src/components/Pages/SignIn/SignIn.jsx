@@ -46,7 +46,7 @@ const SignInPage = () => {
 
     return(
 
-<form className='form' onSubmit={handleSubmit}>
+<form className='form1' onSubmit={handleSubmit}>
         {Object.keys(formErrors).length === 0 && isSubmit ? (
             <div style={{color: 'green', fontSize: '40px'}} className='ui message success'>Signed in successfully</div>
     ) : (
@@ -100,7 +100,7 @@ import './SignIn.scss'
 const SignInPage = () => {
     return(
 
-<form className='form'>
+<form className='form1'>
     <div className='containerss'>
         {/* SIGN IN *//*}
        /* <div className='signin'>
