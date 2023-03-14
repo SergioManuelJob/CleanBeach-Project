@@ -6,13 +6,12 @@ const Cards = () => {
   return (
     <>
       <div className="container">
+      <NavLink to="/specificbeach">
         <figure className="mainFigure">
           <img src={Beachpic} alt="PhotoOfBeach" />
           <figcaption className="mainFigcap">
             <hgroup className="hGroups">
-              <NavLink to="/specificbeach">
                 <h3>Name - Location</h3>
-              </NavLink>
               <h4>Rating</h4>
             </hgroup>
             <p>
@@ -22,6 +21,7 @@ const Cards = () => {
             </p>
           </figcaption>
         </figure>
+        </NavLink>
 
         <figure className="mainFigure">
           <img src={Beachpic} alt="PhotoOfBeach" />

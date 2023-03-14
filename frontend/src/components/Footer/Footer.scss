@@ -3,11 +3,13 @@
 .footer {
     height: 100px;
     background-color: c.$DarkBlue;
+    position: relative;
     .footercontainer {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        margin: 0 3em;
+        justify-content: space-around;
+        position: absolute;
+        top: 30%;
         p{
             color: c.$White;
             font-weight: 500;
@@ -18,7 +20,6 @@
         .icons{
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 0 1em;
             svg{
                 fill: black;
 
