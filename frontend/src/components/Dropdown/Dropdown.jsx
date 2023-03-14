@@ -13,7 +13,7 @@ function Dropdown() {
             <div className='dropdown-content'>
                 <div className='dropdown-item'>Least trash</div>
                 <div className='dropdown-item'>Most popular</div>
-                <div className='dropdown-item'>Option 3</div>
+                <div className='dropdown-item'>Near you</div>
             </div>
            )}
         </div>
