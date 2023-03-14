@@ -10,7 +10,7 @@ const UserPage = () => {
             <div>
             <img src={pfp} alt="pfpPicture" />
             <NavLink to="/update">
-            <p><BsPencilSquare className='iconBs' /></p>
+            <p><BsPencilSquare className='iconBs' size={22} /></p>
             </NavLink>
             </div>
         <h2>Name goes here</h2>
