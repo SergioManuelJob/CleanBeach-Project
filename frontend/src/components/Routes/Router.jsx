@@ -6,7 +6,6 @@ import SignInPage from "../Pages/SignIn/SignIn";
 import AdminPage from "../Pages/AdminPage/AdminPage";
 import UserPage from "../Pages/UserPage/UserPage";
 import UpdatePage from "../Pages/UpdatePage/UpdatePage";
-import DetailedEvent from "../Pages/DetailedEvent/DetailedEvent";
 import CreateEvent from "../Pages/CreateEvent/CreateEvent";
 import Register from '../Register/Register'
 
@@ -16,11 +15,9 @@ const Router = () => {
       <Route index element={<LandingPage />} />
       <Route path="/events" element={<EventsPage />}>
         <Route path="/events/createevent" element={<CreateEvent />} />
-        <Route path="/events/detailedevent" element={<DetailedEvent />} />
       </Route>
       <Route path="/register" element={<Register />} />
       <Route path="/specificbeach" element={<SpecificBeach />} />
-      <Route path="/map" element={<DetailedEvent />} />
       <Route path="/signup" element={<SignInPage />} />
       <Route path="/profile" element={<UserPage />} />
       <Route path="/update" element={<UpdatePage />} />
