@@ -1,9 +1,9 @@
-import './SignIn.scss'
+import './Register.scss'
 import { useState, useEffect } from 'react';
-import Cleaning from '../../../images/Rectangle 37.png';
+import Cleaning1 from '../../images/Rectangle 39.png';
 
-const SignInPage = () => {
-    const initialValues = { username: '', password: ''};
+const Register = () => {
+    const initialValues = { fullname: '', email: '', password: ''};
     const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
@@ -29,11 +29,17 @@ const SignInPage = () => {
     const validate = (values) => {
         const errors = {};
         const regex =
-        /^[a-zA-Z0-9_-]{3,16}$/;
-        if (!values.username) {
-            errors.username = 'Username is required!';
-            
+        /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;;
+        if (!values.fullname) {
+            errors.fullname = 'Full name is required!';
         }
+
+        if (!values.email) {
+            errors.email = "Email is required!";
+          } else if (!regex.test(values.email)) {
+            errors.email = "This is not a valid email format!";
+          }
+
         if (!values.password) {
             errors.password = 'Password is required!';
         } else if (values.password.length < 4) {
@@ -49,26 +55,32 @@ const SignInPage = () => {
 
 <form className='form' onSubmit={handleSubmit}>
         {Object.keys(formErrors).length === 0 && isSubmit ? (
-            <div style={{color: 'green', fontSize: '40px'}} className='ui message success'>Signed in successfully</div>
+            <div style={{color: 'green', fontSize: '40px'}} className='ui message success'>Registered successfully</div>
     ) : null}
-    <div className='containerss'>
-        {/* SIGN IN */}
-        <div className='signin'>
-        <h1 className='h1ss'>Sign In</h1>
-        <label htmlFor="username">Username</label>
-        <input name="username" type="text" value={formValues.username}
+    <div className='container'>
+        {/* REGISTER */}
+        <div className='register'>
+        <h1 className='h1ss'>Register</h1>
+        <label htmlFor="fullname">Full name</label>
+        <input name="fullname" type="text" value={formValues.fullname}
         onChange={handleChange}/>
-        <p style={{color: 'red'}}>{formErrors.username}</p>
+        <p style={{color: 'red'}}>{formErrors.fullname}</p>
+        
+        <label htmlFor="email">E-mail</label>
+        <input name="email" type="email" value={formValues.email}
+        onChange={handleChange}/>
+        <p style={{color: 'red'}}>{formErrors.email}</p>
 
         <label htmlFor="password">Password</label>
         <input name="password" type="password" value={formValues.password}
-        onChange={handleChange}/>
-        <p style={{color: 'red'}}>{formErrors.password}</p>
-        <div className='notAMember'>Don't have an account? <span>Register</span></div>
+        onChange={handleChange} />
 
-        <button>Log in</button>
+        <p style={{color: 'red'}}>{formErrors.password}</p>
+        <div className='member'>Already have an account? <span>Sign In</span></div>
+
+        <button>Register</button>
         </div>
-        <img className='cleaning' src={Cleaning} alt="My Image" />
+        <img className='cleaning1' src={Cleaning1} alt="My Image" />
 
     </div>
 </form>
@@ -77,4 +89,4 @@ const SignInPage = () => {
 }
 
 
-export default SignInPage
+export default Register
