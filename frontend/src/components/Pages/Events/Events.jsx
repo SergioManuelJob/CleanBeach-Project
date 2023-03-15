@@ -23,7 +23,7 @@ const EventsPage = () => {
         </NavLink>
       </div>
 
-      <section>
+      <section className="eventSection">
         <span>
           <p>name and location</p>
           <p>time and date</p>
@@ -36,7 +36,7 @@ const EventsPage = () => {
       </section>
 
 
-      <section>
+      <section className="eventSection">
         <span>
           <p>name and location</p>
           <p>time and date</p>
@@ -49,7 +49,7 @@ const EventsPage = () => {
       </section>
 
 
-      <section>
+      <section className="eventSection">
         <span>
           <p>name and location</p>
           <p>time and date</p>

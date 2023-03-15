@@ -20,7 +20,7 @@ const SpecificBeach = () => {
   }, [id]);
 
   return (
-    <section>
+    <section className="beachSection">
       {data &&
            (
             <>
@@ -30,7 +30,7 @@ const SpecificBeach = () => {
               </div>
               <hgroup className="info">
                 <h3>{data.name}</h3>
-                <h4>{data.status}</h4>
+                <h4>Status: {data.status}</h4>
               </hgroup>
               <span className="spanP">
                 <p>{data.description}</p>

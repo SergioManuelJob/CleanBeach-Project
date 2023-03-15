@@ -1,56 +1,63 @@
 @use "../../Styled/Theme.scss" as c;
 
-.specificbeachText {
-  display: flex;
-  justify-content: center;
-  img {
-    max-width: 100%;
-    position: relative;
-  }
-  h2 {
-    font-family: c.$Sriracha;
-    position: absolute;
-    top: 35%;
-  }
+.beachSection{
+  margin: 0;
+  color: none;
 }
+  .specificbeachText {
+    margin: 2.5em;
+    img {
+      position: relative;
+      max-width: 100%;
+    }
+    h2 {
+      position: absolute;
+      left: 29%;
+      top: 35%;
+      text-align: center;
+      font-family: c.$Sriracha;
+      font-size: 2em;
+    }
+  }
+
 
 .info {
+  margin: 2.5em;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: 2.5em;
   h4 {
     font-family: c.$Sriracha;
     text-align: right;
     font-size: 1.2em;
   }
-  h3{
+  h3 {
     font-family: c.$Sriracha;
     font-size: 1.2em;
   }
 }
 
 .spanP {
-    p{
-        margin: 2.5em;
-        font-weight: bold;
-    }
-}
-
-
-.reviews{
+  p {
     margin: 2.5em;
-    h4{
-        font-size: 1.3em;
-        font-family: c.$Sriracha;
-        border-bottom: 1px solid c.$Black;
-    }
-    p{
-        border-bottom: 1px solid c.$Black;
-    }
+    font-weight: bold;
+  }
 }
 
-
-.googlemaps{
+.googlemaps {
   display: flex;
   justify-content: center;
+  margin-top: 3em;
+}
+
+
+.reviews {
+  margin: 2.5em;
+  h4 {
+    font-size: 1.3em;
+    font-family: c.$Sriracha;
+    border-bottom: 1px solid c.$Black;
+  }
+  p {
+    border-bottom: 1px solid c.$Black;
+  }
 }
