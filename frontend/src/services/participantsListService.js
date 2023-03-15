@@ -20,7 +20,7 @@ const createParticipantsList = (userId, eventId) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return (response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -37,7 +37,7 @@ const getAllParticipantsList = () => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return (response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -54,7 +54,7 @@ const getOneParticipantsList = (id) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return(response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -71,7 +71,7 @@ const deleteParticipantsList = (id) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return(response.data);
     })
     .catch(function (error) {
     console.log(error);

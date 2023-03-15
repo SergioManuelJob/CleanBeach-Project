@@ -21,7 +21,7 @@ const createReview = (userId, beachId, rating, comment) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return(response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -38,7 +38,7 @@ const getAllReviews = () => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return(response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -55,7 +55,7 @@ const getOneReview = (id) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return(response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -72,7 +72,7 @@ const deleteReview = (id) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return(response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -101,7 +101,7 @@ const updateReview = (userId, beachId, rating, comment, id, token) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return(response.data);
     })
     .catch(function (error) {
     console.log(error);

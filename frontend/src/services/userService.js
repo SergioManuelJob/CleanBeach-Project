@@ -18,7 +18,7 @@ const logIn = (email, password) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+      return(response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -45,7 +45,7 @@ const register = (name, email, password) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+      return(response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -62,7 +62,7 @@ const getAllUsers = () => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+      return(response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -79,7 +79,7 @@ const getOneUser = (id) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+      return(response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -98,7 +98,7 @@ const deleteUser = (id, token) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+      return(response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -125,7 +125,7 @@ const updateUser = (name, email, password, id, token) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+      return(response.data);
     })
     .catch(function (error) {
     console.log(error);
