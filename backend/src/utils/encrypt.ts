@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { UserData } from "../types/user";
 
 /**
  * Encrypts a password with salt.
@@ -20,11 +21,12 @@ const matchPassword = async function (password: string, encryptedPassw: string) 
     return await bcrypt.compare(password, encryptedPassw)
 }
 
-const generateToken = function (user: any) {
+const generateToken = function (user: { uid: number; email: string; password: string; isAdmin: boolean }) {
     const u = {
-        id: user.id,
-        username: user.username,
-        password: user.password
+        id: user.uid,
+        email: user.email,
+        password: user.password,
+        isAdmin: user.isAdmin
     };
 
       // .env should contain a line like JWT_SECRET=V3RY#1MP0RT@NT$3CR3T#
