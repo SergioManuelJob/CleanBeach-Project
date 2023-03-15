@@ -23,49 +23,8 @@ const EventsPage = () => {
           <button>Create Event</button>
         </NavLink>
       </div>
-
-<<<<<<< HEAD
-      <section className="eventSection">
-        <span>
-          <p>name and location</p>
-          <p>time and date</p>
-        </span>
-        <p>
-          We’re gonna meet up at Las canteras in Las Palmas at 16:00 to start
-          cleaning the beach from trash. There will be free drinks and snacks at
-          the end of the day for those who are going to participate.{" "}
-        </p>
-      </section>
-
-
-      <section className="eventSection">
-        <span>
-          <p>name and location</p>
-          <p>time and date</p>
-        </span>
-        <p>
-          We’re gonna meet up at Las canteras in Las Palmas at 16:00 to start
-          cleaning the beach from trash. There will be free drinks and snacks at
-          the end of the day for those who are going to participate.{" "}
-        </p>
-      </section>
-
-
-      <section className="eventSection">
-        <span>
-          <p>name and location</p>
-          <p>time and date</p>
-        </span>
-        <p>
-          We’re gonna meet up at Las canteras in Las Palmas at 16:00 to start
-          cleaning the beach from trash. There will be free drinks and snacks at
-          the end of the day for those who are going to participate.{" "}
-        </p>
-      </section>
-=======
       <EventCards></EventCards>
       
->>>>>>> 43062ec52c090648dca4954893bb371b71f1f83a
     </>
   );
 };
