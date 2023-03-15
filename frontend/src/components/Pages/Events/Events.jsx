@@ -1,6 +1,7 @@
 import "./Events.scss";
 import beachfun from "../../../images/IMG_6610.jpg";
 import { NavLink } from "react-router-dom";
+import EventCards from "../../EventCards/EventCards";
 
 const EventsPage = () => {
   return (
@@ -23,6 +24,7 @@ const EventsPage = () => {
         </NavLink>
       </div>
 
+<<<<<<< HEAD
       <section className="eventSection">
         <span>
           <p>name and location</p>
@@ -60,6 +62,10 @@ const EventsPage = () => {
           the end of the day for those who are going to participate.{" "}
         </p>
       </section>
+=======
+      <EventCards></EventCards>
+      
+>>>>>>> 43062ec52c090648dca4954893bb371b71f1f83a
     </>
   );
 };

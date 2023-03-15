@@ -1,12 +1,14 @@
 import './Register.scss'
 import { useState, useEffect } from 'react';
 import Cleaning1 from '../../images/Rectangle 39.png';
+import userService from '../../services/userService';
 
 const Register = () => {
     const initialValues = { fullname: '', email: '', password: ''};
     const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
+    const [submitError, setSubmitError] = useState({})
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -16,7 +18,16 @@ const Register = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormErrors(validate(formValues));
-        setIsSubmit(true);
+        userService.register(formValues.name, formValues.email, formValues.password)
+            .then(data => {
+                // store data in local storage or something
+                setIsSubmit(true);
+            })
+            .catch(err => {
+                setIsSubmit(false);
+                console.log(Object.keys(err));
+                setFormErrors({ code: err.code, msg: err.msg })
+            })
     };
 
     useEffect(() => {
@@ -54,7 +65,8 @@ const Register = () => {
     return(
 
 <form className='form' onSubmit={handleSubmit}>
-        {Object.keys(formErrors).length === 0 && isSubmit ? (
+        {Object.keys(formErrors).length === 0 && isSubmit 
+            && Object.keys(submitError).length === 0 ? (
             <div style={{color: 'green', fontSize: '40px'}} className='ui message success'>Registered successfully</div>
     ) : null}
     <div className='container'>

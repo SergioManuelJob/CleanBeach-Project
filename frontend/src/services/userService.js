@@ -1,5 +1,5 @@
 import axios from "axios";
-url = env("URL_USER")
+const url = process.env.URL_USER
 
 const logIn = (email, password) => {
   
@@ -17,13 +17,7 @@ const logIn = (email, password) => {
         data : data
     };
   
-    axios(config)
-    .then(function (response) {
-      return(response.data);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
 };
 
 const register = (name, email, password) => {
@@ -44,13 +38,7 @@ const register = (name, email, password) => {
         data : data
     };
   
-    axios(config)
-    .then(function (response) {
-      return(response.data);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
 };
 
 const getAllUsers = () => {
@@ -61,13 +49,7 @@ const getAllUsers = () => {
         headers: { }
     };
   
-    axios(config)
-    .then(function (response) {
-      return(response.data);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
 };
 
 const getOneUser = (id) => {
@@ -78,13 +60,7 @@ const getOneUser = (id) => {
         headers: { }
     };
   
-    axios(config)
-    .then(function (response) {
-      return(response.data);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
 };
 
 const deleteUser = (id, token) => {
@@ -97,13 +73,7 @@ const deleteUser = (id, token) => {
         }
       };
   
-    axios(config)
-    .then(function (response) {
-      return(response.data);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
 };
 
 const updateUser = (name, email, password, id, token) => {
@@ -124,13 +94,7 @@ const updateUser = (name, email, password, id, token) => {
         data : data
       };
   
-    axios(config)
-    .then(function (response) {
-      return(response.data);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
 };
 
 const userService = {

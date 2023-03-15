@@ -106,7 +106,7 @@ export const userController = {
 
         const result = validate<UserData>(
             req.body,
-            [userValidation.validCreate, userValidation.userEmail]
+            [userValidation.validUpdate]
         )
 
         if (!result.ok) {
@@ -116,7 +116,6 @@ export const userController = {
 
         const user = {
             name: result.value.name,
-            email: result.value.email.toLowerCase(),
             password: await encryptPassword(result.value.password)
         } as UserData;
 
