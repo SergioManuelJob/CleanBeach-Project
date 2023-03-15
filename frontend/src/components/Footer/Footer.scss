@@ -3,12 +3,10 @@
 .footer {
     height: 100px;
     background-color: c.$DarkBlue;
-    position: relative;
     .footercontainer {
         display: flex;
         align-items: center;
         justify-content: space-around;
-        position: absolute;
         top: 30%;
         p{
             color: c.$White;
