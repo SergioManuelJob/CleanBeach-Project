@@ -9,6 +9,9 @@
     "postinstall": "prisma generate --schema=./src/prisma/schema.prisma",
     "dbpush": "prisma db push --schema=./src/prisma/schema.prisma"
   },
+  "prisma": {
+    "schema": "./src/prisma/schema.prisma"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

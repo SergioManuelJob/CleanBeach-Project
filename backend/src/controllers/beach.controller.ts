@@ -51,7 +51,8 @@ export const beachController = {
             res.send(data)
         }
         catch (err: any) {
-            res.status(500).send("An error ocurred while retrieving the beaches!")
+            // res.status(500).send("An error ocurred while retrieving the beaches!")
+            res.status(500).send(err.message)
         }
     },
 
