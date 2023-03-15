@@ -20,7 +20,7 @@ const createEvent = (beachId, name, organizerId, description) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return (response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -37,7 +37,7 @@ const getAllEvents = () => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return (response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -54,7 +54,7 @@ const getOneEvent = (id) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+         return (response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -71,7 +71,7 @@ const deleteEvent = (id) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return (response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -99,7 +99,7 @@ const updateEvent = (beachId, name, organizerId, description, id, date) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return(response.data);
     })
     .catch(function (error) {
     console.log(error);

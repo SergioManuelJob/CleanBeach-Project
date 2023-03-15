@@ -23,7 +23,7 @@ const createBeach = (name, status, description, location, file) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return response.data;
     })
     .catch(function (error) {
     console.log(error);
@@ -40,8 +40,7 @@ const getAllBeaches = () => {
   
     axios(config)
     .then(function (response) {
-        return response.data;
-    // console.log(JSON.stringify(response.data));
+        return response.data;;
     })
     .catch(function (error) {
     console.log(error);
@@ -59,7 +58,6 @@ const getOneBeach = (id) => {
     axios(config)
     .then(function (response) {
         return response.data
-    // console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
     console.log(error);
@@ -76,7 +74,7 @@ const deleteBeach = (id) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+    return (response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -104,7 +102,7 @@ const updateBeach = (name, status, description, location, file, id) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+    return (response.data);
     })
     .catch(function (error) {
     console.log(error);
