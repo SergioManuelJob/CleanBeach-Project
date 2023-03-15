@@ -1,5 +1,5 @@
 import axios from "axios";
-url = env("URL_BEACH")
+const url = process.env.URL_BEACH
 
 
 const createBeach = (name, status, description, location, file) => {

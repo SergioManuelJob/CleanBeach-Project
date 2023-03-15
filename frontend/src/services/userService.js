@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = process.env.URL_USER;
+const url = process.env.URL_USER
 
 const logIn = (email, password) => {
   

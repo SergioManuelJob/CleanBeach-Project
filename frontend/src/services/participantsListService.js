@@ -1,5 +1,5 @@
 import axios from "axios";
-url = env("URL_PARTICIPANTSLIST")
+const url = process.env.URL_PARTICIPANTSLIST
 
 const createParticipantsList = (userId, eventId) => {
   
