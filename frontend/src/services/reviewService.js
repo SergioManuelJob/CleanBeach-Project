@@ -20,13 +20,7 @@ const createReview = (userId, beachId, rating, comment) => {
         data : data
     };
   
-    axios(config)
-    .then(function (response) {
-        return(response.data);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
 };
 
 const getAllReviews = () => {
@@ -37,13 +31,7 @@ const getAllReviews = () => {
         headers: { }
     };
   
-    axios(config)
-    .then(function (response) {
-        return(response.data);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
 };
 
 const getOneReview = (id) => {
@@ -54,13 +42,7 @@ const getOneReview = (id) => {
         headers: { }
     };
   
-    axios(config)
-    .then(function (response) {
-        return(response.data);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
 };
 
 const deleteReview = (id) => {
@@ -71,13 +53,7 @@ const deleteReview = (id) => {
         headers: { }
     };
   
-    axios(config)
-    .then(function (response) {
-        return(response.data);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
 };
 
 const updateReview = (userId, beachId, rating, comment, id, token) => {
@@ -100,13 +76,7 @@ const updateReview = (userId, beachId, rating, comment, id, token) => {
         data : data
     };
   
-    axios(config)
-    .then(function (response) {
-        return(response.data);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
 };
 
 const reviewService = {

@@ -19,13 +19,7 @@ const createEvent = (beachId, name, organizerId, description) => {
         data : data
     };
   
-    axios(config)
-    .then(function (response) {
-        return (response.data);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
 };
 
 const getAllEvents = () => {
@@ -36,13 +30,7 @@ const getAllEvents = () => {
         headers: { }
     };
   
-    axios(config)
-    .then(function (response) {
-        return (response.data);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
 };
 
 const getOneEvent = (id) => {
@@ -53,13 +41,7 @@ const getOneEvent = (id) => {
         headers: { }
     };
   
-    axios(config)
-    .then(function (response) {
-         return (response.data);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
 };
 
 const deleteEvent = (id) => {
@@ -70,13 +52,7 @@ const deleteEvent = (id) => {
         headers: { }
     };
   
-    axios(config)
-    .then(function (response) {
-        return (response.data);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
 };
 
 const updateEvent = (beachId, name, organizerId, description, id, date) => {
@@ -98,13 +74,7 @@ const updateEvent = (beachId, name, organizerId, description, id, date) => {
         data : data
     };
   
-    axios(config)
-    .then(function (response) {
-        return(response.data);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
 };
 
 const eventService = {

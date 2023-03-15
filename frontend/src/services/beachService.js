@@ -21,13 +21,7 @@ const createBeach = (name, status, description, location, file) => {
         data : data
     };
   
-    axios(config)
-    .then(function (response) {
-        return response.data;
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
 };
 
 const getAllBeaches = () => {
@@ -38,13 +32,7 @@ const getAllBeaches = () => {
         headers: { }
     };
   
-    axios(config)
-    .then(function (response) {
-        return response.data;
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
 };
 
 const getOneBeach = (id) => {
@@ -55,13 +43,8 @@ const getOneBeach = (id) => {
         headers: { }
     };
   
-    axios(config)
-    .then(function (response) {
-        return response.data
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
+    
 };
 
 const deleteBeach = (id) => {
@@ -72,13 +55,7 @@ const deleteBeach = (id) => {
         headers: { }
       };
   
-    axios(config)
-    .then(function (response) {
-    return (response.data);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
 };
 
 const updateBeach = (name, status, description, location, file, id) => {
@@ -100,13 +77,7 @@ const updateBeach = (name, status, description, location, file, id) => {
         data : data
     };
   
-    axios(config)
-    .then(function (response) {
-    return (response.data);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
 };
 
 const beachService = {
