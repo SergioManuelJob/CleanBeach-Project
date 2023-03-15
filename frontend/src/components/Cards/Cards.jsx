@@ -1,6 +1,7 @@
 import "./Cards.scss";
 import Beachpic from "../../images/pexels-asad-photo-maldives-1450353.jpg";
 import { NavLink } from "react-router-dom";
+import beachService from '../../services/beachService';
 
 const Cards = () => {
   return (
