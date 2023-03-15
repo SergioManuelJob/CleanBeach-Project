@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
-import eventService from "../../services/eventService";
-import axios from "axios";
+import axios from "axios"
+import './EventCards.scss';
 
 const EventCards = () => {
     const [data, setData] = useState([]);
   
     useEffect(() => {
       const getData = async () => {
-        await eventService.getAllEvents().then(data => {
-            const result = data
-            setData(result.data);
-            console.log(result.data)
-        })
+        const result = await axios.get('http://localhost:27017/api/events/getAll')
+        setData(result.data);
+        for(let i = 0; i< result.data.length; i++){
+            const text = JSON.stringify(result.data[0].date).slice(1,11)
+            result.data[i].date = text
+        } 
       }
       getData();
     }, [setData]);
@@ -22,13 +23,13 @@ const EventCards = () => {
             {data &&
             data.map((event, key) => {
                 return (
-                <section>
+                <section key={key}>
                 <span>
-                    {/* <p>event.name {address(event.beachId)}</p> */}
-                    <p>event.date</p>
+                    <p>{event.name}</p>
+                    <p>{event.date}</p>
                 </span>
                 <p>
-                    event.description
+                    {event.description}
                 </p>
                 </section>
                 );

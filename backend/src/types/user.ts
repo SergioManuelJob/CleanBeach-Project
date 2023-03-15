@@ -32,19 +32,17 @@ export const userValidation = {
             } as ResponseData);
     },
 
-    // validUpdate: (user: UserData): Result<UserData, ResponseData> => {
-    //     const valid  = user.uid      !== undefined
-    //                 && user.name     !== undefined
-    //                 && user.email    !== undefined
-    //                 && user.password !== undefined;
+    validUpdate: (user: UserData): Result<UserData, ResponseData> => {
+        const valid  = user.name     !== undefined
+                    && user.password !== undefined;
 
-    //     return valid
-    //          ? Ok(user)
-    //          : Err({
-    //             code: 400,
-    //             msg: "[VALIDATION ERROR] Must provide the following fields: { uid, name, email, password }"
-    //          } as ResponseData);
-    // },
+        return valid
+             ? Ok(user)
+             : Err({
+                code: 400,
+                msg: "[VALIDATION ERROR] Must provide the following fields: { name, password }"
+             } as ResponseData);
+    },
 
     email,
 
