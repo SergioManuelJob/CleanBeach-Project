@@ -4,7 +4,6 @@ import axios from "axios";
 const createBeach = (name, status, description, location, file) => {
   
     var FormData = require('form-data');
-    // var fs = require('fs');
     var data = new FormData();
     data.append('name', name);
     data.append('status', status);
