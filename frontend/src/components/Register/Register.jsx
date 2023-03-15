@@ -76,7 +76,7 @@ const Register = () => {
         onChange={handleChange} />
 
         <p style={{color: 'red'}}>{formErrors.password}</p>
-        <div className='member'>Already have an account? <span>Sign In</span></div>
+        <div className='member'>Already have an account? <a href='/signup'>Sign In</a></div>
 
         <button>Register</button>
         </div>
