@@ -31,10 +31,11 @@ const authController = {
             if(!data || !matchPassword(result.value.password, data.password))
                 return res.json("Email or password invalid!");
 
-            const { uid, email, isAdmin } = data;
+            const { uid, email, password, isAdmin } = data;
+            if (!uid) throw new Error("XDDDDDDDDDDDDDDD");
             return res.json({ 
                 email, isAdmin,
-                access_token: generateToken({ uid, email, isAdmin }),
+                access_token: generateToken({ uid, email, password, isAdmin }),
             })
         } catch (err: any){
             res.status(500).send("Some error ocurred while logging in!")
@@ -58,10 +59,11 @@ const authController = {
 
         try {
             const data: UserData = await prisma.user.create({ data: body });
-            const { uid, email, isAdmin } = data;
+            const { uid, email, password, isAdmin } = data;
+            if (!uid) throw new Error("XDDDDDDDDDDDDDDD");
             return res.json({ 
                 email, isAdmin,
-                access_token: generateToken({ uid, email, isAdmin }),
+                access_token: generateToken({ uid, email, password, isAdmin }),
             });
         } catch (err: any) {
             const code = err.code == "P2002" ? 400 : 500;

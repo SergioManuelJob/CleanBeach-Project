@@ -1,4 +1,5 @@
 import axios from "axios";
+url = env("URL_EVENT")
 
 const createEvent = (beachId, name, organizerId, description) => {
   
@@ -11,7 +12,7 @@ const createEvent = (beachId, name, organizerId, description) => {
       
     var config = {
         method: 'post',
-        url: 'http://localhost:27017/api/events/create',
+        url: url +'create',
         headers: { 
           'Content-Type': 'application/json'
         },
@@ -20,7 +21,7 @@ const createEvent = (beachId, name, organizerId, description) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return (response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -31,13 +32,13 @@ const getAllEvents = () => {
       
     var config = {
         method: 'get',
-        url: 'http://localhost:27017/api/events/getAll',
+        url: url +'getAll',
         headers: { }
     };
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return (response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -48,13 +49,13 @@ const getOneEvent = (id) => {
       
     var config = {
         method: 'get',
-        url: 'http://localhost:27017/api/events/' + id,
+        url: url + id,
         headers: { }
     };
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+         return (response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -65,13 +66,13 @@ const deleteEvent = (id) => {
       
     var config = {
         method: 'delete',
-        url: 'http://localhost:27017/api/events/' + id,
+        url: url + id,
         headers: { }
     };
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return (response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -90,7 +91,7 @@ const updateEvent = (beachId, name, organizerId, description, id, date) => {
       
     var config = {
         method: 'put',
-        url: 'http://localhost:27017/api/events/' + id,
+        url: url + id,
         headers: { 
           'Content-Type': 'application/json'
         },
@@ -99,7 +100,7 @@ const updateEvent = (beachId, name, organizerId, description, id, date) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return(response.data);
     })
     .catch(function (error) {
     console.log(error);

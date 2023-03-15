@@ -1,4 +1,5 @@
 import axios from "axios";
+url = env("URL_USER")
 
 const logIn = (email, password) => {
   
@@ -9,7 +10,7 @@ const logIn = (email, password) => {
   
     var config = {
         method: 'post',
-        url: 'http://localhost:27017/api/users/login',
+        url: url +'login',
         headers: { 
           'Content-Type': 'application/json'
         },
@@ -18,7 +19,7 @@ const logIn = (email, password) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+      return(response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -36,7 +37,7 @@ const register = (name, email, password) => {
     
     var config = {
         method: 'post',
-        url: 'http://localhost:27017/api/users/signin',
+        url: url +'signin',
         headers: { 
         'Content-Type': 'application/json'
         },
@@ -45,7 +46,7 @@ const register = (name, email, password) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+      return(response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -56,13 +57,13 @@ const getAllUsers = () => {
    
     var config = {
         method: 'get',
-        url: 'http://localhost:27017/api/users/getAll',
+        url: url +'getAll',
         headers: { }
     };
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+      return(response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -73,13 +74,13 @@ const getOneUser = (id) => {
    
     var config = {
         method: 'get',
-        url: 'http://localhost:27017/api/users/getAll' + id,
+        url: url + id,
         headers: { }
     };
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+      return(response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -90,7 +91,7 @@ const deleteUser = (id, token) => {
    
     var config = {
         method: 'delete',
-        url: 'http://localhost:27017/api/users/' + id,
+        url: url + id,
         headers: { 
           'Authorization': 'Bearer ' + token
         }
@@ -98,7 +99,7 @@ const deleteUser = (id, token) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+      return(response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -115,7 +116,7 @@ const updateUser = (name, email, password, id, token) => {
    
     var config = {
         method: 'put',
-        url: 'http://localhost:27017/api/users/' + id,
+        url: url + id,
         headers: { 
           'Authorization': 'Bearer ' + token,
           'Content-Type': 'application/json'
@@ -125,7 +126,7 @@ const updateUser = (name, email, password, id, token) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+      return(response.data);
     })
     .catch(function (error) {
     console.log(error);

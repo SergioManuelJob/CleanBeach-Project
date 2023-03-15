@@ -1,4 +1,5 @@
 import axios from "axios";
+url = env("URL_REVIEW")
 
 const createReview = (userId, beachId, rating, comment) => {
   
@@ -12,7 +13,7 @@ const createReview = (userId, beachId, rating, comment) => {
     
     var config = {
         method: 'post',
-        url: 'http://localhost:27017/api/reviews/create',
+        url: url +'create',
         headers: { 
           'Content-Type': 'application/json'
         },
@@ -21,7 +22,7 @@ const createReview = (userId, beachId, rating, comment) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return(response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -32,13 +33,13 @@ const getAllReviews = () => {
     
     var config = {
         method: 'get',
-        url: 'http://localhost:27017/api/reviews/getAll',
+        url: url +'getAll',
         headers: { }
     };
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return(response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -49,13 +50,13 @@ const getOneReview = (id) => {
     
     var config = {
         method: 'get',
-        url: 'http://localhost:27017/api/reviews/' + id,
+        url: url + id,
         headers: { }
     };
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return(response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -66,13 +67,13 @@ const deleteReview = (id) => {
     
     var config = {
         method: 'delete',
-        url: 'http://localhost:27017/api/reviews/' + id,
+        url: url + id,
         headers: { }
     };
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return(response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -91,7 +92,7 @@ const updateReview = (userId, beachId, rating, comment, id, token) => {
     
     var config = {
         method: 'put',
-        url: 'http://localhost:27017/api/reviews/' + id,
+        url: url + id,
         headers: { 
             'Authorization': 'Bearer ' + token,
             'Content-Type': 'application/json'
@@ -101,7 +102,7 @@ const updateReview = (userId, beachId, rating, comment, id, token) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return(response.data);
     })
     .catch(function (error) {
     console.log(error);

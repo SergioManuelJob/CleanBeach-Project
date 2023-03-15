@@ -1,10 +1,10 @@
 import axios from "axios";
+url = env("URL_BEACH")
 
 
 const createBeach = (name, status, description, location, file) => {
   
     var FormData = require('form-data');
-    var fs = require('fs');
     var data = new FormData();
     data.append('name', name);
     data.append('status', status);
@@ -14,7 +14,7 @@ const createBeach = (name, status, description, location, file) => {
       
     var config = {
         method: 'post',
-        url: 'http://localhost:27017/api/beaches/create',
+        url: url +'create',
         headers: { 
           ...data.getHeaders()
         },
@@ -23,7 +23,7 @@ const createBeach = (name, status, description, location, file) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return response.data;
     })
     .catch(function (error) {
     console.log(error);
@@ -34,13 +34,13 @@ const getAllBeaches = () => {
       
     var config = {
         method: 'get',
-        url: 'http://localhost:27017/api/beaches/getAll',
+        url: url +'getAll',
         headers: { }
     };
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return response.data;
     })
     .catch(function (error) {
     console.log(error);
@@ -51,13 +51,13 @@ const getOneBeach = (id) => {
       
     var config = {
         method: 'get',
-        url: 'http://localhost:27017/api/beaches/' + id,
+        url: url + id,
         headers: { }
     };
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return response.data
     })
     .catch(function (error) {
     console.log(error);
@@ -68,13 +68,13 @@ const deleteBeach = (id) => {
       
     var config = {
         method: 'delete',
-        url: 'http://localhost:27017/api/beaches/' + id,
+        url: url + id,
         headers: { }
       };
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+    return (response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -93,7 +93,7 @@ const updateBeach = (name, status, description, location, file, id) => {
       
     var config = {
         method: 'post',
-        url: 'http://localhost:27017/api/beaches/' + id,
+        url: url + id,
         headers: { 
           ...data.getHeaders()
         },
@@ -102,7 +102,7 @@ const updateBeach = (name, status, description, location, file, id) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+    return (response.data);
     })
     .catch(function (error) {
     console.log(error);

@@ -1,4 +1,5 @@
 import axios from "axios";
+url = env("URL_PARTICIPANTSLIST")
 
 const createParticipantsList = (userId, eventId) => {
   
@@ -11,7 +12,7 @@ const createParticipantsList = (userId, eventId) => {
     
     var config = {
         method: 'post',
-        url: 'http://localhost:27017/api/participantsLists/create',
+        url: url +'create',
         headers: { 
           'Content-Type': 'application/json'
         },
@@ -20,7 +21,7 @@ const createParticipantsList = (userId, eventId) => {
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return (response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -31,13 +32,13 @@ const getAllParticipantsList = () => {
       
     var config = {
         method: 'get',
-        url: 'http://localhost:27017/api/participantsLists/getAll',
+        url: url +'getAll',
         headers: { }
     };
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return (response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -48,13 +49,13 @@ const getOneParticipantsList = (id) => {
       
     var config = {
         method: 'get',
-        url: 'http://localhost:27017/api/participantsLists/' + id,
+        url: url + id,
         headers: { }
     };
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return(response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -65,13 +66,13 @@ const deleteParticipantsList = (id) => {
       
     var config = {
         method: 'delete',
-        url: 'http://localhost:27017/api/participantsLists/' + id,
+        url: url + id,
         headers: { }
     };
   
     axios(config)
     .then(function (response) {
-    console.log(JSON.stringify(response.data));
+        return(response.data);
     })
     .catch(function (error) {
     console.log(error);
