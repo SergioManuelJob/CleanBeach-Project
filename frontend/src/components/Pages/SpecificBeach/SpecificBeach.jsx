@@ -5,13 +5,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const SpecificBeach = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({});
   const { id } = useParams();
 
   useEffect(() => {
     const getData = async () => {
       const result = await axios.get(
-        'http://localhost:27017/api/beaches/'
+        `http://localhost:27017/api/beaches/${id}`
       );
       setData(result.data);
       console.log(result);
@@ -22,29 +22,28 @@ const SpecificBeach = () => {
   return (
     <section>
       {data &&
-        data.map((specific) => {
-          return (
+           (
             <>
               <div className="specificbeachText">
-                <h2>{specific.name}</h2>
-                <img className="beachimg" src={specific.image} alt="Beach" />
+                <h2>{data.name}</h2>
+                <img className="beachimg" src={data.image} alt="Beach" />
               </div>
               <hgroup className="info">
-                <h3>{specific.name}</h3>
-                <h4>{specific.status}</h4>
+                <h3>{data.name}</h3>
+                <h4>{data.status}</h4>
               </hgroup>
               <span className="spanP">
-                <p>{specific.description}</p>
+                <p>{data.description}</p>
               </span>
               <div className="googlemaps">
                   <iframe
                     title="map"
                     width="310"
                     height="418"
-                    frameborder="0"
+                    frameBorder="0"
                     scrolling="no"
-                    marginheight="0"
-                    marginwidth="0"
+                    marginHeight="0"
+                    marginWidth="0"
                     id="gmap_canvas"
                     src="https://maps.google.com/maps?width=310&amp;height=418&amp;hl=en&amp;q=Las%20Canteras%20Las%20Palmas%20de%20Gran%20Canaria+(Las%20Canteras%20Beach)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
                   ></iframe>
@@ -62,8 +61,8 @@ const SpecificBeach = () => {
               </svg>
               <VolunteerText />
             </>
-          );
-        })}
+          )
+        }
     </section>
   );
 };
