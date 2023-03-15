@@ -1,4 +1,5 @@
 import axios from "axios";
+url = env("URL_PARTICIPANTSLIST")
 
 const createParticipantsList = (userId, eventId) => {
   
@@ -11,7 +12,7 @@ const createParticipantsList = (userId, eventId) => {
     
     var config = {
         method: 'post',
-        url: 'http://localhost:27017/api/participantsLists/create',
+        url: url +'create',
         headers: { 
           'Content-Type': 'application/json'
         },
@@ -31,7 +32,7 @@ const getAllParticipantsList = () => {
       
     var config = {
         method: 'get',
-        url: 'http://localhost:27017/api/participantsLists/getAll',
+        url: url +'getAll',
         headers: { }
     };
   
@@ -48,7 +49,7 @@ const getOneParticipantsList = (id) => {
       
     var config = {
         method: 'get',
-        url: 'http://localhost:27017/api/participantsLists/' + id,
+        url: url + id,
         headers: { }
     };
   
@@ -65,7 +66,7 @@ const deleteParticipantsList = (id) => {
       
     var config = {
         method: 'delete',
-        url: 'http://localhost:27017/api/participantsLists/' + id,
+        url: url + id,
         headers: { }
     };
   

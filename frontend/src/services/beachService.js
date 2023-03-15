@@ -1,4 +1,5 @@
 import axios from "axios";
+url = env("URL_BEACH")
 
 
 const createBeach = (name, status, description, location, file) => {
@@ -13,7 +14,7 @@ const createBeach = (name, status, description, location, file) => {
       
     var config = {
         method: 'post',
-        url: 'http://localhost:27017/api/beaches/create',
+        url: url +'create',
         headers: { 
           ...data.getHeaders()
         },
@@ -33,7 +34,7 @@ const getAllBeaches = () => {
       
     var config = {
         method: 'get',
-        url: 'http://localhost:27017/api/beaches/getAll',
+        url: url +'getAll',
         headers: { }
     };
   
@@ -50,7 +51,7 @@ const getOneBeach = (id) => {
       
     var config = {
         method: 'get',
-        url: 'http://localhost:27017/api/beaches/' + id,
+        url: url + id,
         headers: { }
     };
   
@@ -67,7 +68,7 @@ const deleteBeach = (id) => {
       
     var config = {
         method: 'delete',
-        url: 'http://localhost:27017/api/beaches/' + id,
+        url: url + id,
         headers: { }
       };
   
@@ -92,7 +93,7 @@ const updateBeach = (name, status, description, location, file, id) => {
       
     var config = {
         method: 'post',
-        url: 'http://localhost:27017/api/beaches/' + id,
+        url: url + id,
         headers: { 
           ...data.getHeaders()
         },

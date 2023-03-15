@@ -1,4 +1,5 @@
 import axios from "axios";
+url = env("URL_USER")
 
 const logIn = (email, password) => {
   
@@ -9,7 +10,7 @@ const logIn = (email, password) => {
   
     var config = {
         method: 'post',
-        url: 'http://localhost:27017/api/users/login',
+        url: url +'login',
         headers: { 
           'Content-Type': 'application/json'
         },
@@ -36,7 +37,7 @@ const register = (name, email, password) => {
     
     var config = {
         method: 'post',
-        url: 'http://localhost:27017/api/users/signin',
+        url: url +'signin',
         headers: { 
         'Content-Type': 'application/json'
         },
@@ -56,7 +57,7 @@ const getAllUsers = () => {
    
     var config = {
         method: 'get',
-        url: 'http://localhost:27017/api/users/getAll',
+        url: url +'getAll',
         headers: { }
     };
   
@@ -73,7 +74,7 @@ const getOneUser = (id) => {
    
     var config = {
         method: 'get',
-        url: 'http://localhost:27017/api/users/getAll' + id,
+        url: url + id,
         headers: { }
     };
   
@@ -90,7 +91,7 @@ const deleteUser = (id, token) => {
    
     var config = {
         method: 'delete',
-        url: 'http://localhost:27017/api/users/' + id,
+        url: url + id,
         headers: { 
           'Authorization': 'Bearer ' + token
         }
@@ -115,7 +116,7 @@ const updateUser = (name, email, password, id, token) => {
    
     var config = {
         method: 'put',
-        url: 'http://localhost:27017/api/users/' + id,
+        url: url + id,
         headers: { 
           'Authorization': 'Bearer ' + token,
           'Content-Type': 'application/json'
