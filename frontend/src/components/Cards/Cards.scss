@@ -21,6 +21,9 @@ a{
     p {
       margin: 0 0.5em;
       font-size: 1em;
+      max-height: 14ch;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
     .hGroups {
       display: grid;
@@ -31,11 +34,11 @@ a{
         color: c.$Black;
       }
       h3 {
-        font-size: 1.2em;
+        font-size: 1em;
         font-family: c.$Sriracha;
       }
       h4 {
-        font-size: 1.3em;
+        font-size: 1em;
         text-align: right;
       }
     }
