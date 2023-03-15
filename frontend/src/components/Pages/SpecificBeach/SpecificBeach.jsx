@@ -1,4 +1,4 @@
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { VolunteerText } from "../../VolunteerText/VolunteerText";
 import "./SpecificBeach.scss";
 import { useState, useEffect } from "react";
@@ -11,7 +11,7 @@ const SpecificBeach = () => {
   useEffect(() => {
     const getData = async () => {
       const result = await axios.get(
-        `http://localhost:27017/api/beaches/${id}`
+        'http://localhost:27017/api/beaches/'
       );
       setData(result.data);
       console.log(result);
@@ -37,7 +37,6 @@ const SpecificBeach = () => {
                 <p>{specific.description}</p>
               </span>
               <div className="googlemaps">
-                <NavLink to="/map">
                   <iframe
                     title="map"
                     width="310"
@@ -49,7 +48,6 @@ const SpecificBeach = () => {
                     id="gmap_canvas"
                     src="https://maps.google.com/maps?width=310&amp;height=418&amp;hl=en&amp;q=Las%20Canteras%20Las%20Palmas%20de%20Gran%20Canaria+(Las%20Canteras%20Beach)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
                   ></iframe>
-                </NavLink>
               </div>
               <div className="reviews">
                 <h4>Reviews</h4>
