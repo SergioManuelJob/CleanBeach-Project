@@ -1,5 +1,5 @@
 import axios from "axios";
-url = env("URL_REVIEW")
+const url = process.env.URL_REVIEW
 
 const createReview = (userId, beachId, rating, comment) => {
   

@@ -1,5 +1,5 @@
 import axios from "axios";
-url = env("URL_EVENT")
+const url = process.env.URL_EVENT
 
 const createEvent = (beachId, name, organizerId, description) => {
   

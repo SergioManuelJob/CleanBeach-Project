@@ -1,6 +1,7 @@
 import "./Events.scss";
 import beachfun from "../../../images/IMG_6610.jpg";
 import { NavLink } from "react-router-dom";
+import EventCards from "../../EventCards/EventCards";
 
 const EventsPage = () => {
   return (
@@ -35,31 +36,8 @@ const EventsPage = () => {
         </p>
       </section>
 
-
-      <section>
-        <span>
-          <p>name and location</p>
-          <p>time and date</p>
-        </span>
-        <p>
-          We’re gonna meet up at Las canteras in Las Palmas at 16:00 to start
-          cleaning the beach from trash. There will be free drinks and snacks at
-          the end of the day for those who are going to participate.{" "}
-        </p>
-      </section>
-
-
-      <section>
-        <span>
-          <p>name and location</p>
-          <p>time and date</p>
-        </span>
-        <p>
-          We’re gonna meet up at Las canteras in Las Palmas at 16:00 to start
-          cleaning the beach from trash. There will be free drinks and snacks at
-          the end of the day for those who are going to participate.{" "}
-        </p>
-      </section>
+      <EventCards></EventCards>
+      
     </>
   );
 };
