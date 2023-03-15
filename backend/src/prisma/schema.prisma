@@ -8,6 +8,7 @@ generator client {
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
+  relationMode = "prisma" // Must be active for PlanetScale
 }
 
 model User {
@@ -26,7 +27,7 @@ model Beach {
   name String @unique @db.VarChar(100)
   status Status
   image String @db.VarChar(200)
-  description String @db.VarChar(500)
+  description String @db.Text
   address String @db.VarChar(200)
   latitude Decimal @db.Decimal(8, 6) @default(0)
   longitude Decimal @db.Decimal(9, 6) @default(0)
@@ -49,6 +50,9 @@ model Review {
   beachId Int 
   rating Int
   comment String @db.VarChar(250)
+
+  @@index([userId])
+  @@index([beachId])
 }
 
 model Event {
@@ -61,6 +65,9 @@ model Event {
   description String @db.VarChar(500)
   date  DateTime   @default(now())
   participants ParticipantsList[]
+
+  @@index([beachId])
+  @@index([organizerId])
 }
 
 model ParticipantsList {
@@ -68,5 +75,8 @@ model ParticipantsList {
   user User @relation(fields: [userId], references: [uid], onDelete: Cascade)
   userId Int 
   event Event @relation(fields: [eventId], references: [eid], onDelete: Cascade)
-  eventId Int 
+  eventId Int
+
+  @@index([userId])
+  @@index([eventId]) 
 }
