@@ -17,10 +17,10 @@ const AdminPage = () => {
       </div>
       <div>
         <NavLink>
-          <FaTrashAlt />
+          <FaTrashAlt size={25} />
         </NavLink>
         <NavLink>
-          <BiEditAlt />
+          <BiEditAlt size={25} />
         </NavLink>
         <Cards />
       </div>
