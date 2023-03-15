@@ -1,4 +1,5 @@
 import axios from "axios";
+url = env("URL_REVIEW")
 
 const createReview = (userId, beachId, rating, comment) => {
   
@@ -12,7 +13,7 @@ const createReview = (userId, beachId, rating, comment) => {
     
     var config = {
         method: 'post',
-        url: 'http://localhost:27017/api/reviews/create',
+        url: url +'create',
         headers: { 
           'Content-Type': 'application/json'
         },
@@ -32,7 +33,7 @@ const getAllReviews = () => {
     
     var config = {
         method: 'get',
-        url: 'http://localhost:27017/api/reviews/getAll',
+        url: url +'getAll',
         headers: { }
     };
   
@@ -49,7 +50,7 @@ const getOneReview = (id) => {
     
     var config = {
         method: 'get',
-        url: 'http://localhost:27017/api/reviews/' + id,
+        url: url + id,
         headers: { }
     };
   
@@ -66,7 +67,7 @@ const deleteReview = (id) => {
     
     var config = {
         method: 'delete',
-        url: 'http://localhost:27017/api/reviews/' + id,
+        url: url + id,
         headers: { }
     };
   
@@ -91,7 +92,7 @@ const updateReview = (userId, beachId, rating, comment, id, token) => {
     
     var config = {
         method: 'put',
-        url: 'http://localhost:27017/api/reviews/' + id,
+        url: url + id,
         headers: { 
             'Authorization': 'Bearer ' + token,
             'Content-Type': 'application/json'
