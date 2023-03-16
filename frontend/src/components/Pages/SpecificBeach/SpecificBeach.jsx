@@ -1,4 +1,4 @@
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { VolunteerText } from "../../VolunteerText/VolunteerText";
 import "./SpecificBeach.scss";
 import { useState, useEffect } from "react";
