@@ -75,7 +75,7 @@ const SignInPage = () => {
 
         <button>Log in</button>
         </div>
-        <img className='cleaning' src={Cleaning} alt="My Image" />
+        <img className='cleaning' src={Cleaning} alt="Beach Cleaning" />
 
     </div>
 </form>
