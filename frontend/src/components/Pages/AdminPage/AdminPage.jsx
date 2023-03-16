@@ -1,6 +1,6 @@
 import Cards from "../../Cards/Cards";
 import { FaTrashAlt } from "react-icons/fa";
-import { BiEditAlt } from "react-icons/bi";
+import { BiEdit } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
 import "./AdminPage.scss";
 
@@ -15,13 +15,16 @@ const AdminPage = () => {
       <div className="NewBtn">
         <button>NEW</button>
       </div>
-      <div>
-        <NavLink>
-          <FaTrashAlt size={25} />
-        </NavLink>
-        <NavLink>
-          <BiEditAlt size={25} />
-        </NavLink>
+
+      <div className="containerIcons">
+        <div className="reactIcons">
+          <NavLink>
+            <BiEdit size={40} />
+          </NavLink>
+          <NavLink>
+            <FaTrashAlt size={35} />
+          </NavLink>
+        </div>
         <Cards />
       </div>
     </>

@@ -2,7 +2,10 @@
 
 .fun {
     width: 100%;
+    display: block;
     object-fit: cover;
+    opacity: 25%;
+    filter: blur(3px);
 }
 
 .image-container {

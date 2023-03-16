@@ -21,11 +21,6 @@ const Router = () => {
       <Route path="/update" element={<UpdatePage />} />
       <Route path="/admin" element={<AdminPage />} />
       <Route path="/createevent" element={<CreateEvent />} />
-      <Route path="/signup" element={SignInPage } />
-      <Route path="/register" element={Register } />
-
-
-
     </Routes>
   );
 };
