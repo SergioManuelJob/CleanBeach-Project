@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = process.env.URL_BEACH
+const url = "http://backend-cleanbeach-production.up.railway.app/api/beaches/"
 
 
 const createBeach = (name, status, description, location, file) => {

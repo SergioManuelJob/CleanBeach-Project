@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "http://localhost:27017/api/users/"
+const url = "http://backend-cleanbeach-production.up.railway.app/api/users/"
 
 const logIn = (email, password) => {
   
@@ -10,7 +10,7 @@ const logIn = (email, password) => {
   
     var config = {
         method: 'post',
-        url: "http://localhost:27017/api/users/login",
+        url: url + "login",
         headers: { 
           'Content-Type': 'application/json'
         },
@@ -30,7 +30,7 @@ const register = (name, email, password) => {
     
     var config = {
         method: 'post',
-        url: "http://localhost:27017/api/users/signin",
+        url: url + "signin",
         headers: { 
         'Content-Type': 'application/json'
         },
@@ -84,7 +84,7 @@ const updateUser = (name, password, id, token) => {
    
     var config = {
         method: 'put',
-        url: "http://localhost:27017/api/users/" + id,
+        url: url + id,
         headers: { 
           'Authorization': 'Bearer ' + token,
           'Content-Type': 'application/json'
