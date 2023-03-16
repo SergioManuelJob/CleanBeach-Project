@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "https://cleanbeach.onrender.comp/api/users/"
+const url = "https://cleanbeach.onrender.com/api/users/"
 
 const logIn = (email, password) => {
   

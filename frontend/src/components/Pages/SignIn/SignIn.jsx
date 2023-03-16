@@ -22,10 +22,9 @@ const SignInPage = () => {
     };
 
     useEffect(() => {
-        console.log(formErrors);
         if (Object.keys(formErrors).length === 0 && isSubmit) {
-            console.log(formValues);
             userService.logIn(formValues.email, formValues.password).then(data => {
+                console.log("G")
                 localStorage.setItem("user", JSON.stringify(data.data))
                 window.location.href = "/"
             })
