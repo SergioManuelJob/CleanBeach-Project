@@ -26,6 +26,7 @@ const SignInPage = () => {
             console.log(formValues);
             userService.logIn(formValues.email, formValues.password).then(data => {
                 localStorage.setItem("user", JSON.stringify(data.data))
+                window.location.href = "/"
             })
         }
     }, [formErrors]);
