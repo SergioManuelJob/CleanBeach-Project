@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = process.env.URL_BEACH
+const url = "http://localhost:27017/api/beaches/"
 
 
 const createBeach = (name, status, description, location, file) => {

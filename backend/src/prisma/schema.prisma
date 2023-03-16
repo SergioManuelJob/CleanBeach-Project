@@ -63,7 +63,7 @@ model Event {
   organizer User @relation(fields: [organizerId], references: [uid], onDelete: Cascade)
   organizerId Int 
   description String @db.VarChar(500)
-  date  DateTime   @default(now())
+  date  DateTime   @db.Date
   participants ParticipantsList[]
 
   @@index([beachId])

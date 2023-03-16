@@ -43,7 +43,7 @@
         margin-top: 1.5em;
     }
   
-    input {
+    input, select {
         padding-top: 8px;
         padding-bottom: 8px;
         box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.25);
@@ -52,7 +52,7 @@
     }
   
     /* styles for the specific inputs */
-    input[name="title"], input[name="category"] {
+    input[name="name"], input[name="description"], select {
         width: 100%;
     }
   
@@ -89,9 +89,10 @@
         }
 
   
-        input[name="starts"],
-        input[name="ends"], input[name="starttime"], input[name="endtime"] {
-          width: 80%;
+        input[name="date"],
+        input[name="ends"], input[name="starttime"], input[name="endtime"] 
+            {
+          width: 100%;
         }
 
         .button {

@@ -19,10 +19,11 @@ const Register = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormErrors(validate(formValues));
+        if (Object.keys(formErrors) !== 0) return;
         userService.register(formValues.fullname, formValues.email, formValues.password)
-            .then(data => {
-                console.log(data)
-                localStorage.setItem("user", JSON.stringify(data.data))
+            .then(res => {
+                console.log(res)
+                localStorage.setItem("user", JSON.stringify(res.data))
                 setIsSubmit(true);
                 console.log(res.data);
                 if (res.data.code || res.status !== 200) {
