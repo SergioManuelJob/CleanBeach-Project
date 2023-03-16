@@ -6,6 +6,10 @@
     margin: 0;
 }
 
+.logo {
+    width: 4.5em;
+}
+
 header {
     display: flex;
     align-items: center;
@@ -24,12 +28,11 @@ header {
             justify-content: space-between;
             list-style: none;
             li{
-                padding: 0 0 0 2em;
+                padding: 0 0 0 3em;
               a{
                 color: c.$White;
-                margin: 0 2rem;
-                text-decoration: none;
                 margin: 0;
+                text-decoration: none;
             }  
             }
             

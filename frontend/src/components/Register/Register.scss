@@ -32,7 +32,7 @@
         margin-top: 3em;
     }
 
-    span {
+    a {
         color: c.$LightBlue;
         cursor: pointer;
     }
@@ -54,7 +54,7 @@
         box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.25);
         cursor: pointer;
         border-radius: 5px;
-
+        margin-bottom: 0;
     }
 }
 
@@ -88,9 +88,4 @@
     }
 }
 
-}
-
-@media screen and (min-width: 1000px) {
-
-    
 }

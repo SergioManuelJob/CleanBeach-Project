@@ -64,7 +64,8 @@ const SignInPage = () => {
         <input name="password" type="password" value={formValues.password}
         onChange={handleChange}/>
         <p style={{color: 'red'}}>{formErrors.password}</p>
-        <div className='notAMember'>Don't have an account? <span>Register</span></div>
+        <div className='notAMember'>Don't have an account? <a href='/register'>Register</a>
+        </div>
 
         <button>Log in</button>
         </div>

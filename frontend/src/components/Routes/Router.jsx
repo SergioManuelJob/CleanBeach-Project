@@ -14,7 +14,6 @@ const Router = () => {
     <Routes>
       <Route index element={<LandingPage />} />
       <Route path="/events" element={<EventsPage />}>
-        <Route path="/events/createevent" element={<CreateEvent />} />
       </Route>
       <Route path="/register" element={<Register />} />
       <Route path="/specificbeach" element={<SpecificBeach />} />
@@ -22,6 +21,12 @@ const Router = () => {
       <Route path="/profile" element={<UserPage />} />
       <Route path="/update" element={<UpdatePage />} />
       <Route path="/admin" element={<AdminPage />} />
+      <Route path="/createevent" element={<CreateEvent />} />
+      <Route path="/signup" element={SignInPage } />
+      <Route path="/register" element={Register } />
+
+
+
     </Routes>
   );
 };
