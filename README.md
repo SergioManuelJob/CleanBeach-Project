@@ -143,7 +143,7 @@ The division of parts of the project looks like this:
 
 Design: All of the group.
 Backend: Gabriel and Sergio.
-Frontend: Lydia and Emma for the design and architecture/body of the web page, Sergio took care of integrating the services to connect with the backend.
+Frontend: Lydia and Emma for the design and architecture/body of the web page, Sergio took care of integrating the services to connect with the backend and the functionality of the frontend.
 
 ### First week:
 
