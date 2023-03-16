@@ -20,9 +20,9 @@ const Register = () => {
         e.preventDefault();
         setFormErrors(validate(formValues));
         userService.register(formValues.fullname, formValues.email, formValues.password)
-            .then(data => {
-                console.log(data)
-                localStorage.setItem("user", JSON.stringify(data.data))
+            .then(res => {
+                console.log(res)
+                localStorage.setItem("user", JSON.stringify(res.data))
                 setIsSubmit(true);
                 window.location.href = "/"
                 console.log(res.data);
