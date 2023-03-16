@@ -1,0 +1,93 @@
+@use '../Styled/Theme.scss' as c;
+
+.form {
+    margin: 2em 0 0 2em;
+    padding: 2em 0 2em 4em;
+
+
+    .h1ss, .h1sss {
+        font-family: c.$Sriracha;
+        text-align: center;
+        margin-bottom: 1.2em;
+    }
+
+    label{
+        display: block;
+        margin: 1em 0 0 0;
+        font-size: 1.2em;
+
+    }
+    input{
+        padding: 4px;
+        box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.25);
+        border: 1.5px solid c.$Black;
+        width: 90%;
+        border-radius: 5px;
+    }
+
+    .register {
+        width: 90%;
+        margin-bottom: 4.3em;
+    } 
+
+    .member {
+        margin-top: 3em;
+    }
+
+    a {
+        color: c.$LightBlue;
+        cursor: pointer;
+    }
+
+    .cleaning1 {
+        width: 90%;
+    }
+
+    button{
+        background-color: c.$DarkBlue; 
+        border: none;
+        color: white;
+        padding: 1em 0;
+        width: 90%;
+        text-align: center;
+        text-decoration: none;
+        font-size: 2em;
+        margin-top: 1.7em;
+        box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+        border-radius: 5px;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (min-width: 700px) {
+
+.form {
+
+    input {
+        width: 80%;
+        font-size: 1.1rem;
+    }
+    
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .label {
+        font-size: 1.5em;
+    }
+
+    .cleaning1 {
+        width: 40%;
+        padding: 0 2em 0 2em;
+
+    }
+
+    .button {
+        width: 80%;
+    }
+}
+
+}

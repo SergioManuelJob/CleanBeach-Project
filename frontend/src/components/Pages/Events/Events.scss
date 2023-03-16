@@ -1,0 +1,61 @@
+@use '../../Styled/Theme.scss' as c;
+
+.beachfun{
+    width: 100%;
+    opacity: 80%;
+    z-index: -1;
+}
+
+.articleOne{
+    margin: 4em;
+    h2{
+        font-family: c.$Sriracha;
+        margin-bottom: 1em;
+        text-align: center;
+        margin-top: -1em;
+    }
+}
+.eventBtn{
+    display: flex;
+    justify-content: center;
+    button{
+        background-color: c.$DarkBlue; 
+        border: none;
+        color: white;
+        padding: 0.7em 1em;
+        width: 100%;
+        text-align: center;
+        text-decoration: none;
+        font-size: 1em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+        border-radius: 5px;
+    }
+}
+
+.eventSection{
+    margin: 2.5em;
+    background-color: c.$Cyan;
+    height: 20vh;
+    span{
+        display: flex;
+        justify-content: space-between;
+    }
+    p{
+        margin: 0.5em;
+    }
+    
+}
+
+@media screen and (min-width: 700px) {
+    .articleOne{
+        margin-left: 12em;
+        margin-right: 12em;
+    }
+
+    .button {
+        margin-bottom: 3em;
+    }
+}

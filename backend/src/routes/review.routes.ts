@@ -1,19 +1,27 @@
 import express, { Express } from "express";
 import { reviewController } from "../controllers/review.controller";
+import { verifyAdmin, verifyAdminOrSelfUserId } from "../utils/auth";
+import { ReviewData } from "../types/review";
 
 const reviewRouter = (app: Express) => {
     const router = express.Router();
-
-    // Create a new User
+    
+    const adminRouter = express.Router();
+    adminRouter.use(verifyAdmin);
+    
+    // Routes
     router.post("/create", reviewController.create);
-
     router.get("/getAll", reviewController.findAll)
 
-    router.get("/:rid", reviewController.findByPk)
+    adminRouter.get("/:rid", reviewController.findByPk)
 
-    router.delete("/:rid", reviewController.delete)
+    router.delete("/:rid", verifyAdminOrSelfUserId, reviewController.delete)
+    router.put("/:rid", verifyAdminOrSelfUserId, reviewController.update)
 
-    app.use("/api/reviews", router);
+
+    // Link with app
+    app.use("/api/users", router);
+    app.use("/api/users", adminRouter);
 }
 
 export { reviewRouter };

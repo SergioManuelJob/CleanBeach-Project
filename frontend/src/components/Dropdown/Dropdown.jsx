@@ -11,9 +11,9 @@ function Dropdown() {
             </div>
             {isActive && (
             <div className='dropdown-content'>
-                <div className='dropdown-item'>Option1</div>
-                <div className='dropdown-item'>Option2</div>
-                <div className='dropdown-item'>Option3</div>
+                <div className='dropdown-item'>Least trash</div>
+                <div className='dropdown-item'>Most popular</div>
+                <div className='dropdown-item'>Near you</div>
             </div>
            )}
         </div>

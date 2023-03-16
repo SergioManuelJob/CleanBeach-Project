@@ -5,11 +5,13 @@ import { eventRouter } from './src/routes/event.routes';
 import { reviewRouter } from './src/routes/review.routes';
 import { PrismaClient } from '@prisma/client'
 import { participantsListRouter } from './src/routes/participantsList.routes';
+import cors from "cors";
 
 const prisma = new PrismaClient()
 
 const app = express();
 app.use(express.json())
+app.use(cors())
 
 // Initialize routes
 userRouter(app);

@@ -1,0 +1,58 @@
+@use "../../Styled/Theme.scss" as c;
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0 1.5em;
+  margin: 0 1em;
+  button {
+    background-color: c.$DarkBlue;
+    border: none;
+    color: white;
+    padding: 0.5em;
+    width: 100%;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1em;
+    margin-top: 1.7em;
+    box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+  }
+  button:nth-child(2n){
+    opacity: 50%;
+  }
+  button:nth-child(3n){
+    opacity: 50%;
+  }
+}
+
+.NewBtn {
+  display: flex;
+  justify-content: center;
+  button {
+    border-radius: 5px;
+    background-color: c.$DarkBlue;
+    border: none;
+    color: white;
+    padding: 0.5em;
+    width: 25%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1em;
+    margin-top: 1.7em;
+    box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+  }
+}
+.containerIcons {
+  position: relative;
+  .reactIcons {
+    display: flex;
+    justify-content: center;
+    gap: 0 1.2em;
+    position: absolute;
+    right: 4%;
+    top: 1%;
+  }
+}

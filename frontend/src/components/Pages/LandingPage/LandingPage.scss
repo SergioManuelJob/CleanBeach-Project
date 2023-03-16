@@ -1,0 +1,39 @@
+@use '../../Styled/Theme.scss' as c;
+
+.beachimg {
+    max-width: 100%;
+    opacity: 50%;
+    z-index: -1;
+    position: relative;
+  }
+  
+  .WelcomeText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: c.$Black;
+    article {
+      position: absolute;
+      top: 42%;
+      h1 {
+        font-size: 2em;
+        text-align: center;
+        font-family: c.$Sriracha;
+      }
+      .TextSpan {
+        display: flex;
+        justify-content: center;
+        margin-top: 1.5em;
+        p {
+          font-size: 1.5em;
+          width: 90%;
+          text-align: center;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  
+  svg{
+    display: block;
+  }

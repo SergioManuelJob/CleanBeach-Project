@@ -1,0 +1,193 @@
+@use '../../Styled/Theme.scss' as c;
+
+.fun {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    opacity: 25%;
+    filter: blur(3px);
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      top: 20%;
+      width: 80%;
+  
+    .h1 {
+        font-family: c.$Sriracha;
+        font-size: 32px;
+        text-align: center;
+        margin-bottom: .5em;      
+        }
+  
+    label {
+        display: block;
+        margin: 1em 0 0 0;
+        font-size: 1.2em;  
+    }
+
+    .title-li {
+        text-align: left;
+        width: 100%;
+        margin-bottom: 1.5em;
+    }
+
+    .category-li {
+        text-align: left;
+        width: 100%;
+        margin-top: 1.5em;
+    }
+  
+    input, select {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.25);
+        border: 1.5px solid c.$Black;    
+        border-radius: 5px;  
+    }
+  
+    /* styles for the specific inputs */
+    input[name="name"], input[name="description"], select {
+        width: 100%;
+    }
+  
+    .starts- {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .ends- {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .startswrap {
+        width: 100%;
+    }
+
+    .startswrap1 {
+        width: 100%;
+        text-align: right;
+    }
+
+        .endswrap {
+            width: 100%;
+        }
+
+        .endswrap1 {
+            width: 100%;
+            text-align: right;
+        }
+
+  
+        input[name="date"],
+        input[name="ends"], input[name="starttime"], input[name="endtime"] 
+            {
+          width: 100%;
+        }
+
+        .button {
+            background-color: c.$DarkBlue;
+            width: 100%;
+            height: 3.75em;
+            margin-top: 2em;
+            color: c.$White;
+            border-radius: 5px;
+            border: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            letter-spacing: .1rem;
+            cursor: pointer;
+
+        }
+      }
+    }
+
+    @media screen and (min-width: 700px) {
+    .image-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        .text-container {
+            width: 60%;
+        }
+
+        .h1 {
+            margin-bottom: 1em !important;      
+        }
+
+        .title-li {
+            margin-bottom: 3em !important;
+        }
+
+        .category-li {
+            margin-top: 3em !important;
+            margin-bottom: 3em;
+        }
+
+        .button {
+            width: 50% !important;
+            margin-left: auto;
+            
+        }
+
+        }
+    }
+    
+
+    
+
+  
+  
+
+
+/*
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+label[for="title"] {
+    display: block;
+    margin: 1em 0 0 0;
+    font-size: 1.2em;
+}
+
+input [name="title"] {
+    width: 80%;
+}
+
+label[for="starts"] {
+    display: block;
+
+}
+
+input[name="starts"], input[name="ends"] {
+    width: 35%;
+}
+
+
+.starts-ends {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    border: solid black;
+}
+*/

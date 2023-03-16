@@ -1,10 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&family=Sriracha&display=swap');
+@use '../Styled/Theme.scss' as c;
 
 * {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: c.$IBM-Font;
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
+}
+
+.logo {
+    width: 4em;
+    fill: white;
 }
 
 header {
@@ -12,22 +16,42 @@ header {
     align-items: center;
     justify-content: space-between;
     height: 80px;
-    padding: 0 2rem;
-    background-color: black;
-    color: white;
-}
-
-nav a {
-    margin: 0 2rem;
-    color: white;
-    text-decoration: none;
-}
-
-nav a:hover {
-    color: gray;
+    padding: 0 1rem;
+    background-color: c.$DarkBlue;
+    color: c.$White;
+    img{
+        max-width: 100%;
+    }
+    nav{
+        ul{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            list-style: none;
+            letter-spacing: .05em;
+            li{
+                padding: 0 0 0 1.5em;
+              a{
+                color: c.$White;
+                margin: 0;
+                text-decoration: none;
+            }  
+            .logout {
+                width: 5em;
+            }
+            }
+            
+        }
+    }
 }
 
 .beachimg {
     width: 100%;
     height: 500px;
 } 
+
+@media screen and (min-width: 700px) {
+    header {
+        padding: 0 3rem;
+    }
+}
