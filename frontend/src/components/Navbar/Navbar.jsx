@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import './Navbar.scss';
 import Logo from '../../images/Logo.png';
+import { BiLogOut } from 'react-icons/bi';
 
 
 function Navbar() {
@@ -15,6 +16,8 @@ function Navbar() {
                     <li><NavLink to="/events">Events</NavLink></li>
                     <li><NavLink to="/signup">Sign Up</NavLink></li>
                     <li><NavLink to="/profile">Profile</NavLink></li>
+                    <li><NavLink to="/profile"><BiLogOut/></NavLink></li>
+
                 </ul>
 
             </nav>

@@ -44,3 +44,16 @@ a{
     }
   }
 }
+
+@media screen and (min-width: 700px) {
+  .mainFigure {
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+   
+  }
+}
+
+
