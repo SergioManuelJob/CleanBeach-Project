@@ -29,10 +29,7 @@ const getAllBeaches = () => {
     var config = {
         method: 'get',
         url: url +'getAll',
-        withCredentials: true,
-        headers: {
-            "Access-Control-Allow-Origin": "*"
-        }
+        headers : { }
     };
   
     return axios(config)
