@@ -1,6 +1,5 @@
 import "./Cards.scss";
 import { NavLink } from "react-router-dom";
-// import beachService from "../../services/beachService";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import {AiFillCaretDown} from 'react-icons/ai';
@@ -33,7 +32,7 @@ const Cards = () => {
     <>
         <div className='dropdown'>
                 <div className='dropdown-btn' onClick={(e) => setIsActive(!isActive)}>
-                    Select <AiFillCaretDown style={{ color: 'white' }}/>
+                    Sort by <AiFillCaretDown style={{ color: 'white' }}/>
                 </div>
                 {isActive && (
                 <div className='dropdown-content'>
