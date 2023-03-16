@@ -18,7 +18,6 @@ export const eventValidation = {
         && event.name !== undefined
         && event.organizerId    !== undefined
         && event.description !== undefined
-        && event.date !== undefined;
 
         return valid 
              ? Ok(event) 
@@ -32,7 +31,6 @@ export const eventValidation = {
         const valid  = event.name     !== undefined
                     && event.beachId    !== undefined
                     && event.description    !== undefined
-                    && event.date    !== undefined
 
         return valid 
              ? Ok(event) 

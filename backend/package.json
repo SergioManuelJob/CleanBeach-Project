@@ -9,10 +9,14 @@
     "postinstall": "prisma generate --schema=./src/prisma/schema.prisma",
     "dbpush": "prisma db push --schema=./src/prisma/schema.prisma"
   },
+  "prisma": {
+    "schema": "./src/prisma/schema.prisma"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
     "@types/node": "^18.14.5",
     "nodemon": "^2.0.21",
@@ -26,6 +30,7 @@
     "@types/jsonwebtoken": "^9.0.1",
     "bcrypt": "^5.1.0",
     "cloudinary": "^1.35.0",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
     "multer": "^1.4.5-lts.1"

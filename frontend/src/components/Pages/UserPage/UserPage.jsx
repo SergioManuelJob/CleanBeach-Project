@@ -2,9 +2,25 @@ import './UserPage.scss'
 import pfp from '../../../images/pexels-asad-photo-maldives-1450353.jpg'
 import { BsPencilSquare } from 'react-icons/bs'
 import { NavLink } from 'react-router-dom'
+import { useState, useEffect } from 'react';
+
 
 const UserPage = () => {
+
+    const [data, setData] = useState({});
+    let admin; 
+
+    useEffect(() => {
+        const data = JSON.parse(localStorage.getItem("user"));
+        setData(data)
+    }, []);
+
+    if(data.isAdmin)(
+        admin = <NavLink to="/admin"><button>ADMIN</button></NavLink>
+    )
+
     return(
+        
         <>
         <div className="profile">
             <div>
@@ -13,9 +29,9 @@ const UserPage = () => {
             <p><BsPencilSquare className='iconBs' size={22} /></p>
             </NavLink>
             </div>
-        <h2>Name goes here</h2>
+        <h2>{data.name}</h2>
         <p>Joined: </p>
-        <NavLink to="/admin"><button>ADMIN</button></NavLink>
+        {admin}
         </div>
 
         <form className='form2'>

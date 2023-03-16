@@ -6,7 +6,6 @@ var upload = require('../utils/multer');
 const beachRouter = (app: Express) => {
     const router = express.Router();
 
-    // Create a new User
     router.post("/create", upload.single("file"), beachController.create);
 
     router.get("/getAll", beachController.findAll);

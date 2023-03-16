@@ -4,7 +4,6 @@ import { participantsListController  } from "../controllers/participantsList.con
 const participantsListRouter = (app: Express) => {
     const router = express.Router();
 
-    // Create a new User
     router.post("/create", participantsListController.create);
 
     router.get("/getAll", participantsListController.findAll)
