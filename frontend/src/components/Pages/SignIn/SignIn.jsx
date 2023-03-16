@@ -1,9 +1,10 @@
 import './SignIn.scss'
 import { useState, useEffect } from 'react';
 import Cleaning from '../../../images/Rectangle 37.png';
+import userService from '../../../services/userService';
 
 const SignInPage = () => {
-    const initialValues = { username: '', password: ''};
+    const initialValues = { email: '', password: ''};
     const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
@@ -23,6 +24,9 @@ const SignInPage = () => {
         console.log(formErrors);
         if (Object.keys(formErrors).length === 0 && isSubmit) {
             console.log(formValues);
+            userService.logIn(formValues.email, formValues.password).then(data => {
+                localStorage.setItem("user", JSON.stringify(data.data))
+            })
         }
     }, [formErrors]);
 
@@ -30,8 +34,8 @@ const SignInPage = () => {
         const errors = {};
         const regex =
         /^[a-zA-Z0-9_-]{3,16}$/;
-        if (!values.username) {
-            errors.username = 'Username is required!';
+        if (!values.email) {
+            errors.email = 'Username is required!';
             
         }
         if (!values.password) {
@@ -55,10 +59,10 @@ const SignInPage = () => {
         {/* SIGN IN */}
         <div className='signin'>
         <h1 className='h1ss'>Sign In</h1>
-        <label htmlFor="username">Username</label>
-        <input name="username" type="text" value={formValues.username}
+        <label htmlFor="email">Email</label>
+        <input name="email" type="text" value={formValues.email}
         onChange={handleChange}/>
-        <p style={{color: 'red'}}>{formErrors.username}</p>
+        <p style={{color: 'red'}}>{formErrors.email}</p>
 
         <label htmlFor="password">Password</label>
         <input name="password" type="password" value={formValues.password}

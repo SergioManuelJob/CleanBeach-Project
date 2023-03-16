@@ -18,9 +18,10 @@ const Register = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormErrors(validate(formValues));
-        userService.register(formValues.name, formValues.email, formValues.password)
+        userService.register(formValues.fullname, formValues.email, formValues.password)
             .then(data => {
-                // store data in local storage or something
+                console.log(data)
+                localStorage.setItem("user", JSON.stringify(data.data))
                 setIsSubmit(true);
             })
             .catch(err => {

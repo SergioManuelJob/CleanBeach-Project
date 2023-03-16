@@ -11,7 +11,7 @@ const userRouter = (app: Express) => {
     adminRouter.use(verifyAdmin);
     
     // Routes
-    adminRouter.post("/create", userController.create);
+    router.post("/create", userController.create);
     
     router.get("/getAll", userController.findAll);
     router.get("/:uid", userController.findByPk)
