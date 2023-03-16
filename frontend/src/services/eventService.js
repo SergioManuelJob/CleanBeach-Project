@@ -1,11 +1,12 @@
 import axios from "axios";
 const url = "https://cleanbeach.onrender.com/api/events/"
-const createEvent = (beachId, name, organizerId, description) => {
+const createEvent = (name, beachId, organizerId, date, description) => {
   
     var data = JSON.stringify({
         "beachId": beachId,
         "name": name,
         "organizerId": organizerId,
+        "date": new Date(date),
         "description": description
     });
       
