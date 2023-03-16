@@ -19,12 +19,10 @@ const Register = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormErrors(validate(formValues));
-        axios.post('http://localhost:27017/api/users/signin', {
-            name: formValues.name, 
-            email: formValues.email, 
-            password: formValues.password
-        })
-            .then(res => {
+        userService.register(formValues.fullname, formValues.email, formValues.password)
+            .then(data => {
+                console.log(data)
+                localStorage.setItem("user", JSON.stringify(data.data))
                 setIsSubmit(true);
                 console.log(res.data);
                 if (res.data.code || res.status !== 200) {

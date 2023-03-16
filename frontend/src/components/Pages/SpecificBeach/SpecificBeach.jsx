@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { VolunteerText } from "../../VolunteerText/VolunteerText";
 import "./SpecificBeach.scss";
 import { useState, useEffect } from "react";
@@ -20,17 +20,19 @@ const SpecificBeach = () => {
   }, [id]);
 
   return (
-    <section>
+    <section className="beachSection">
       {data &&
            (
             <>
               <div className="specificbeachText">
-                <h2>{data.name}</h2>
-                <img className="beachimg" src={data.image} alt="Beach" />
+                <img className="beachIMG" src={data.image} alt="Beach" />
+                <div className="centered">
+                  <h2>{data.name}</h2>
+                </div>
               </div>
               <hgroup className="info">
                 <h3>{data.name}</h3>
-                <h4>{data.status}</h4>
+                <h4>Status: {data.status}</h4>
               </hgroup>
               <span className="spanP">
                 <p>{data.description}</p>

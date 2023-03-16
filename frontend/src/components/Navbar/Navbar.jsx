@@ -4,6 +4,15 @@ import Logo from '../../images/Logo.png';
 
 
 function Navbar() {
+
+    let button;
+    if(localStorage.getItem("user") != undefined)(
+        button = <li><NavLink to="/profile">Profile</NavLink></li>
+    )
+    else{
+        button = <li><NavLink to="/signup">Sign Up</NavLink></li>
+    }
+
     return(
         <header>
             <NavLink to="/" >
@@ -13,8 +22,7 @@ function Navbar() {
                 <ul>
                     <li><NavLink to="/">Home</NavLink></li>
                     <li><NavLink to="/events">Events</NavLink></li>
-                    <li><NavLink to="/signup">Sign Up</NavLink></li>
-                    <li><NavLink to="/profile">Profile</NavLink></li>
+                    {button}
                 </ul>
 
             </nav>

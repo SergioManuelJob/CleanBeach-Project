@@ -19,7 +19,7 @@ export const eventController = {
             res.status(result.error.code).send(result.error.msg);
             return;
         }
-
+        
         const event = result.value as EventData;
 
         if (!(await prisma.user.findUnique({where: { uid: event.organizerId },})))
