@@ -29,8 +29,9 @@ const getAllBeaches = () => {
     var config = {
         method: 'get',
         url: url +'getAll',
-        withCredentials: false,
+        withCredentials: true,
         headers: {
+            "Access-Control-Allow-Origin": "*"
         }
     };
   
