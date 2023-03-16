@@ -7,6 +7,8 @@
 
     .h1ss, .h1sss {
         font-family: c.$Sriracha;
+        text-align: center;
+        margin-bottom: 1.2em;
     }
 
     label{
@@ -20,6 +22,7 @@
         box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.25);
         border: 1.5px solid c.$Black;
         width: 90%;
+        border-radius: 5px;
     }
 
     .signin {
@@ -54,10 +57,11 @@
         box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.25);
         cursor: pointer;
         margin-bottom: 0;
+        border-radius: 5px;
     }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 700px) {
 
 .form1 {
 
