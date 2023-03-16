@@ -1,10 +1,10 @@
 import '../../Pages/CreateEvent/CreateEvent.scss';
-import Fun from '../../../images/Create new event.png';
+import Fun from '../../../images/IMG_9529.jpg';
 
 const CreateEvent = () => {
     return(
         <div className='image-container'>
-            <img className='fun' src={Fun} alt="My Image" />
+            <img className='fun' src={Fun} alt="MyImage" />
             
             <div className='text-container'>
                 <h1 className='h1'>Create new event</h1>
