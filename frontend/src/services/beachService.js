@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "https://backend-cleanbeach-production.up.railway.app/api/beaches/"
+const url = "https://cleanbeach.onrender.com/api/beaches/"
 
 
 const createBeach = (name, status, description, location, file) => {
