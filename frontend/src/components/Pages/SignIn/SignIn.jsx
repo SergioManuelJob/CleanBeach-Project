@@ -11,7 +11,8 @@ const SignInPage = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormValues({ ...formValues, [name]: value });    
+        setFormValues({ ...formValues, [name]: value });   
+        console.log(e.target) 
     };
 
     const handleSubmit = (e) => {
@@ -26,6 +27,7 @@ const SignInPage = () => {
             console.log(formValues);
             userService.logIn(formValues.email, formValues.password).then(data => {
                 localStorage.setItem("user", JSON.stringify(data.data))
+                window.location.href = "/"
             })
         }
     }, [formErrors]);
@@ -60,7 +62,7 @@ const SignInPage = () => {
         <div className='signin'>
         <h1 className='h1ss'>Sign In</h1>
         <label htmlFor="email">Email</label>
-        <input name="email" type="text" value={formValues.email}
+        <input name="email" type="email" value={formValues.email}
         onChange={handleChange}/>
         <p style={{color: 'red'}}>{formErrors.email}</p>
 
@@ -73,7 +75,7 @@ const SignInPage = () => {
 
         <button>Log in</button>
         </div>
-        <img className='cleaning' src={Cleaning} alt="My Image" />
+        <img className='cleaning' src={Cleaning} alt="Beach Cleaning" />
 
     </div>
 </form>

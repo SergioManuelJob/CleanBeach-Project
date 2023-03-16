@@ -2,7 +2,10 @@
 
 .fun {
     width: 100%;
+    display: block;
     object-fit: cover;
+    opacity: 25%;
+    filter: blur(3px);
 }
 
 .image-container {
@@ -112,7 +115,7 @@
       }
     }
 
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: 700px) {
     .image-container {
         display: flex;
         flex-direction: column;
@@ -123,19 +126,22 @@
         }
 
         .h1 {
-            margin-bottom: 1em;      
+            margin-bottom: 1em !important;      
         }
 
         .title-li {
-            margin-bottom: 2em;
+            margin-bottom: 3em !important;
         }
 
         .category-li {
-            margin-top: 2em;
+            margin-top: 3em !important;
+            margin-bottom: 3em;
         }
 
         .button {
-            width: 50%;
+            width: 50% !important;
+            margin-left: auto;
+            
         }
 
         }

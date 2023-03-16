@@ -30,8 +30,6 @@ export const beachController = {
             image: (req as any).file ? (req as any).file.filename : ""
         }
 
-        console.log(beach.image)
-
         try{
             const data = await prisma.beach.create({ data: beach });
             res.send(data)

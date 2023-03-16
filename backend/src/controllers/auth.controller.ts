@@ -31,9 +31,9 @@ const authController = {
             if(!data || !matchPassword(result.value.password, data.password))
                 return res.json("Email or password invalid!");
 
-            const { uid, email, password, isAdmin } = data;
+            const { name, uid, email, password, isAdmin } = data;
             return res.json({ 
-                email, isAdmin,
+                uid, name, email, isAdmin,
                 access_token: generateToken({ uid, email, password, isAdmin }),
             })
         } catch (err: any){

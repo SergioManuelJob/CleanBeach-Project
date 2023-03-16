@@ -1,8 +1,12 @@
 @use '../Styled/Theme.scss' as c;
 
-.footer {
+footer {
     height: 100px;
+    width: 100%;
     background-color: c.$DarkBlue;
+    // position: fixed;
+    // bottom: 0;
+
     .footercontainer {
         display: flex;
         align-items: center;
@@ -10,13 +14,16 @@
         p{
             color: c.$White;
             font-weight: 500;
+          
         }
         .goals {
-           max-width: 30%;
+           width: 200px;
+        
         }
         .icons{
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
+            
             svg{
                 fill: black;
 
@@ -24,3 +31,4 @@
         }
     }
 }
+

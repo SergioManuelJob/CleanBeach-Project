@@ -25,18 +25,16 @@ const Register = () => {
                 console.log(res)
                 localStorage.setItem("user", JSON.stringify(res.data))
                 setIsSubmit(true);
+                window.location.href = "/"
                 console.log(res.data);
                 if (res.data.code || res.status !== 200) {
                     setSubmitError(res.data);
                     return; // Exit immediately
                 }
-
                 setSubmitError({});
-                // localStorage
             })
             .catch(err => {
                 setIsSubmit(false);
-                // console.log(Object.keys(err));
                 setSubmitError({  msg: err.message })
             })
     };
