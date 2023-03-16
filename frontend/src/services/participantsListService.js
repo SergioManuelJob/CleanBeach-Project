@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "http://backend-cleanbeach-production.up.railway.app/api/participantsLists/"
+const url = "https://backend-cleanbeach-production.up.railway.app/api/participantsLists/"
 
 const createParticipantsList = (userId, eventId) => {
   
