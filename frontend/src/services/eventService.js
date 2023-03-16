@@ -6,7 +6,7 @@ const createEvent = (name, beachId, organizerId, date, description) => {
         "beachId": beachId,
         "name": name,
         "organizerId": organizerId,
-        "date":date,
+        "date": new Date(date),
         "description": description
     });
       
