@@ -46,14 +46,18 @@ a{
 }
 
 @media screen and (min-width: 700px) {
-  .mainFigure {
-    width: 40%;
+  .container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    flex-direction: row;
-   
+    justify-content: space-around;
   }
+  
+  .mainFigure {
+    box-sizing: border-box;
+    width: calc(50% - 20px); /* 20px is the total horizontal margin */
+    margin: 10px; /* add margin to create gaps between the cards */
+  }
+
 }
 
 
