@@ -1,5 +1,5 @@
 import axios from "axios";
-url = env("URL_PARTICIPANTSLIST")
+const url = process.env.URL_PARTICIPANTSLIST
 
 const createParticipantsList = (userId, eventId) => {
   
@@ -19,13 +19,7 @@ const createParticipantsList = (userId, eventId) => {
         data : data
     };
   
-    axios(config)
-    .then(function (response) {
-        return (response.data);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
 };
 
 const getAllParticipantsList = () => {
@@ -36,13 +30,7 @@ const getAllParticipantsList = () => {
         headers: { }
     };
   
-    axios(config)
-    .then(function (response) {
-        return (response.data);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
 };
 
 const getOneParticipantsList = (id) => {
@@ -53,13 +41,7 @@ const getOneParticipantsList = (id) => {
         headers: { }
     };
   
-    axios(config)
-    .then(function (response) {
-        return(response.data);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
 };
 
 const deleteParticipantsList = (id) => {
@@ -70,13 +52,7 @@ const deleteParticipantsList = (id) => {
         headers: { }
     };
   
-    axios(config)
-    .then(function (response) {
-        return(response.data);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    return axios(config)
 };
 
 const participantsListService = {

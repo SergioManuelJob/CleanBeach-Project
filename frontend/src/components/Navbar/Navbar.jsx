@@ -5,6 +5,15 @@ import { BiLogOut } from 'react-icons/bi';
 
 
 function Navbar() {
+
+    let button;
+    if(localStorage.getItem("user") != undefined)(
+        button = <li><NavLink to="/profile">Profile</NavLink></li>
+    )
+    else{
+        button = <li><NavLink to="/signup">Sign Up</NavLink></li>
+    }
+
     return(
         <header>
             <NavLink to="/" >
@@ -14,9 +23,8 @@ function Navbar() {
                 <ul>
                     <li><NavLink to="/">Home</NavLink></li>
                     <li><NavLink to="/events">Events</NavLink></li>
-                    <li><NavLink to="/signup">Sign Up</NavLink></li>
-                    <li><NavLink to="/profile">Profile</NavLink></li>
-                    <li><NavLink to="/profile"><BiLogOut/></NavLink></li>
+                    {button}
+                    <li><NavLink to="/"><BiLogOut/></NavLink></li>
 
                 </ul>
 

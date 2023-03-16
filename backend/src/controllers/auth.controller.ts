@@ -32,7 +32,6 @@ const authController = {
                 return res.json("Email or password invalid!");
 
             const { uid, email, password, isAdmin } = data;
-            if (!uid) throw new Error("XDDDDDDDDDDDDDDD");
             return res.json({ 
                 email, isAdmin,
                 access_token: generateToken({ uid, email, password, isAdmin }),
@@ -59,10 +58,10 @@ const authController = {
 
         try {
             const data: UserData = await prisma.user.create({ data: body });
-            const { uid, email, password, isAdmin } = data;
+            const { name, uid, email, password, isAdmin } = data;
             if (!uid) throw new Error("XDDDDDDDDDDDDDDD");
             return res.json({ 
-                email, isAdmin,
+                email, isAdmin, uid, name,
                 access_token: generateToken({ uid, email, password, isAdmin }),
             });
         } catch (err: any) {

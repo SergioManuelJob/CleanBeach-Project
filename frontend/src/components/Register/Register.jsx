@@ -1,12 +1,15 @@
 import './Register.scss'
 import { useState, useEffect } from 'react';
 import Cleaning1 from '../../images/Rectangle 39.png';
+import userService from '../../services/userService';
+import axios from "axios";
 
 const Register = () => {
     const initialValues = { fullname: '', email: '', password: ''};
     const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
+    const [submitError, setSubmitError] = useState({})
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -16,7 +19,23 @@ const Register = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormErrors(validate(formValues));
-        setIsSubmit(true);
+        userService.register(formValues.fullname, formValues.email, formValues.password)
+            .then(data => {
+                console.log(data)
+                localStorage.setItem("user", JSON.stringify(data.data))
+                setIsSubmit(true);
+                window.location.href = "/"
+                console.log(res.data);
+                if (res.data.code || res.status !== 200) {
+                    setSubmitError(res.data);
+                    return; // Exit immediately
+                }
+                setSubmitError({});
+            })
+            .catch(err => {
+                setIsSubmit(false);
+                setSubmitError({  msg: err.message })
+            })
     };
 
     useEffect(() => {
@@ -54,9 +73,17 @@ const Register = () => {
     return(
 
 <form className='form' onSubmit={handleSubmit}>
-        {Object.keys(formErrors).length === 0 && isSubmit ? (
+        {Object.keys(formErrors).length === 0 && isSubmit 
+            && Object.keys(submitError).length === 0 ? (
             <div style={{color: 'green', fontSize: '40px'}} className='ui message success'>Registered successfully</div>
     ) : null}
+
+        {Object.keys(submitError).length !== 0 && isSubmit
+            ? <div style={{color: 'red', fontSize: '40px'}} className='ui message failure'>
+                Failed to register:
+                {submitError.msg}
+              </div>
+            : null }
     <div className='container'>
         {/* REGISTER */}
         <div className='register'>
