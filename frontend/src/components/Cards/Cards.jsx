@@ -21,7 +21,7 @@ const Cards = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const result = await axios.get('http://localhost:27017/api/beaches/getAll')
+      const result = await axios.get('https://backend-cleanbeach-production.up.railway.app/api/beaches/getAll')
       setData(result.data);
       console.log(result.data)
     }
