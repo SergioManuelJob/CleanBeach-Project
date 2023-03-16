@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import './Navbar.scss';
-import Logo from '../../images/Logo.png';
+import Logo from '../../images/LogoMakr-5iM0ns.png';
 import { BiLogOut } from 'react-icons/bi';
 
 
