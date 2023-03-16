@@ -3,6 +3,7 @@ import Fun from "../../../images/IMG_9529.jpg";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
+import eventService from "../../../services/eventService";
 
 const collectISOString = (date) => date.toISOString().substring(0, 10);
 
@@ -50,7 +51,25 @@ const CreateEvent = () => {
     setFormErrors(validate(formValues));
     if (Object.keys(formErrors) !== 0) return;
 
-    console.log(formValues);
+    eventService.createEvent(
+        formValues.name, 
+        formValues.beachId, 
+        user.uid, 
+        collectISOString(formValues.date),
+        formValues.description
+    )
+        .then(res => {
+            setIsSubmit(true);
+            if (res.data.code || res.status !== 200) {
+                setSubmitError(res.data);
+                return;
+            }
+            setSubmitError({});
+        })
+        .catch(err => {
+            setIsSubmit(false);
+            setSubmitError({  msg: err.message });
+        });
   };
 
   useEffect(() => {
@@ -85,9 +104,15 @@ const CreateEvent = () => {
                   To create a new event, you need to be logged in!
                 </div>
         : <>
+            { isSubmit && Object.keys(submitError) !== 0
+            ? <div style={{color: 'red', fontSize: '20px'}} className='ui message failure'>
+                Something bad happened: {submitError.msg}
+              </div>
+            : null
+            }
             <div className="title-li">
             <label htmlFor="name">Name</label>
-            <input name="name" type="text" placeholder="Name of event" />
+            <input name="name" type="text" placeholder="Name of event"  onChange={handleChange} />
             </div>
 
             <div className="starts-">
@@ -101,7 +126,7 @@ const CreateEvent = () => {
                     ? <div style={{color: 'red', fontSize: '20px'}} className='ui message failure'>
                         Something went wrong while fetching the beaches!
                       </div>
-                    : <select className="starts" htmlFor="beachId" defaultValue="-1">
+                    : <select className="starts" htmlFor="beachId" defaultValue="-1" onChange={handleChange} >
                           <option value="-1" key="-1">Select a beach...</option>
                           { beaches && 
                           beaches.map((beach, index) => (
@@ -118,13 +143,13 @@ const CreateEvent = () => {
                 <label className="starts" htmlFor="date">
                   Date
                 </label>
-                <input name="date" type="date" />
+                <input name="date" type="date" onChange={handleChange} />
               </div>
             </div>
 
             <div className="category-li">
               <label htmlFor="description">Description</label>
-              <input name="description" type="text" />
+              <input name="description" type="text" onChange={handleChange} />
             </div>
 
             <button className="button" onClick={handleSubmit}>Create Event</button>
