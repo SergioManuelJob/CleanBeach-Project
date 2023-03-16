@@ -11,7 +11,8 @@ const SignInPage = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormValues({ ...formValues, [name]: value });    
+        setFormValues({ ...formValues, [name]: value });   
+        console.log(e.target) 
     };
 
     const handleSubmit = (e) => {
