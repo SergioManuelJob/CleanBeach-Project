@@ -6,6 +6,7 @@ import { AboutUs, VolunteerText } from "../../VolunteerText/VolunteerText";
 import WelcomeText from "../../WelcomeText/WelcomeText";
 import './LandingPage.scss'
 
+
 const LandingPage = () => {
     
     return (

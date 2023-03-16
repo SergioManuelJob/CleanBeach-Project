@@ -20,7 +20,7 @@ const EventsPage = () => {
       </article>
       <div className="eventBtn">
         <NavLink to="/createevent">
-          <button>Create Event</button>
+          <button className="button">Create Event</button>
         </NavLink>
       </div>
       <EventCards></EventCards>

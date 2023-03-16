@@ -15,7 +15,7 @@ header {
     align-items: center;
     justify-content: space-between;
     height: 80px;
-    padding: 0 2rem;
+    padding: 0 1rem;
     background-color: c.$DarkBlue;
     color: c.$White;
     img{
@@ -27,13 +27,17 @@ header {
             align-items: center;
             justify-content: space-between;
             list-style: none;
+            letter-spacing: .05em;
             li{
-                padding: 0 0 0 3em;
+                padding: 0 0 0 1.5em;
               a{
                 color: c.$White;
                 margin: 0;
                 text-decoration: none;
             }  
+            .logout {
+                width: 5em;
+            }
             }
             
         }
