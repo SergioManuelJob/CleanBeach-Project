@@ -20,7 +20,7 @@ const SpecificBeach = () => {
   }, [id]);
 
   return (
-    <section className="beachSection">
+    <section className="beachSectionOne">
       {data &&
            (
             <>
