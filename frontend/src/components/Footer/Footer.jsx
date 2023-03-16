@@ -8,7 +8,7 @@ import { RiInstagramFill } from 'react-icons/ri';
 
 const Footer=() => {
     return (
-        <div className='footer'>
+        <footer>
             <div className='footercontainer'>
                 <p>©Copyright</p>
                 <img className='goals' src={Goals} alt="Goals" />
@@ -18,7 +18,7 @@ const Footer=() => {
                 <a href="https://www.instagram.com/theglobalgoals/?hl=da"><RiInstagramFill size={35} /></a>
                 </div>
             </div>
-        </div>
+        </footer>
 
 
     )

@@ -1,7 +1,6 @@
 import './Dropdown.scss';
 import { useState } from 'react';
 import {AiFillCaretDown} from 'react-icons/ai';
-import Styled from 'styled-components'
 
 function Dropdown() {
     const[isActive, setIsActive] = useState(false);

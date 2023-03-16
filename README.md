@@ -157,7 +157,7 @@ The backend programmers continued doing the backend, while the frontend programm
 
 ### Third week:
 
-For the third wee, the backend came to a conclusion, it was fully done and heavily validated, and all of the endpoints worked as intended. The frontend was finished and all that was left was to connect it to the backend and make it functional, because the services were left. Meanwhile in this time we started the presentation, so we could present it for class on the very same week on friday. In this week as the backend programmers had already finished their part, started helping in the frontend, so we all worked in the frontend in our separate tasks.
+For the third week, the backend came to a conclusion, it was fully done and heavily validated, and all of the endpoints worked as intended. The frontend was finished and all that was left was to connect it to the backend and make it functional, because the services were left. Meanwhile in this time we started the presentation, so we could present it for class on the very same week on friday. In this week as the backend programmers had already finished their part, started helping in the frontend, so we all worked in the frontend in our separate tasks and backend programmers mostly did functionality things like logging in and such.
 
 ### Branches and pushes:
 

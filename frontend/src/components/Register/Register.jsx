@@ -2,6 +2,7 @@ import './Register.scss'
 import { useState, useEffect } from 'react';
 import Cleaning1 from '../../images/Rectangle 39.png';
 import userService from '../../services/userService';
+import axios from "axios";
 
 const Register = () => {
     const initialValues = { fullname: '', email: '', password: ''};
@@ -19,15 +20,21 @@ const Register = () => {
         e.preventDefault();
         setFormErrors(validate(formValues));
         userService.register(formValues.fullname, formValues.email, formValues.password)
-            .then(data => {
-                console.log(data)
-                localStorage.setItem("user", JSON.stringify(data.data))
+            .then(res => {
+                console.log(res)
+                localStorage.setItem("user", JSON.stringify(res.data))
                 setIsSubmit(true);
+                window.location.href = "/"
+                console.log(res.data);
+                if (res.data.code || res.status !== 200) {
+                    setSubmitError(res.data);
+                    return; // Exit immediately
+                }
+                setSubmitError({});
             })
             .catch(err => {
                 setIsSubmit(false);
-                console.log(Object.keys(err));
-                setFormErrors({ code: err.code, msg: err.msg })
+                setSubmitError({  msg: err.message })
             })
     };
 
@@ -70,6 +77,13 @@ const Register = () => {
             && Object.keys(submitError).length === 0 ? (
             <div style={{color: 'green', fontSize: '40px'}} className='ui message success'>Registered successfully</div>
     ) : null}
+
+        {Object.keys(submitError).length !== 0 && isSubmit
+            ? <div style={{color: 'red', fontSize: '40px'}} className='ui message failure'>
+                Failed to register:
+                {submitError.msg}
+              </div>
+            : null }
     <div className='container'>
         {/* REGISTER */}
         <div className='register'>

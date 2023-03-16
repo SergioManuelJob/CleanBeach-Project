@@ -1,6 +1,6 @@
 @use '../Styled/Theme.scss' as c;
 
-section{
+.sectionContainer{
     margin: 2.5em;
     background-color: c.$Cyan;
     height: 20vh;
