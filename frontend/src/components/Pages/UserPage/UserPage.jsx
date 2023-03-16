@@ -7,6 +7,7 @@ import Girl from '../../../images/Rectangle 36.png';
 
 
 
+
 const UserPage = () => {
 
     const [data, setData] = useState({});

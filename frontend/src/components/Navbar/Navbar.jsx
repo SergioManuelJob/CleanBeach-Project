@@ -4,6 +4,7 @@ import Logo from '../../images/LogoMakr-5iM0ns.png';
 import { BiLogOut } from 'react-icons/bi';
 
 
+
 function Navbar() {
 
     const logOut = () => {
@@ -39,6 +40,7 @@ function Navbar() {
                     <li><NavLink to="/events">Events</NavLink></li>
                     {button}
                     {logout}
+
                 </ul>
 
             </nav>

@@ -62,7 +62,7 @@ const SignInPage = () => {
         <div className='signin'>
         <h1 className='h1ss'>Sign In</h1>
         <label htmlFor="email">Email</label>
-        <input name="email" type="text" value={formValues.email}
+        <input name="email" type="email" value={formValues.email}
         onChange={handleChange}/>
         <p style={{color: 'red'}}>{formErrors.email}</p>
 

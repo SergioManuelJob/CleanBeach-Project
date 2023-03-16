@@ -23,7 +23,7 @@ const EventCards = () => {
             {data &&
             data.map((event, key) => {
                 return (
-                <section key={key}>
+                <section className="sectionContainer" key={key}>
                 <span>
                     <p>{event.name}</p>
                     <p>{event.date}</p>
