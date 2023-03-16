@@ -7,7 +7,7 @@ const EventCards = () => {
   
     useEffect(() => {
       const getData = async () => {
-        const result = await axios.get('http://localhost:27017/api/events/getAll')
+        const result = await axios.get('https://cleanbeach.onrender.com/api/events/getAll')
         setData(result.data);
         for(let i = 0; i< result.data.length; i++){
             const text = JSON.stringify(result.data[0].date).slice(1,11)
