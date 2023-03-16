@@ -83,7 +83,7 @@ const CreateEvent = () => {
         );
         const failure = res.data.code || res.status !== 200;
         setBeachesFetchError(failure);
-        setBeaches(failure ? {} : res.data);
+        setBeaches(failure ? [] : res.data);
       } catch (err) {
         setBeachesFetchError(true);
       } finally {
