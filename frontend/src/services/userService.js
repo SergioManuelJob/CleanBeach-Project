@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = process.env.URL_USER
+const url = "http://localhost:27017/api/users/"
 
 const logIn = (email, password) => {
   
@@ -27,7 +27,6 @@ const register = (name, email, password) => {
         "email": email,
         "password": password
       });
-  
     
     var config = {
         method: 'post',

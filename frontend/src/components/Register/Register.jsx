@@ -2,6 +2,7 @@ import './Register.scss'
 import { useState, useEffect } from 'react';
 import Cleaning1 from '../../images/Rectangle 39.png';
 import userService from '../../services/userService';
+import axios from "axios";
 
 const Register = () => {
     const initialValues = { fullname: '', email: '', password: ''};
@@ -18,15 +19,26 @@ const Register = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormErrors(validate(formValues));
-        userService.register(formValues.name, formValues.email, formValues.password)
-            .then(data => {
-                // store data in local storage or something
+        axios.post('http://localhost:27017/api/users/signin', {
+            name: formValues.name, 
+            email: formValues.email, 
+            password: formValues.password
+        })
+            .then(res => {
                 setIsSubmit(true);
+                console.log(res.data);
+                if (res.data.code || res.status !== 200) {
+                    setSubmitError(res.data);
+                    return; // Exit immediately
+                }
+
+                setSubmitError({});
+                // localStorage
             })
             .catch(err => {
                 setIsSubmit(false);
-                console.log(Object.keys(err));
-                setFormErrors({ code: err.code, msg: err.msg })
+                // console.log(Object.keys(err));
+                setSubmitError({  msg: err.message })
             })
     };
 
@@ -69,6 +81,13 @@ const Register = () => {
             && Object.keys(submitError).length === 0 ? (
             <div style={{color: 'green', fontSize: '40px'}} className='ui message success'>Registered successfully</div>
     ) : null}
+
+        {Object.keys(submitError).length !== 0 && isSubmit
+            ? <div style={{color: 'red', fontSize: '40px'}} className='ui message failure'>
+                Failed to register:
+                {submitError.msg}
+              </div>
+            : null }
     <div className='container'>
         {/* REGISTER */}
         <div className='register'>
