@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import {AiFillCaretDown} from 'react-icons/ai';
+import beachService from "../../services/beachService";
 
 const Cards = () => {
   let [data, setData] = useState([]);
@@ -21,9 +22,11 @@ const Cards = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const result = await axios.get('https://backend-cleanbeach-production.up.railway.app/api/beaches/getAll')
-      setData(result.data);
-      console.log(result.data)
+      beachService.getAllBeaches().then(res => {
+        const result = res
+        setData(result.data);
+        console.log(result.data)
+      })
     }
     getData();
   }, [setData]);

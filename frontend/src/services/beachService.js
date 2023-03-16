@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "http://localhost:27017/api/beaches/"
+const url = "http://backend-cleanbeach-production.up.railway.app/api/beaches/"
 
 
 const createBeach = (name, status, description, location, file) => {
@@ -29,7 +29,9 @@ const getAllBeaches = () => {
     var config = {
         method: 'get',
         url: url +'getAll',
-        headers: { }
+        withCredentials: false,
+        headers: {
+        }
     };
   
     return axios(config)

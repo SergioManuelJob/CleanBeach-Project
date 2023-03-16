@@ -18,6 +18,7 @@ const Register = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(formValues)
         setFormErrors(validate(formValues));
         if (Object.keys(formErrors) !== 0) return;
         userService.register(formValues.fullname, formValues.email, formValues.password)
@@ -29,7 +30,7 @@ const Register = () => {
                 console.log(res.data);
                 if (res.data.code || res.status !== 200) {
                     setSubmitError(res.data);
-                    return; // Exit immediately
+                    return;
                 }
                 setSubmitError({});
             })
@@ -40,7 +41,6 @@ const Register = () => {
     };
 
     useEffect(() => {
-        console.log(formErrors);
         if (Object.keys(formErrors).length === 0 && isSubmit) {
             console.log(formValues);
         }

@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = process.env.URL_PARTICIPANTSLIST
+const url = "http://backend-cleanbeach-production.up.railway.app/api/participantsLists/"
 
 const createParticipantsList = (userId, eventId) => {
   
