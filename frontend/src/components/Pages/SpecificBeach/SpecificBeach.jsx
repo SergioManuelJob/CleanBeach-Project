@@ -12,7 +12,7 @@ const SpecificBeach = () => {
   useEffect(() => {
     const getData = async () => {
       const result = await axios.get(
-        `http://localhost:27017/api/beaches/${id}`
+        `https://cleanbeach.onrender.com/api/beaches/${id}`
       );
       setData(result.data);
       console.log(result);
