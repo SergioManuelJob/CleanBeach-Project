@@ -19,8 +19,8 @@ const Register = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(formValues)
-        setFormErrors(validate(formValues));
-        if (Object.keys(formErrors) !== 0) return;
+        // setFormErrors(validate(formValues));
+        // if (Object.keys(formErrors) !== 0) return;
         userService.register(formValues.fullname, formValues.email, formValues.password)
             .then(res => {
                 console.log(res)
