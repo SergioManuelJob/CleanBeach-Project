@@ -44,18 +44,21 @@ const CreateEvent = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
+    console.log(formValues)
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.stopPropagation()
+    e.preventDefault()
     setFormErrors(validate(formValues));
     if (Object.keys(formErrors) !== 0) return;
-
+    console.log(formValues)
+    console.log(formErrors)
     eventService.createEvent(
         formValues.name, 
         formValues.beachId, 
         user.uid, 
-        collectISOString(formValues.date),
+        collectISOString(new Date(formValues.date)),
         formValues.description
     )
         .then(res => {
@@ -73,7 +76,7 @@ const CreateEvent = () => {
   };
 
   useEffect(() => {
-    setUser(localStorage.getItem("user"));
+    setUser(JSON.parse(localStorage.getItem("user")));
 
     const getBeaches = async () => {
       setIsLoading(true);
@@ -126,7 +129,7 @@ const CreateEvent = () => {
                     ? <div style={{color: 'red', fontSize: '20px'}} className='ui message failure'>
                         Something went wrong while fetching the beaches!
                       </div>
-                    : <select className="starts" htmlFor="beachId" defaultValue="-1" onChange={handleChange} >
+                    : <select className="starts" name="beachId" defaultValue="-1" onChange={handleChange} >
                           <option value="-1" key="-1">Select a beach...</option>
                           { beaches && 
                           beaches.map((beach, index) => (
@@ -152,7 +155,7 @@ const CreateEvent = () => {
               <input name="description" type="text" onChange={handleChange} />
             </div>
 
-            <button className="button" onClick={handleSubmit}>Create Event</button>
+            <button className="button" onClick={() => handleSubmit()}>Create Event</button>
     </> 
     }
       </div>

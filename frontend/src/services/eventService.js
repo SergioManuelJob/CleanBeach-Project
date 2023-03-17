@@ -2,18 +2,17 @@ import axios from "axios";
 const url = "https://cleanbeach.onrender.com/api/events/"
 const createEvent = (name, beachId, organizerId, date, description) => {
   
-    var data = JSON.stringify({
+    var data = {
         "beachId": beachId,
         "name": name,
         "organizerId": organizerId,
         "date": new Date(date),
         "description": description
-    });
+    };
       
     var config = {
         method: 'post',
         url: url +'create',
-        withCredentials: false,
         headers: { 
           'Content-Type': 'application/json'
         },
