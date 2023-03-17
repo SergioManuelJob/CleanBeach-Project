@@ -20,7 +20,13 @@ export const eventController = {
             return;
         }
         
-        const event = result.value as EventData;
+        const event = {
+            name:           result.value.name,
+            description:    result.value.description,
+            beachId:        +result.value.beachId,
+            organizerId:    +result.value.organizerId,
+            date:           new Date(result.value.date)
+        } as EventData;
 
         if (!(await prisma.user.findUnique({where: { uid: +event.organizerId },})))
             return res.json({ code: 404, msg: "User not found" });
@@ -123,11 +129,11 @@ export const eventController = {
 
         const event = {
             name: result.value.name,
-            beachId: result.value.beachId,
+            beachId: +result.value.beachId,
             description: result.value.description,
-            date: result.value.date
+            date: new Date(result.value.date)
         } as EventData
-
+        
         try {
             res.send(
                 await prisma.event.update({
