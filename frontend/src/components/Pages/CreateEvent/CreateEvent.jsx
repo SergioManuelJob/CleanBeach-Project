@@ -44,7 +44,6 @@ const CreateEvent = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
-    console.log(formValues)
   };
 
   const handleSubmit = (e) => {
@@ -155,7 +154,7 @@ const CreateEvent = () => {
               <input name="description" type="text" onChange={handleChange} />
             </div>
 
-            <button className="button" onClick={() => handleSubmit()}>Create Event</button>
+            <button className="button" onClick={(e) => handleSubmit(e)}>Create Event</button>
     </> 
     }
       </div>
