@@ -10,7 +10,7 @@ const EventCards = () => {
         const result = await axios.get('https://cleanbeach.onrender.com/api/events/getAll')
         setData(result.data);
         for(let i = 0; i< result.data.length; i++){
-            const text = JSON.stringify(result.data[0].date).slice(1,11)
+            const text = JSON.stringify(result.data[i].date).slice(1,11)
             result.data[i].date = text
         } 
       }

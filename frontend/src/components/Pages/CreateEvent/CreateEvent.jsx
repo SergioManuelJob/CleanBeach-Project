@@ -70,7 +70,8 @@ const CreateEvent = () => {
         })
         .catch(err => {
             setIsSubmit(false);
-            setSubmitError({  msg: err.message });
+            console.log(err)
+            setSubmitError({  msg: err });
         });
   };
 
