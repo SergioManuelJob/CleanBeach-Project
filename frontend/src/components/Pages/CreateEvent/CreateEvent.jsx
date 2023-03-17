@@ -61,7 +61,6 @@ const CreateEvent = () => {
         formValues.description
     )
         .then(res => {
-          console.log("Hello?")
             setIsSubmit(true);
             if (res.data.code || res.status !== 200) {
                 setSubmitError(res.data);
