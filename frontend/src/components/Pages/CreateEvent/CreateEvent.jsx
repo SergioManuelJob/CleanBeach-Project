@@ -30,7 +30,7 @@ const CreateEvent = () => {
       errors.beachId = "Please select a beach!";
     }
 
-    if (!values.date || collectISOString(values.date) < today) {
+    if (!values.date || collectISOString(new Date(values.date)) < today) {
       errors.date = "Please provide today's date or a future date!";
     }
 
