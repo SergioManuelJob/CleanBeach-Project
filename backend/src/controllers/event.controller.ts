@@ -22,10 +22,10 @@ export const eventController = {
         
         const event = result.value as EventData;
 
-        if (!(await prisma.user.findUnique({where: { uid: event.organizerId },})))
+        if (!(await prisma.user.findUnique({where: { uid: +event.organizerId },})))
             return res.json({ code: 404, msg: "User not found" });
 
-        if (!(await prisma.beach.findUnique({where: { bid: event.beachId }})))
+        if (!(await prisma.beach.findUnique({where: { bid: +event.beachId }})))
             return res.json({ code: 404, msg: "Beach not found" });
 
         try{

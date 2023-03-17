@@ -20,26 +20,26 @@ const CreateEvent = () => {
   const [isSubmit, setIsSubmit] = useState(false);
   const [submitError, setSubmitError] = useState({});
 
-  const validate = (values) => {
-    const errors = {};
-    if (!values.name) {
-      errors.name = "Provide a name for the event!";
-    }
+  // const validate = (values) => {
+  //   const errors = {};
+  //   if (!values.name) {
+  //     errors.name = "Provide a name for the event!";
+  //   }
 
-    if (!values.beachId || parseInt(values.beachId) === -1) {
-      errors.beachId = "Please select a beach!";
-    }
+  //   if (!values.beachId || parseInt(values.beachId) === -1) {
+  //     errors.beachId = "Please select a beach!";
+  //   }
 
-    if (!values.date || collectISOString(new Date(values.date)) < today) {
-      errors.date = "Please provide today's date or a future date!";
-    }
+  //   if (!values.date || collectISOString(new Date(values.date)) < today) {
+  //     errors.date = "Please provide today's date or a future date!";
+  //   }
 
-    if (!values.description) {
-      errors.description = "Please provide a description for the event!";
-    }
+  //   if (!values.description) {
+  //     errors.description = "Please provide a description for the event!";
+  //   }
 
-    return errors;
-  };
+  //   return errors;
+  // };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,18 +49,19 @@ const CreateEvent = () => {
   const handleSubmit = (e) => {
     e.stopPropagation()
     e.preventDefault()
-    setFormErrors(validate(formValues));
-    if (Object.keys(formErrors) !== 0) return;
+    // setFormErrors(validate(formValues));
+    // if (Object.keys(formErrors) !== 0) return;
     console.log(formValues)
-    console.log(formErrors)
+    console.log(user.uid)
     eventService.createEvent(
         formValues.name, 
         formValues.beachId, 
         user.uid, 
-        collectISOString(new Date(formValues.date)),
+        formValues.date,
         formValues.description
     )
         .then(res => {
+          console.log("Hello?")
             setIsSubmit(true);
             if (res.data.code || res.status !== 200) {
                 setSubmitError(res.data);

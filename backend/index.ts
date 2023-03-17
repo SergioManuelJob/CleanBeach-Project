@@ -9,18 +9,8 @@ import cors from "cors";
 
 const prisma = new PrismaClient()
 
-const corsConfig = { 
-    origin: [
-        'https://clean-beach-project.vercel.app/*', 
-        'http://localhost:3000/*'
-    ],
-    // origin: "*",
-    optionsSuccessStatus: 200
-}
-
 const app = express();
-app.options("*", cors(corsConfig));
-app.use(cors(corsConfig))
+app.use(cors)
 app.use(express.json())
 
 // Initialize routes
