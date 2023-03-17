@@ -79,7 +79,7 @@ const CreateEvent = () => {
       setIsLoading(true);
       try {
         const res = await axios.get(
-          "backend-cleanbeach-production.up.railway.app/api/beaches/getAll"
+          "https://cleanbeach.onrender.com/api/beaches/getAll"
         );
         const failure = res.data.code || res.status !== 200;
         setBeachesFetchError(failure);
